@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float move_speed = 20;
     public float shockwave_force = 20.0f;
     public float shockwave_radius = 20.0f;
+    public float shockwave_shake_duration = 0.4f;
+    public float shockwave_shake_strength = 0.4f;
 
     public List<GameObject> mount_points = new List<GameObject>();
 
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !firing_shockwave)
         {
+            CameraShake.instance.ShakeCamera(shockwave_shake_duration, shockwave_shake_strength);
             firing_shockwave = true;
         }
     }
