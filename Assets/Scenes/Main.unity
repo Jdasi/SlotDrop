@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 1214924773}
   - component: {fileID: 1214924774}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: Limbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,6 +734,7 @@ GameObject:
   - component: {fileID: 1978955122}
   - component: {fileID: 1978955120}
   - component: {fileID: 1978955123}
+  - component: {fileID: 1978955124}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -812,6 +813,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09738ef57ce9cd4c9a3cdb7cc1f07fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1978955124
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1978955118}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27bf165b9c3b19149a1c3a28a9a9b4f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2110197738
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,12 @@ public class Player : MonoBehaviour
 
     public List<GameObject> mount_points = new List<GameObject>();
 
+    private Animator player_animator;
+    private bool flipped = false;
+
     void Start()
     {
+        player_animator = GetComponent<Animator>();
     }
 
 
@@ -21,6 +25,20 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
         transform.position += new Vector3(horizontal, 0, vertical);
+
+        player_animator.SetBool("walking", horizontal != 0 || vertical != 0);
+
+        if (horizontal < 0 && !flipped)
+        {
+            flipped = true;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (horizontal > 0 && flipped)
+        {
+            flipped = false;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
 
