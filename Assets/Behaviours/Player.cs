@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
 
     public List<GameObject> mount_points = new List<GameObject>();
 
-    private Animator player_animator;
+    public Animator player_animator;
     private bool flipped = false;
 
     void Start()
     {
-        player_animator = GetComponent<Animator>();
+        //player_animator = GetComponentInChildren<Animator>();
     }
 
 
