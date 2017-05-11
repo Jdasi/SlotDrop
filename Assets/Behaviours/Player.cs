@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //player_animator = GetComponentInChildren<Animator>();
     }
 
 
