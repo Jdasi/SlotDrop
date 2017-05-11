@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5334b99b77792b04d9e0585e856ec9fa
-timeCreated: 1494529187
+timeCreated: 1494530562
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -85,8 +85,8 @@ TextureImporter:
         y: 0
         width: 606
         height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -94,12 +94,12 @@ TextureImporter:
       name: Run Cycle 002
       rect:
         serializedVersion: 2
-        x: 609
+        x: 611
         y: 0
-        width: 636
+        width: 634
         height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -107,12 +107,12 @@ TextureImporter:
       name: Run Cycle 003
       rect:
         serializedVersion: 2
-        x: 1247
+        x: 1252
         y: 0
-        width: 617
+        width: 613
         height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -122,10 +122,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1871
         y: 0
-        width: 641
+        width: 639
         height: 508
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -133,12 +133,12 @@ TextureImporter:
       name: Run Cycle 006
       rect:
         serializedVersion: 2
-        x: 2514
+        x: 2519
         y: 0
-        width: 617
+        width: 610
         height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -146,12 +146,12 @@ TextureImporter:
       name: Run Cycle 007
       rect:
         serializedVersion: 2
-        x: 3136
+        x: 3139
         y: 0
-        width: 641
+        width: 634
         height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -159,12 +159,12 @@ TextureImporter:
       name: Run Cycle 008
       rect:
         serializedVersion: 2
-        x: 3779
+        x: 3785
         y: 0
-        width: 622
+        width: 612
         height: 508
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -172,12 +172,12 @@ TextureImporter:
       name: Run Cycle 009
       rect:
         serializedVersion: 2
-        x: 4403
+        x: 4408
         y: 0
-        width: 634
-        height: 506
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 629
+        height: 509
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
