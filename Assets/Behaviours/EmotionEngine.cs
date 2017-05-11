@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Rewired;
 
 [ExecuteInEditMode]
-public class FaceAnimatior : MonoBehaviour
+public class EmotionEngine : MonoBehaviour
 {
     const float MIN_HEIGHT = 0.1f;
     const float MAX_HEIGHT = 0.359f;
@@ -16,9 +16,9 @@ public class FaceAnimatior : MonoBehaviour
 
     [Header("Eye Openers")]
     [Range(MIN_HEIGHT, MAX_HEIGHT)]
-    public float left_eye_open;
+    public float left_eye_open = MAX_HEIGHT;
     [Range(MIN_HEIGHT, MAX_HEIGHT)]
-    public float right_eye_open;
+    public float right_eye_open = MAX_HEIGHT;
 
 	// Update is called once per frame
 	void Update ()
