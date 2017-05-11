@@ -1,4 +1,5 @@
-﻿using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,14 @@ public class Player : MonoBehaviour
 
     private Dictionary<MountPoint.ID, MountPoint> mount_points = new Dictionary<MountPoint.ID, MountPoint>();
     private GameObject mount_origin;
+ void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "PowerUp")
+        {
 
-	void Start()
+        }
+    }
+    void Start()
     {
         mount_origin = transform.FindChild("Body").gameObject;
 
