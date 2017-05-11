@@ -6,9 +6,7 @@ using Random = UnityEngine.Random;
 
 public class PowerUp : MonoBehaviour
 {
-    private PowerUpSettings m_settings;
-
-    PowerUpType RandomizePowerup()
+    PowerUpSettings RandomizePowerup()
     {
         PowerUpType tempPowerUpType = PowerUpType.PU_INVALID;
         float time = 0.0f;
@@ -21,8 +19,26 @@ public class PowerUp : MonoBehaviour
             Debug.Log(time);
         }
 
-        tempPowerUpType = (PowerUpType)type;
-        return tempPowerUpType;
+        tempPowerUpType = (PowerUpType) type;
+        PowerUpSettings temPowerUpSettings = new PowerUpSettings();
+
+        switch (tempPowerUpType)
+        {
+            case PowerUpType.PU_INVALID:
+                temPowerUpSettings.type = tempPowerUpType;
+                temPowerUpSettings.duration = 0;
+                break;
+            case PowerUpType.PU_SPEED_BOOST:
+                temPowerUpSettings.type = tempPowerUpType;
+                temPowerUpSettings.duration = 4;
+                break;
+            case PowerUpType.PU_GLOCK:
+                temPowerUpSettings.type = tempPowerUpType;
+                temPowerUpSettings.duration = 3;
+                break;
+        }
+
+        return temPowerUpSettings;
     }
 
     // Use this for initialization
@@ -40,10 +56,8 @@ public class PowerUp : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             this.gameObject.SetActive(false);
-            coll.gameObject.GetComponent<PlayerWeapon>().weaponType = RandomizePowerup();
+            coll.gameObject.GetComponent<PlayerWeapon>().weaponSettings = RandomizePowerup();
             Destroy(this);
         }
     }
-
-   
 }

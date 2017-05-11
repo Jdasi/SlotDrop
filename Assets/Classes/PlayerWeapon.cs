@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Assets.Classes;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    public PowerUpType weaponType;
+
+    public PowerUpSettings weaponSettings;
     // Use this for initialization
     void Start()
     {
@@ -16,4 +18,6 @@ public class PlayerWeapon : MonoBehaviour
     {
 
     }
+
+    
 }
