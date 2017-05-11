@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 159227242}
   - component: {fileID: 159227241}
   - component: {fileID: 159227240}
+  - component: {fileID: 159227244}
   m_Layer: 0
   m_Name: Cube
   m_TagString: PowerUp
@@ -279,6 +280,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159227244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159227239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5944c73ee3eb83b4d8d0002e7ddbf64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &207927444
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +733,7 @@ GameObject:
   - component: {fileID: 1978955120}
   - component: {fileID: 1978955121}
   - component: {fileID: 1978955122}
+  - component: {fileID: 1978955123}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -788,6 +801,17 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1978955123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1978955118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09738ef57ce9cd4c9a3cdb7cc1f07fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2110197738
 GameObject:
   m_ObjectHideFlags: 0

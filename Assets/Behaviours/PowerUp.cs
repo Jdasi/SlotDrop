@@ -16,7 +16,6 @@ public class PowerUp : MonoBehaviour
             //show something on ui 
             type = Random.Range(1, 3);
             time += Time.deltaTime;
-            Debug.Log(time);
         }
 
         tempPowerUpType = (PowerUpType) type;
@@ -37,7 +36,7 @@ public class PowerUp : MonoBehaviour
                 temPowerUpSettings.duration = 3;
                 break;
         }
-
+        Debug.Log(tempPowerUpType);
         return temPowerUpSettings;
     }
 
