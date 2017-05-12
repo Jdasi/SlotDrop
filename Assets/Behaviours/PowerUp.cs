@@ -1,91 +1,64 @@
 ﻿using System;
-using UnityEngine;
-using System.Collections;
 using Assets.Classes;
-using Rewired;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PowerUp : MonoBehaviour
+namespace Assets.Behaviours
 {
-    LoadoutType RandomizeLoadout()
+    public class PowerUp : MonoBehaviour
     {
-        int type = Random.Range(0, Enum.GetNames(typeof(LoadoutType)).Length);
-        return (LoadoutType) type;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    void OnCollisionEnter(Collision coll)
-    {
-        if (coll.gameObject.tag != "Player") return;
-
-        this.gameObject.SetActive(false);
-        if (coll.gameObject.GetComponent<PlayerController>().BaseWeapons)
+        public void NewLoadout(GameObject playerGameObject)
         {
+            //randomize loadout
             LoadoutType tempLoadoutType = RandomizeLoadout();
+
+            //load manager
             GameObject temPlayerLoadoutManager = GameObject.FindGameObjectWithTag("Managers");
             PlayerLoadoutManager loadoutManager = temPlayerLoadoutManager.GetComponent<PlayerLoadoutManager>();
+
+            //get loadout
             PlayerLoadout newlLoadout = loadoutManager.PlayerLoadouts[(int) tempLoadoutType];
 
             //destroy base weapons
-            PlayerWeapon[] weapons = coll.gameObject.GetComponents<PlayerWeapon>();
+            PlayerWeapon[] weapons = playerGameObject.gameObject.GetComponents<PlayerWeapon>();
             foreach (var i in weapons)
             {
                 Destroy(i);
             }
 
+            //add new base waepon
             switch (newlLoadout.BasePlayerWeapon)
             {
-                case WeaponType.WEP_INVALID:
-                    Debug.Log("UNABLE TO CREATE WEAPON, CHECK RANDOM RANGES IN RANDOMIZEPOWERUP");
-                    break;
-                case WeaponType.WEP_CONE_KNOCKBACK:
-                    break;
-                case WeaponType.WEP_SHOCKWAVE_RADIAL:
-                    coll.gameObject.AddComponent<WeaponSpecialShockwave>();
-                    break;
                 case WeaponType.WEP_BASE_PROJECTILE:
-                    coll.gameObject.AddComponent<WeaponBaseProjectile>();
-                    break;
-                case WeaponType.WEP_SLOWING_BOMB:
-                    break;
-                case WeaponType.WEP_STUN_NEAREST_PLAYER:
+                    playerGameObject.gameObject.AddComponent<WeaponBaseProjectile>();
                     break;
                 default:
+                    Debug.Log("UNABLE TO CREATE WEAPON, CHECK RANDOM RANGES IN RANDOMIZEPOWERUP");
                     throw new ArgumentOutOfRangeException();
             }
 
+            //add new special weapon
             switch (newlLoadout.SpecialPlayerWeapon)
             {
-                case WeaponType.WEP_INVALID:
-                    Debug.Log("UNABLE TO CREATE WEAPON, CHECK RANDOM RANGES IN RANDOMIZEPOWERUP");
-                    break;
                 case WeaponType.WEP_CONE_KNOCKBACK:
                     break;
                 case WeaponType.WEP_SHOCKWAVE_RADIAL:
-                    coll.gameObject.AddComponent<WeaponSpecialShockwave>();
-                    break;
-                case WeaponType.WEP_BASE_PROJECTILE:
-                    coll.gameObject.AddComponent<WeaponBaseProjectile>();
+                    playerGameObject.gameObject.AddComponent<WeaponSpecialShockwave>();
                     break;
                 case WeaponType.WEP_SLOWING_BOMB:
                     break;
                 case WeaponType.WEP_STUN_NEAREST_PLAYER:
                     break;
                 default:
+                    Debug.Log("UNABLE TO CREATE WEAPON, CHECK RANDOM RANGES IN RANDOMIZEPOWERUP");
                     throw new ArgumentOutOfRangeException();
             }
-
-            coll.gameObject.GetComponent<PlayerController>().BaseWeapons = false;
         }
-        Destroy(this);
+
+        LoadoutType RandomizeLoadout()
+        {
+            int type = Random.Range(0, Enum.GetNames(typeof(LoadoutType)).Length);
+            return (LoadoutType) type;
+        }
     }
 }
