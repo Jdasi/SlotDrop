@@ -1742,9 +1742,10 @@ GameObject:
   - component: {fileID: 2097719144}
   - component: {fileID: 2097719145}
   - component: {fileID: 2097719146}
+  - component: {fileID: 2097719147}
   m_Layer: 0
   m_Name: Managers
-  m_TagString: Untagged
+  m_TagString: Managers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2693,6 +2694,21 @@ MonoBehaviour:
     customControllerIdCounter: 0
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
+--- !u!114 &2097719147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097719142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be87de87f7461994287055d2a182e63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
+  - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
+  - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
 --- !u!1 &2104288750
 GameObject:
   m_ObjectHideFlags: 0
