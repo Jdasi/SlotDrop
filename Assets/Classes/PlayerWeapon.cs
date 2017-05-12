@@ -1,20 +1,25 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using Assets.Classes;
-using Rewired;
+﻿using UnityEngine;
 
-public class PlayerWeapon : MonoBehaviour
+namespace Assets.Classes
 {
-    public PowerUpSettings weaponSettings;
-
-    void Start()
+    public class PlayerWeapon : MonoBehaviour
     {
-        Debug.Log("HI");
-    }
+        protected WeaponSettings WeaponSettings;
 
-    void Update()
-    {
+        protected virtual void Attack()
+        {
+        }
+
+        public virtual void Update()
+        {
+            Attack(); //to be called from player 
+            if (WeaponSettings.Ready) return;
+            if (WeaponSettings.TimeLeft >= WeaponSettings.Cooldown)
+            {
+                WeaponSettings.TimeLeft = 0.0f;
+                WeaponSettings.Ready = true;
+            }
+            WeaponSettings.TimeLeft += Time.deltaTime;
+        }
     }
-    
 }

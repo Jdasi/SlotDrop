@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Player player_input;
     private int id = 0;
-
+    public bool BaseWeapons = true;
     public float move_speed = 20;
 
     public List<GameObject> mount_points = new List<GameObject>();
@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
+
+
         float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
         float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             flipped = false;
             transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+        }
+
+        if(player_input.GetButtonDown("SlotDrop"))
+        {
+            player_animator.SetTrigger("slot_drop");
         }
     }
 
