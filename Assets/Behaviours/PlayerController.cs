@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     private int id = 0;
     public bool BaseWeapons = true;
     public float move_speed = 20;
-
+    public float horizontal = 0;
+    public float vertical = 0;
     public List<GameObject> mount_points = new List<GameObject>();
 
     public Animator player_animator;
@@ -41,10 +42,9 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
+        horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
+        vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
-
-        float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
-        float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
         transform.position += new Vector3(horizontal, 0, vertical);
 
