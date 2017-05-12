@@ -9,7 +9,7 @@ public class PowerUp : MonoBehaviour
 {
     WeaponType RandomizePowerup()
     {
-        int type = Random.Range(2, 3);
+        int type = Random.Range(1, 2);
         return (WeaponType) type;
     }
 

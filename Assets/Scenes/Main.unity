@@ -3955,10 +3955,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be87de87f7461994287055d2a182e63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles:
+  _uniqueGameObjects:
+  - {fileID: 0}
+  - {fileID: 1168403161265214, guid: 527903b69d30c8e4bb57c9097fae58b6, type: 2}
   - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
-  - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
-  - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &2097719148
 MonoBehaviour:
   m_ObjectHideFlags: 0

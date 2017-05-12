@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private bool flipped = false;
     private Vector3 scale;
 
+    public float horizontal;
+    public float vertical;
+
     private void Awake()
     {
         //player_input = ReInput.players.GetPlayer(id);
@@ -46,8 +49,8 @@ public class PlayerController : MonoBehaviour
         {
             if (!slot_dropping)
             {
-                float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
-                float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
+                horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
+                vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
                 transform.position += new Vector3(horizontal, 0, vertical);
 
@@ -73,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         if(player_input.GetButtonDown("SlotDrop"))
         {
-            slot_dropping = true;
+            //slot_dropping = true;
             player_animator.SetTrigger("slot_drop");
         }
 

@@ -1,16 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Classes;
 using UnityEngine;
-
 
 
 public class PowerUpManager : MonoBehaviour
 {
-    public List<GameObject> particles = new List<GameObject>();
+    public List<GameObject> _uniqueGameObjects = new List<GameObject>(Enum.GetNames(typeof(WeaponType)).Length);
 
 
-    public GameObject GetParticle(int particle_id)
+    void Start()
     {
-        return particles[particle_id];
+        Debug.Log(Enum.GetNames(typeof(WeaponType)).Length);
+    }
+
+    public GameObject GetUniqueGameObject(WeaponType weaponType)
+    {
+        return _uniqueGameObjects[(int) weaponType];
     }
 }
