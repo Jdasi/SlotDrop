@@ -9,78 +9,71 @@ public class PlayerController : MonoBehaviour
     private Player player_input;
     private int id = 0;
     public bool BaseWeapons = true;
-    private bool slot_dropping = false;
+    public bool slot_dropping = false;
     public float move_speed = 20;
 
     public List<GameObject> mount_points = new List<GameObject>();
 
-    public Animator player_animator;
+    public Animator animator;
     private bool flipped = false;
     private Vector3 scale;
 
     public float horizontal;
     public float vertical;
 
-    private void Awake()
+
+    void Awake()
     {
-        //player_input = ReInput.players.GetPlayer(id);
         scale = transform.localScale;
-    }
-
-
-    void Start()
-    {
     }
 
 
     void Update()
     {
-        HandleMovement();
-    }
-
-
-    void FixedUpdate()
-    {
-    }
-
-    void HandleMovement()
-    {
         if (player_input != null)
         {
             if (!slot_dropping)
             {
-                horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
-                vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
-
-                transform.position += new Vector3(horizontal, 0, vertical);
-
-                player_animator.SetBool("walking", horizontal != 0 || vertical != 0);
-
-                if (horizontal < 0 && !flipped)
-                {
-                    flipped = true;
-                    transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
-                }
-
-                if (horizontal > 0 && flipped)
-                {
-                    flipped = false;
-                    transform.localScale = new Vector3(scale.x, scale.y, scale.z);
-                }
+                HandleMovement();
+                HandleSlotDrop();
             }
-        }
-        else
-        {
+        } else {
             Debug.LogWarning("Player is starting in the scene! Please remove");
         }
 
-        if(player_input.GetButtonDown("SlotDrop"))
+        slot_dropping = animator.GetCurrentAnimatorStateInfo(0).IsName("Slot Drop");
+    }
+
+
+    void HandleMovement()
+    {
+        horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
+        vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
+
+        transform.position += new Vector3(horizontal, 0, vertical);
+
+        animator.SetBool("walking", horizontal != 0 || vertical != 0);
+
+        if (horizontal < 0 && !flipped)
         {
-            //slot_dropping = true;
-            player_animator.SetTrigger("slot_drop");
+            flipped = true;
+            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
         }
 
-        
+        if (horizontal > 0 && flipped)
+        {
+            flipped = false;
+            transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+        }
+    }
+
+
+    void HandleSlotDrop()
+    {
+        if (player_input.GetButtonDown("SlotDrop"))
+        {
+            animator.SetTrigger("slot_drop");
+        }
     }
 
 
@@ -102,10 +95,11 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    void OnCollisionEnter(Collision coll)
+    void OnTriggerStay(Collider other)
     {
-        if (coll.gameObject.tag == "PowerUp")
+        if (other.gameObject.tag == "slot")
         {
+
         }
     }
 }

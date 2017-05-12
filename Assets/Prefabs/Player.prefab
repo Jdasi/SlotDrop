@@ -367,7 +367,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215018101230062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0438, y: 1.5282599e-16, z: -6.8826704}
+  m_LocalPosition: {x: 17.758558, y: 3.007213e-17, z: -1.3543284}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4496069073108020}
@@ -545,13 +545,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseWeapons: 1
+  slot_dropping: 0
   move_speed: 10
   mount_points:
   - {fileID: 1651309359282002}
   - {fileID: 1533902288831918}
   - {fileID: 1646508770532134}
   - {fileID: 1932582588118406}
-  player_animator: {fileID: 95923355085596752}
+  animator: {fileID: 95923355085596752}
+  horizontal: 0
+  vertical: 0
 --- !u!114 &114634168399017670
 MonoBehaviour:
   m_ObjectHideFlags: 1
