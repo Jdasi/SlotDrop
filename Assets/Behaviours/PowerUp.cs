@@ -7,20 +7,10 @@ using Random = UnityEngine.Random;
 
 public class PowerUp : MonoBehaviour
 {
-    PowerUpType RandomizePowerup()
+    WeaponType RandomizePowerup()
     {
-        PowerUpType tempPowerUpType = PowerUpType.PU_INVALID;
-        float time = 0.0f;
-        int type = 0;
-        while (time <= 5.0f)
-        {
-            //show something on ui 
-            type = Random.Range(2, 3);
-            time += Time.deltaTime;
-        }
-        tempPowerUpType = (PowerUpType) type;
-        Debug.Log(tempPowerUpType);
-        return tempPowerUpType;
+        int type = Random.Range(2, 3);
+        return (WeaponType) type;
     }
 
     // Use this for initialization
@@ -35,28 +25,52 @@ public class PowerUp : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-        if (coll.gameObject.tag == "Player")
-        {
-            this.gameObject.SetActive(false);
+        if (coll.gameObject.tag != "Player") return;
 
-            PowerUpType tempPowerUpType = RandomizePowerup();
-            Destroy(coll.gameObject.GetComponent<PlayerWeapon>());
-            switch (tempPowerUpType)
+        this.gameObject.SetActive(false);
+        int weaponsCount = coll.gameObject.GetComponents<PlayerWeapon>().Length;
+        WeaponType oldWeaponType = WeaponType.WEP_INVALID;
+        int newWeapons = 0;
+        if (coll.gameObject.GetComponent<PlayerController>().BaseWeapons)
+        {
+            while (newWeapons < 1) // should be 2, but we have only shockwave for now
             {
-                case PowerUpType.PU_INVALID:
-                    break;
-                case PowerUpType.PU_SPEED_BOOST:
-                    coll.gameObject.AddComponent<WeaponSpeedBoost>();
-                    break;
-                case PowerUpType.PU_GLOCK:
-                    break;
-                case PowerUpType.PU_SHOCKWAVE:
-                    coll.gameObject.AddComponent<WeaponShockwave>();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                var newWeaponType = WeaponType.WEP_INVALID;
+                do
+                {
+                    newWeaponType = RandomizePowerup();
+                } while (newWeaponType == oldWeaponType); // randomize weapon if it is the same as prev one
+
+                //destroy base weapons
+                PlayerWeapon[] weapons = coll.gameObject.GetComponents<PlayerWeapon>();
+                foreach (var i in weapons)
+                {
+                    Destroy(i);
+                }
+                switch (newWeaponType)
+                {
+                    case WeaponType.WEP_INVALID:
+                        Debug.Log("UNABLE TO CREATE WEAPON, CHECK RANDOM RANGES IN RANDOMIZEPOWERUP");
+                        break;
+                    case WeaponType.WEP_CONE_KNOCKBACK:
+                        break;
+                    case WeaponType.WEP_SHOCKWAVE_RADIAL:
+                        coll.gameObject.AddComponent<WeaponSpecialShockwave>();
+                        break;
+                    case WeaponType.WEP_BASE_PROJECTILE:
+                        coll.gameObject.AddComponent<WeaponBaseProjectile>();
+                        break;
+                    case WeaponType.WEP_SLOWING_BOMB:
+                        break;
+                    case WeaponType.WEP_STUN_NEAREST_PLAYER:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                coll.gameObject.GetComponent<PlayerController>().BaseWeapons = false;
+                newWeapons++;
             }
-            Destroy(this);
         }
+        Destroy(this);
     }
 }
