@@ -79,7 +79,12 @@ public class PlayerController : MonoBehaviour
 
             if (nearby_slot != null)
             {
-                transform.position = new Vector3(nearby_slot.position.x, transform.position.y, nearby_slot.position.z);
+                if (!nearby_slot.GetComponent<BoxCollider>().enabled)
+                {
+                    nearby_slot = null;
+                } else {
+                    transform.position = new Vector3(nearby_slot.position.x, transform.position.y, nearby_slot.position.z);
+                }
             }
         }
     }
@@ -103,9 +108,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void DisableSlotDropping()
+    void SlotDropped()
     {
         slot_dropping = false;
+
+        if (nearby_slot != null)
+            nearby_slot.GetComponent<Slot>().Close();
     }
 
 
