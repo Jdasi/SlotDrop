@@ -7,7 +7,7 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     private Player player_input;
-    public int id = 0;
+    private int id = 0;
 
     public float move_speed = 20;
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        player_input = ReInput.players.GetPlayer(id);
+        //player_input = ReInput.players.GetPlayer(id);
         scale = transform.localScale;
     }
 
@@ -59,6 +59,18 @@ public class PlayerController : MonoBehaviour
             flipped = false;
             transform.localScale = new Vector3(scale.x, scale.y, scale.z);
         }
+    }
+
+
+    public void SetPlayerInput(Player player_input)
+    {
+        this.player_input = player_input;
+    }
+
+
+    public void SetPlayerID(int id)
+    {
+        this.id = id;
     }
 
 
