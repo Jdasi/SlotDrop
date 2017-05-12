@@ -44,8 +44,8 @@ namespace Assets.Classes
         {
             if (!WeaponSettings.player_input.GetButtonDown("SlotDrop") || !WeaponSettings.Ready) return;
 
-            hor = this.gameObject.GetComponent<PlayerController>().horizontal;
-            ver = this.gameObject.GetComponent<PlayerController>().vertical;
+          //  hor = this.gameObject.GetComponent<PlayerController>().horizontal;
+            //ver = this.gameObject.GetComponent<PlayerController>().vertical;
             dir = new Vector3(hor, 0, ver);
             dir.Normalize();
             dir *= bulletspeed;
