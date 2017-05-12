@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+
 public class PlayerManager : MonoBehaviour
 {
     public GameObject player_prefab;
@@ -12,37 +13,45 @@ public class PlayerManager : MonoBehaviour
         ReInput.ControllerConnectedEvent += OnControllerConnected;
 
         // Assign each Joystick to a Player initially
-        foreach (Joystick j in ReInput.controllers.Joysticks)
+        foreach (Joystick joystick in ReInput.controllers.Joysticks)
         {
-            if (ReInput.controllers.IsJoystickAssigned(j)) continue; // Joystick is already assigned
+            if (ReInput.controllers.IsJoystickAssigned(joystick))
+                continue; // Joystick is already assigned
 
             // Assign Joystick to first Player that doesn't have any assigned
-            AssignJoystickToNextOpenPlayer(j);
+            AssignJoystickToNextOpenPlayer(joystick);
         }
     }
 
 
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
     {
-        if (args.controllerType != ControllerType.Joystick) return; // skip if this isn't a Joystick
+        if (args.controllerType != ControllerType.Joystick)
+            return; // skip if this isn't a Joystick
 
         AssignJoystickToNextOpenPlayer(ReInput.controllers.GetJoystick(args.controllerId));
     }
 
-    void AssignJoystickToNextOpenPlayer(Joystick j)
+
+    void AssignJoystickToNextOpenPlayer(Joystick joystick)
     {
-        foreach (Player p in ReInput.players.Players)
+        foreach (Player player in ReInput.players.Players)
         {
-            if (p.controllers.joystickCount > 0) continue; // player already has a joystick
-            p.controllers.AddController(j, true); // assign joystick to player
-            return;
+            if (player.controllers.joystickCount > 0)
+                continue; // player already has a joystick
+
+            player.controllers.AddController(joystick, true); // assign joystick to player
+
+            return; // joystick assigned, abort
         }
     }
+
 
     void OnDestroy()
     {
         // Unsubscribe from events
         ReInput.ControllerConnectedEvent -= OnControllerConnected;
+
         //ReInput.ControllerDisconnectedEvent -= OnControllerDisconnected;
         //ReInput.ControllerPreDisconnectEvent -= OnControllerPreDisconnect;
     }

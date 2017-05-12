@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+
 public class PlayerController : MonoBehaviour
 {
-    Player player_input;
+    private Player player_input;
     public int id = 0;
+
     public float move_speed = 20;
     public float shockwave_force = 20.0f;
     public float shockwave_radius = 20.0f;
@@ -25,8 +27,8 @@ public class PlayerController : MonoBehaviour
     {
         player_input = ReInput.players.GetPlayer(id);
         scale = transform.localScale;
-
     }
+
 
     void Start()
     {
@@ -43,10 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (firing_shockwave)
-        {
-            Shockwave();
-        }
+        Shockwave();
     }
 
 
@@ -56,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             CameraShake.instance.ShakeCamera(shockwave_shake_duration, shockwave_shake_strength);
             firing_shockwave = true;
+
             GameObject shock_particle = Instantiate(shockwave_prefab);
             shock_particle.transform.position = transform.position;
             Destroy(shock_particle, shock_particle.GetComponent<ParticleSystem>().main.duration);
@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
 
     void Shockwave()
     {
+        if (!firing_shockwave)
+            return;
+
         RaycastHit[] sphere = Physics.SphereCastAll(transform.position, shockwave_radius, Vector3.forward, 0);
 
         foreach (var elem in sphere)
@@ -111,4 +114,5 @@ public class PlayerController : MonoBehaviour
         {
         }
     }
+
 }
