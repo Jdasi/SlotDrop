@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("slot_drop");
             slot_dropping = true;
 
-            Invoke("DisableSlotDropping", 0.85f);
+            Invoke("SlotDropped", 0.85f);
 
             if (nearby_slot != null)
             {
