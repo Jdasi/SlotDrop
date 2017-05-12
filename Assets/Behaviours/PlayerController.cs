@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Rewired;
 public class PlayerController : MonoBehaviour
 {
+    Player player_input;
     public int id = 0;
     public float move_speed = 20;
     public float shockwave_force = 20.0f;
@@ -17,6 +18,14 @@ public class PlayerController : MonoBehaviour
     public Animator player_animator;
     private bool flipped = false;
     private bool firing_shockwave = false;
+    private Vector3 scale;
+
+    private void Awake()
+    {
+        player_input = ReInput.players.GetPlayer(id);
+        scale = transform.localScale;
+
+    }
 
     void Start()
     {
@@ -42,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleShockwave()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !firing_shockwave)
+        if (player_input.GetButtonDown("SlotDrop") && !firing_shockwave)
         {
             CameraShake.instance.ShakeCamera(shockwave_shake_duration, shockwave_shake_strength);
             firing_shockwave = true;
@@ -71,8 +80,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
-        float vertical = Input.GetAxis("Vertical") * Time.deltaTime * move_speed;
+        float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
+        float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
         transform.position += new Vector3(horizontal, 0, vertical);
 
@@ -81,13 +90,13 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0 && !flipped)
         {
             flipped = true;
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
         }
 
         if (horizontal > 0 && flipped)
         {
             flipped = false;
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(scale.x, scale.y, scale.z);
         }
     }
 
