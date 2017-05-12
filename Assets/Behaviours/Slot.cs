@@ -7,7 +7,17 @@ public class Slot : MonoBehaviour
     public Animator animator;
     public BoxCollider box_collider;
     public float time_to_close = 5.0f;
-	
+    public float unprotected_chance = 30.0f;
+    public bool golden_slot = false;
+
+    private bool unprotected = false;
+
+
+    void Start()
+    {
+        unprotected = Random.Range(1, 100) < unprotected_chance;
+    }
+
 
 	void Update()
     {
@@ -36,6 +46,12 @@ public class Slot : MonoBehaviour
     public bool IsOpen()
     {
         return animator.GetBool("open");
+    }
+
+
+    public bool IsUnprotected()
+    {
+        return unprotected;
     }
 
 }
