@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Player player_input;
     private int id = 0;
     public bool BaseWeapons = true;
+    private bool slot_dropping = false;
     public float move_speed = 20;
 
     public List<GameObject> mount_points = new List<GameObject>();
@@ -41,31 +42,42 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-
-
-        float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
-        float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
-
-        transform.position += new Vector3(horizontal, 0, vertical);
-
-        player_animator.SetBool("walking", horizontal != 0 || vertical != 0);
-
-        if (horizontal < 0 && !flipped)
+        if (player_input != null)
         {
-            flipped = true;
-            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+            if (!slot_dropping)
+            {
+                float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
+                float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
+
+                transform.position += new Vector3(horizontal, 0, vertical);
+
+                player_animator.SetBool("walking", horizontal != 0 || vertical != 0);
+
+                if (horizontal < 0 && !flipped)
+                {
+                    flipped = true;
+                    transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+                }
+
+                if (horizontal > 0 && flipped)
+                {
+                    flipped = false;
+                    transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+                }
+            }
         }
-
-        if (horizontal > 0 && flipped)
+        else
         {
-            flipped = false;
-            transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+            Debug.LogWarning("Player is starting in the scene! Please remove");
         }
 
         if(player_input.GetButtonDown("SlotDrop"))
         {
+            slot_dropping = true;
             player_animator.SetTrigger("slot_drop");
         }
+
+        
     }
 
 
