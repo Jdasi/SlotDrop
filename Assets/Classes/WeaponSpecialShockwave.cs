@@ -34,8 +34,10 @@ namespace Assets.Classes
             WeaponSettings.Cooldown = 3.0f;
             WeaponSettings.TimeLeft = 0.0f;
             WeaponSettings.Ready = true;
+
+            WeaponSettings.Type = WeaponType.WEP_SHOCKWAVE_RADIAL;
             _shockwavePrefab = GameObject.FindGameObjectWithTag("Managers").GetComponent<PowerUpManager>()
-                .GetParticle((int) WeaponSettings.Type);
+                .GetUniqueGameObject(WeaponSettings.Type);
         }
 
 
