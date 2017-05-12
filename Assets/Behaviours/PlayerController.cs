@@ -6,27 +6,25 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-    private Player player_input;
-    private int id = 0;
+    public GameObject body_parts;
     public bool BaseWeapons = true;
     public bool slot_dropping = false;
-    public float move_speed = 20;
+    public float horizontal_move_speed = 20;
+    public float vertical_move_speed = 10;
+    public Animator animator;
 
     public List<GameObject> mount_points = new List<GameObject>();
 
-    public Animator animator;
+    private int id = 0;
     private bool flipped = false;
-    private Vector3 scale;
-
-    public float horizontal;
-    public float vertical;
-
+    private Vector3 body_parts_default_scale;
+    private Player player_input;
     private Transform nearby_slot;
 
 
     void Awake()
     {
-        scale = transform.localScale;
+        body_parts_default_scale = body_parts.transform.localScale;
     }
 
 
@@ -47,8 +45,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
-        vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
+        float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * horizontal_move_speed;
+        float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * vertical_move_speed;
 
         transform.position += new Vector3(horizontal, 0, vertical);
 
@@ -57,13 +55,13 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0 && !flipped)
         {
             flipped = true;
-            transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+            body_parts.transform.localScale = new Vector3(-body_parts_default_scale.x, body_parts_default_scale.y, body_parts_default_scale.z);
         }
 
         if (horizontal > 0 && flipped)
         {
             flipped = false;
-            transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+            body_parts.transform.localScale = new Vector3(body_parts_default_scale.x, body_parts_default_scale.y, body_parts_default_scale.z);
         }
     }
 

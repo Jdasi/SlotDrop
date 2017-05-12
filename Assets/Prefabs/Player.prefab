@@ -310,7 +310,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1861271003901172
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -440,9 +440,8 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 4660513424723544}
-  - {fileID: 224633095789522610}
   m_Father: {fileID: 4555739807248720}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 43, y: 0, z: 0}
 --- !u!4 &4555739807248720
 Transform:
@@ -451,9 +450,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215018101230062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0438, y: 1.5282599e-16, z: -6.8826704}
+  m_LocalPosition: {x: 0.38263175, y: -7.5966176e-17, z: 3.4212124}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
+  - {fileID: 224633095789522610}
   - {fileID: 4496069073108020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -682,17 +682,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a309a7a705e626f4597789a274791743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body_parts: {fileID: 1526578000734850}
   BaseWeapons: 1
   slot_dropping: 0
-  move_speed: 10
+  horizontal_move_speed: 20
+  vertical_move_speed: 10
+  animator: {fileID: 95923355085596752}
   mount_points:
   - {fileID: 1651309359282002}
   - {fileID: 1533902288831918}
   - {fileID: 1646508770532134}
   - {fileID: 1932582588118406}
-  animator: {fileID: 95923355085596752}
-  horizontal: 0
-  vertical: 0
 --- !u!114 &114547910790880942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1257,18 +1257,18 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1861271003901172}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.36650118, y: -0, z: -0, w: 0.9304176}
+  m_LocalPosition: {x: 0, y: 0, z: 0.94329894}
+  m_LocalScale: {x: 0.2, y: 0.20000002, z: 1}
   m_Children:
   - {fileID: 224572113962488086}
   - {fileID: 224525797634176482}
-  m_Father: {fileID: 4496069073108020}
-  m_RootOrder: 1
+  m_Father: {fileID: 4555739807248720}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.13000003, y: 3.25}
+  m_AnchoredPosition: {x: 0.025999919, y: 0.97537994}
   m_SizeDelta: {x: 4.78, y: 1.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224660052697561708
