@@ -317,6 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224633095789522610}
   - component: {fileID: 223319723818538854}
+  - component: {fileID: 114258157055765570}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -450,7 +451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215018101230062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.269205, y: -2.1610217e-16, z: 9.732377}
+  m_LocalPosition: {x: -4.5898933, y: 2.0566664e-16, z: -9.262402}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 224633095789522610}
@@ -617,6 +618,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114258157055765570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1861271003901172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528c7bcac3f729e4b9be8cc222eac7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health_bar: {fileID: 114976909388536250}
+  slot_drop_tokens:
+  - {fileID: 114494989390440324}
+  - {fileID: 114154398450838138}
+  - {fileID: 114547910790880942}
+  - {fileID: 114833192903295154}
+  active_slot_token_count: 0
 --- !u!114 &114312378051942372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -688,11 +707,14 @@ MonoBehaviour:
   horizontal_move_speed: 20
   vertical_move_speed: 10
   animator: {fileID: 95923355085596752}
+  player_HUD: {fileID: 114258157055765570}
   mount_points:
   - {fileID: 1651309359282002}
   - {fileID: 1533902288831918}
   - {fileID: 1646508770532134}
   - {fileID: 1932582588118406}
+  max_player_health: 100
+  slot_streak: 0
 --- !u!114 &114547910790880942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -895,7 +917,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:

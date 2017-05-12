@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float horizontal_move_speed = 20;
     public float vertical_move_speed = 10;
     public Animator animator;
+    public PlayerHUD player_HUD;
 
     public List<GameObject> mount_points = new List<GameObject>();
 
@@ -20,11 +21,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 body_parts_default_scale;
     private Player player_input;
     private Transform nearby_slot;
+    public int max_player_health = 100;
+    private int player_health = 100;
+    public int slot_streak = 0;
 
 
     void Awake()
     {
         body_parts_default_scale = body_parts.transform.localScale;
+
+        player_HUD.SetHealthBarMaxHealth(max_player_health);
+        player_health = max_player_health;
+        player_HUD.UpdateHealthBar(player_health);
     }
 
 
@@ -111,7 +119,28 @@ public class PlayerController : MonoBehaviour
         slot_dropping = false;
 
         if (nearby_slot != null)
+        {
             nearby_slot.GetComponent<Slot>().Close();
+            slot_streak = player_HUD.AddSlotToken();
+        }    
+    }
+
+
+    public void Damage(int damage_amount)
+    {
+        player_health -= damage_amount;
+        player_HUD.UpdateHealthBar(player_health);
+
+        if(player_health <= 0)
+        {
+            KillPlayer();
+        }
+    }
+
+
+    void KillPlayer()
+    {
+        //reset and respawn player here
     }
 
 
