@@ -42,6 +42,7 @@ public class PlayerHUD : MonoBehaviour
 
     public void ResetSlotTokens()
     {
+        active_slot_token_count = 0;
         foreach(Image token in slot_drop_tokens)
         {
             token.gameObject.SetActive(false);
