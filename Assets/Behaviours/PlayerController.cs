@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float shockwave_radius = 20.0f;
     public float shockwave_shake_duration = 0.4f;
     public float shockwave_shake_strength = 0.4f;
+    public GameObject shockwave_prefab;
 
     public List<GameObject> mount_points = new List<GameObject>();
 
@@ -55,6 +56,9 @@ public class PlayerController : MonoBehaviour
         {
             CameraShake.instance.ShakeCamera(shockwave_shake_duration, shockwave_shake_strength);
             firing_shockwave = true;
+            GameObject shock_particle = Instantiate(shockwave_prefab);
+            shock_particle.transform.position = transform.position;
+            Destroy(shock_particle, shock_particle.GetComponent<ParticleSystem>().main.duration);
         }
     }
 
