@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Player player_input;
     private int id = 0;
-
+    public bool BaseWeapons = true;
     public float move_speed = 20;
 
     public List<GameObject> mount_points = new List<GameObject>();

@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 54184482484762768}
   - component: {fileID: 136412450415825258}
   - component: {fileID: 114518841038117680}
-  - component: {fileID: 114694710015781766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -430,31 +429,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a309a7a705e626f4597789a274791743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   move_speed: 10
-  shockwave_force: 80
-  shockwave_radius: 8
-  shockwave_shake_duration: 0.35
-  shockwave_shake_strength: 0.07
-  shockwave_prefab: {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813,
-    type: 2}
   mount_points:
   - {fileID: 1651309359282002}
   - {fileID: 1861271003901172}
   - {fileID: 1646508770532134}
   - {fileID: 1932582588118406}
   player_animator: {fileID: 95923355085596752}
---- !u!114 &114694710015781766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215018101230062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09738ef57ce9cd4c9a3cdb7cc1f07fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114790976220340006
 MonoBehaviour:
   m_ObjectHideFlags: 1
