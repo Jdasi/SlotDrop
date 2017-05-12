@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
+
+
         float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
         float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             flipped = false;
             transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+        }
+
+        if(player_input.GetButtonDown("SlotDrop"))
+        {
+            player_animator.SetTrigger("slot_drop");
         }
     }
 
