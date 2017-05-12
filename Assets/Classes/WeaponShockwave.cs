@@ -11,14 +11,14 @@ public class WeaponShockwave : PlayerWeapon
     void Start()
     {
         weaponSettings.player_input =
-            ReInput.players.GetPlayer(this.GetComponentInParent<PlayerController>()
-                .id); // SHOULD BE EXTRACTED TO BASE BEHAVIOUR
+            ReInput.players.GetPlayer(this.GetComponentInParent<PlayerController>().GetPlayerID()); // SHOULD BE EXTRACTED TO BASE BEHAVIOUR
         weaponSettings.duration = 0.4f;
         weaponSettings.active = false;
         weaponSettings.radius = 20.0f;
         weaponSettings.force = 20.0f;
         weaponSettings.force *= 1000;
         Debug.Log("HO");
+        shockwave_prefab = GameObject.FindGameObjectWithTag("Managers").GetComponent<PowerUpManager>().GetParticle((int)weaponSettings.type);
     }
 
     // Update is called once per frame

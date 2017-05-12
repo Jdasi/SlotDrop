@@ -74,6 +74,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public int GetPlayerID()
+    {
+        return id;
+    }
+
+    
     void OnCollisionEnter(Collision coll)
     {
         if (coll.gameObject.tag == "PowerUp")
