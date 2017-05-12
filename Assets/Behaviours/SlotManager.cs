@@ -36,18 +36,13 @@ public class SlotManager : MonoBehaviour
     }
 
 
-    // Open a random slot that isn't already open.
+    // Open a random slot if it is not open.
     void OpenRandomSlot()
     {
-        Slot slot = null;
+        Slot slot = slots[Random.Range(0, slots.Length)];
 
-        do
-        {
-            slot = slots[Random.Range(0, slots.Length)];
-
-        } while (slot.IsOpen());
-
-        slot.Open();
+        if (!slot.IsOpen())
+            slot.Open();
 
         random_slot_queued = false;
     }

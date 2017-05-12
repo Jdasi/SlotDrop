@@ -16,6 +16,9 @@ public class Slot : MonoBehaviour
     void Start()
     {
         unprotected = Random.Range(1, 100) < unprotected_chance;
+
+        if (transform.position.y != 0.1f)
+            transform.position = new Vector3(transform.position.x, 0.1f, transform.position.z);
     }
 
 
@@ -28,7 +31,7 @@ public class Slot : MonoBehaviour
             box_collider.enabled = true;
 	}
 
-    
+
     public void Open()
     {
         animator.SetBool("open", true);

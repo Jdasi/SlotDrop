@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float horizontal;
     public float vertical;
 
+    private Transform nearby_slot;
+
 
     void Awake()
     {
@@ -40,8 +42,6 @@ public class PlayerController : MonoBehaviour
         } else {
             Debug.LogWarning("Player is starting in the scene! Please remove");
         }
-
-        slot_dropping = animator.GetCurrentAnimatorStateInfo(0).IsName("Slot Drop");
     }
 
 
@@ -73,7 +73,39 @@ public class PlayerController : MonoBehaviour
         if (player_input.GetButtonDown("SlotDrop"))
         {
             animator.SetTrigger("slot_drop");
+            slot_dropping = true;
+
+            Invoke("DisableSlotDropping", 0.85f);
+
+            if (nearby_slot != null)
+            {
+                transform.position = new Vector3(nearby_slot.position.x, transform.position.y, nearby_slot.position.z);
+            }
         }
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Slot")
+        {
+            nearby_slot = other.transform;
+        }
+    }
+
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Slot")
+        {
+            nearby_slot = null;
+        }
+    }
+
+
+    void DisableSlotDropping()
+    {
+        slot_dropping = false;
     }
 
 
@@ -94,12 +126,4 @@ public class PlayerController : MonoBehaviour
         return id;
     }
 
-    
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "slot")
-        {
-
-        }
-    }
 }
