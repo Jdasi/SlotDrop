@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * move_speed;
         vertical = player_input.GetAxis("Vertical") * Time.deltaTime * move_speed;
 
+
         transform.position += new Vector3(horizontal, 0, vertical);
 
         player_animator.SetBool("walking", horizontal != 0 || vertical != 0);
@@ -59,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             flipped = false;
             transform.localScale = new Vector3(scale.x, scale.y, scale.z);
+        }
+
+        if(player_input.GetButtonDown("SlotDrop"))
+        {
+            player_animator.SetTrigger("slot_drop");
         }
     }
 
