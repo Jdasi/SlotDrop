@@ -48,7 +48,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953609776071866}
   serializedVersion: 5
-  lengthInSec: 0.5
+  lengthInSec: 0.6
   simulationSpeed: 1
   looping: 0
   prewarm: 0
@@ -102,7 +102,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       minMaxState: 0
-      scalar: 0.38
+      scalar: 0.26
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2385,7 +2385,7 @@ ParticleSystem:
     ratio: 1
     lifetime:
       minMaxState: 0
-      scalar: 0.06
+      scalar: 0.12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2422,7 +2422,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.21
+    minVertexDistance: 0.15
     textureMode: 0
     worldSpace: 0
     dieWithParticles: 1
