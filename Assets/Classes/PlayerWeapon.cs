@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using Assets.Classes;
+using Rewired;
 
 public class PlayerWeapon : MonoBehaviour
 {
@@ -9,12 +10,11 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-
+        Debug.Log("HI");
     }
 
     void Update()
     {
-
     }
     
 }

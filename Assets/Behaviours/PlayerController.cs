@@ -10,17 +10,11 @@ public class PlayerController : MonoBehaviour
     public int id = 0;
 
     public float move_speed = 20;
-    public float shockwave_force = 20.0f;
-    public float shockwave_radius = 20.0f;
-    public float shockwave_shake_duration = 0.4f;
-    public float shockwave_shake_strength = 0.4f;
-    public GameObject shockwave_prefab;
 
     public List<GameObject> mount_points = new List<GameObject>();
 
     public Animator player_animator;
     private bool flipped = false;
-    private bool firing_shockwave = false;
     private Vector3 scale;
 
     private void Awake()
@@ -32,58 +26,18 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        shockwave_force *= 1000;
     }
 
 
     void Update()
     {
         HandleMovement();
-        HandleShockwave();
     }
 
 
     void FixedUpdate()
     {
-        Shockwave();
     }
-
-
-    void HandleShockwave()
-    {
-        if (player_input.GetButtonDown("SlotDrop") && !firing_shockwave)
-        {
-            CameraShake.instance.ShakeCamera(shockwave_shake_duration, shockwave_shake_strength);
-            firing_shockwave = true;
-
-            GameObject shock_particle = Instantiate(shockwave_prefab);
-            shock_particle.transform.position = transform.position;
-            Destroy(shock_particle, shock_particle.GetComponent<ParticleSystem>().main.duration);
-        }
-    }
-
-
-    void Shockwave()
-    {
-        if (!firing_shockwave)
-            return;
-
-        RaycastHit[] sphere = Physics.SphereCastAll(transform.position, shockwave_radius, Vector3.forward, 0);
-
-        foreach (var elem in sphere)
-        {
-            Rigidbody rigid_body = elem.collider.gameObject.GetComponent<Rigidbody>();
-
-            if (rigid_body == this.GetComponent<Rigidbody>())
-                continue;
-
-            if (rigid_body != null)
-                rigid_body.AddExplosionForce(shockwave_force, transform.position, shockwave_radius);
-        }
-
-        firing_shockwave = false;
-    }
-
 
     void HandleMovement()
     {
@@ -114,5 +68,4 @@ public class PlayerController : MonoBehaviour
         {
         }
     }
-
 }
