@@ -103,6 +103,9 @@ public class PlayerController : MonoBehaviour
 
     void HandleSlotDrop()
     {
+        if (!special_ability.IsReady())
+            return;
+
         if (player_input.GetButtonDown("SlotDrop"))
         {
             animator.SetTrigger("slot_drop");
@@ -185,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     private void DisconnectPlayer()
     {
-        GameObject.Find("Managers").GetComponent<ControllerManager>().DestroyPlayer(player_input.id);
+        GameObject.Find("Managers").GetComponent<PlayerManager>().DestroyPlayer(player_input.id);
     }
 
 

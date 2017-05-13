@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 
-public class ControllerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     const int MAX_PLAYERS = 32;
     PlayerFactory player_factory;
