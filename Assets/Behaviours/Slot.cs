@@ -6,19 +6,24 @@ public class Slot : MonoBehaviour
 {
     public Animator animator;
     public BoxCollider box_collider;
+    public SpriteRenderer hazard_symbol;
+
     public float time_to_close = 5.0f;
     public float unprotected_chance = 30.0f;
+    public bool unprotected = false;
     public bool golden_slot = false;
 
-    private bool unprotected = false;
     private AbilityFactory ability_factory;
+    private PCManager pc_manager;
 
 
     void Start()
     {
         ability_factory = GameObject.FindObjectOfType<AbilityFactory>();
+        pc_manager = GameObject.FindObjectOfType<PCManager>();
 
         unprotected = Random.Range(1, 100) < unprotected_chance;
+        hazard_symbol.enabled = unprotected;
 
         if (transform.position.y != 0.01f)
         {
@@ -67,6 +72,13 @@ public class Slot : MonoBehaviour
     {
         // Close the slot.
         Close();
+
+        // Chance of infecting the PC.
+        if (unprotected)
+        {
+            if (Random.Range(1, 100) < (unprotected_chance * 2))
+                pc_manager.IncrementVirusBar();
+        }
 
         // JTODO -- Assign new loadout here.
     }

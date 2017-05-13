@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     private void DisconnectPlayer()
     {
-        GameObject.Find("Managers").GetComponent<PlayerManager>().DestroyPlayer(player_input.id);
+        GameObject.FindObjectOfType<PlayerManager>().DestroyPlayer(player_input.id);
     }
 
 
