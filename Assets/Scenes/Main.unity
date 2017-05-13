@@ -344,7 +344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128933991
 GameObject:
@@ -2109,7 +2109,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4953797198141318, guid: 2a1fa84daa655df41b91fec214ff6138, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1816261833536832, guid: 2a1fa84daa655df41b91fec214ff6138, type: 2}
       propertyPath: m_Name
@@ -4385,7 +4385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_spawn: {fileID: 675142053}
-  player_prefab: {fileID: 1215018101230062, guid: 993015cb825037f4591080baa1cface5,
+  player_prefab: {fileID: 1290276022431546, guid: 993015cb825037f4591080baa1cface5,
     type: 2}
   ability_factory: {fileID: 2097719147}
 --- !u!114 &2097719145
