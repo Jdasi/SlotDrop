@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         if (player_input != null)
         {
-            if(player_input.GetButtonDown("Disconnect"))
+            if (player_input.GetButtonDown("Disconnect"))
             {
                 DisconnectPlayer();
             }
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
     private void DisconnectPlayer()
     {
-        GameObject.FindGameObjectWithTag("Managers").GetComponent<ControllerManager>().RemovePlayer(player_input.id);
+        GameObject.Find("Managers").GetComponent<ControllerManager>().DestroyPlayer(player_input.id);
     }
 
 
@@ -207,8 +207,10 @@ public class PlayerController : MonoBehaviour
         return id;
     }
 
+
     public Vector3 GetLastDirection()
     {
         return last_direction;
     }
+
 }
