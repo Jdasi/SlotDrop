@@ -5,19 +5,19 @@ using UnityEngine;
 public class AbilityLaser : Ability
 {
 
-    public override void DerivedStart()
+    protected override void DerivedStart()
     {
 
     }
 
 
-    public override void DerivedUpdate()
+    protected override void DerivedUpdate()
     {
 
     }
 
 
-    public override void DerivedFire()
+    protected override void DerivedFire()
     {
 
     }

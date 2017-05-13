@@ -66,8 +66,8 @@ public abstract class Ability : MonoBehaviour
 
 
     // Functions to be overriden by derived classes.
-    public virtual void DerivedStart() {}
-    public virtual void DerivedUpdate() {}
-    public virtual void DerivedFire() {}
+    protected virtual void DerivedStart() {}
+    protected virtual void DerivedUpdate() {}
+    protected virtual void DerivedFire() {}
 
 }

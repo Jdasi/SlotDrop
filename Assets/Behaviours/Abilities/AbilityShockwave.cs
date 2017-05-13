@@ -5,19 +5,19 @@ using UnityEngine;
 public class AbilityShockwave : Ability
 {
 
-    public override void DerivedStart()
+    protected override void DerivedStart()
     {
 
     }
 
 
-    public override void DerivedUpdate()
+    protected override void DerivedUpdate()
     {
 
     }
 
 
-    public override void DerivedFire()
+    protected override void DerivedFire()
     {
         RaycastHit[] sphere = Physics.SphereCastAll(transform.position, properties.effect_radius,
         Vector3.forward, 0);
