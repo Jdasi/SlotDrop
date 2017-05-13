@@ -10,19 +10,19 @@ public class PlayerFactory : MonoBehaviour
     public AbilityFactory ability_factory;
 
 
-    public GameObject CreatePlayer(Player player_input)
+    public void CreatePlayer(ConnectedPlayer connected_player)
     {
         GameObject player_clone = Instantiate(player_prefab);
+        PlayerController player_controller = player_clone.GetComponent<PlayerController>();
 
-        PlayerController player = player_clone.GetComponent<PlayerController>();
+        player_controller.name = "Player" +  connected_player.rewired.id.ToString();
+        player_controller.SetPlayerInput(connected_player.rewired);
+        player_controller.transform.position = player_spawn.position;
 
-        player.name = "Player" + player_input.id.ToString();
-        player.SetPlayerInput(player_input);
-        player.transform.position = player_spawn.position;
+        connected_player.player_obj = player_clone;
+        connected_player.rewired.isPlaying = true;
 
-        ability_factory.AssignLoadout(player);
-
-        return player_clone;
+        ability_factory.AssignLoadout(player_controller);
     }
 
 }

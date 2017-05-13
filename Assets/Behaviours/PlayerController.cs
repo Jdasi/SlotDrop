@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private int player_health = 100;
     public int slot_streak = 0;
 
+    private PlayerManager player_manager;
     public Ability basic_ability;
     public Ability special_ability;
 
@@ -42,13 +43,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        player_manager = GameObject.FindObjectOfType<PlayerManager>();
+    }
+
+
     void Update()
     {
         if (player_input != null)
         {
             if (player_input.GetButtonDown("Disconnect"))
             {
-                DisconnectPlayer();
+                player_manager.PlayerLeave(player_input.id);
             }
 
             if (!slot_dropping)
@@ -57,7 +64,9 @@ public class PlayerController : MonoBehaviour
                 HandleAttack();
                 HandleSlotDrop();
             }
-        } else {
+        }
+        else
+        {
             Debug.LogWarning("Player is starting in the scene! Please remove");
         }
     }
@@ -119,7 +128,9 @@ public class PlayerController : MonoBehaviour
                 if (!nearby_slot.GetComponent<BoxCollider>().enabled)
                 {
                     nearby_slot = null;
-                } else {
+                }
+                else
+                {
                     transform.position = new Vector3(nearby_slot.position.x, transform.position.y, nearby_slot.position.z);
                 }
             }
@@ -175,26 +186,8 @@ public class PlayerController : MonoBehaviour
 
         if (player_health <= 0)
         {
-            KillPlayer();
+            player_manager.KillPlayer(player_input.id);
         }
-    }
-
-
-    public Player GetRewiredPlayer()
-    {
-        return player_input;
-    }
-
-
-    private void DisconnectPlayer()
-    {
-        GameObject.FindObjectOfType<PlayerManager>().DestroyPlayer(player_input.id);
-    }
-
-
-    public void KillPlayer()
-    {
-        // JTODO: -- reset and respawn player here
     }
 
 

@@ -32,10 +32,16 @@ public class PlayerManager : MonoBehaviour
     {
         foreach (ConnectedPlayer connected_player in connected_players.Values)
         {
+            // Player initial join.
             if (connected_player.rewired.GetButtonDown("Connect") && !connected_player.rewired.isPlaying)
             {
-                connected_player.player_obj = player_factory.CreatePlayer(connected_player.rewired);
-                connected_player.rewired.isPlaying = true;
+                player_factory.CreatePlayer(connected_player);
+            }
+
+            // Player respawn
+            if (connected_player.player_obj == null && connected_player.rewired.isPlaying)
+            {
+                player_factory.CreatePlayer(connected_player);
             }
         }
     }
@@ -61,7 +67,7 @@ public class PlayerManager : MonoBehaviour
         connected_player.rewired.controllers.ClearAllControllers();
 
         // And destroy them!
-        DestroyPlayer(player_id);
+        KillPlayer(player_id);
 
         connected_players.Remove(player_id);
     }
@@ -89,10 +95,16 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public void DestroyPlayer(int player_id)
+    public void PlayerLeave(int player_id)
+    {
+        KillPlayer(player_id);
+        connected_players[player_id].rewired.isPlaying = false;
+    }
+
+
+    public void KillPlayer(int player_id)
     {
         Destroy(connected_players[player_id].player_obj);
-        connected_players[player_id].rewired.isPlaying = false;
     }
 
 }

@@ -20,7 +20,9 @@ public abstract class Ability : MonoBehaviour
         if (cooldown_timer > 0)
         {
             cooldown_timer -= Time.deltaTime;
-        } else {
+        }
+        else
+        {
             cooldown_timer = 0;
         }
 
