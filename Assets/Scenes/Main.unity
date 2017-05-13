@@ -1988,7 +1988,7 @@ GameObject:
   - component: {fileID: 1046471026}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5310,6 +5310,7 @@ MonoBehaviour:
   - {fileID: 1953609776071866, guid: 2c45ac251aedd5c45afb52ebff053813, type: 2}
   projectile_object_prefabs:
   - {fileID: 1989797351460218, guid: c58ddc6ba1abf6042822851eb9c5a310, type: 2}
+  - {fileID: 1342834061880088, guid: f325993f2d1c7a3408d24040053c9687, type: 2}
   ability_sounds: []
 --- !u!114 &2097719148
 MonoBehaviour:

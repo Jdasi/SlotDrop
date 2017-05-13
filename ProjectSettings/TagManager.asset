@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PowerUp
   - Slot
+  - Floor
   layers:
   - Default
   - TransparentFX

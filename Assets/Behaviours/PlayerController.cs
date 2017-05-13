@@ -7,13 +7,13 @@ using Rewired;
 public class PlayerController : MonoBehaviour
 {
     public GameObject body_parts;
+    public GameObject stun_effect;
     public bool BaseWeapons = true;
     public bool slot_dropping = false;
     public float horizontal_move_speed = 20;
     public float vertical_move_speed = 10;
     public Animator animator;
     public PlayerHUD player_HUD;
-
     public List<GameObject> mount_points = new List<GameObject>();
 
     private int id = 0;
@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Player player_input;
     private Transform nearby_slot;
     private Rigidbody player_rigidbody;
+    private bool spawning = true;
+    private bool controls_disabled = true;
 
     public int max_player_health = 100;
     private int player_health = 100;
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
         player_health = max_player_health;
         player_HUD.UpdateHealthBar(player_health);
         player_rigidbody = GetComponent<Rigidbody>();
-
+        stun_effect.SetActive(false);
         last_direction = Vector3.right;
     }
 
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
                 player_manager.PlayerLeave(player_input.id);
             }
 
-            if (!slot_dropping)
+            if (!slot_dropping && !controls_disabled)
             {
                 HandleMovement();
                 HandleAttack();
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!slot_dropping)
+        if (!slot_dropping && !controls_disabled)
         {
             player_rigidbody.MovePosition(transform.position + move);
         }
@@ -95,7 +97,6 @@ public class PlayerController : MonoBehaviour
 
         // Apply the move and store the last facing direction.
         move = new Vector3(horizontal, 0, vertical);
-        //transform.position += move;
 
         if (move != Vector3.zero)
             last_direction = move.normalized;
@@ -172,6 +173,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    { 
+        if (spawning)
+        {
+            if (collision.collider.CompareTag("Floor"))
+            {  
+                spawning = false;
+                controls_disabled = false;
+            }
+        }
+    }
+
+
     void FireSpecial()
     {
         // JTODO -- probably need an alive check here due to Invoke delay..
@@ -207,6 +221,22 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void Stun(float stun_duration)
+    {
+        controls_disabled = true;
+        stun_effect.SetActive(true);
+        animator.SetBool("walking", false);
+        Invoke("EndStun", stun_duration);
+    }
+
+
+    private void EndStun()
+    {
+        controls_disabled = false;
+        stun_effect.SetActive(false);
+    }
+
+
     public void SetPlayerInput(Player player_input)
     {
         this.player_input = player_input;
@@ -223,6 +253,30 @@ public class PlayerController : MonoBehaviour
     public Vector3 GetLastDirection()
     {
         return last_direction;
+    }
+
+
+    public void SetControlsDisabled(bool is_disabled)
+    {
+        controls_disabled = is_disabled;
+    }
+
+
+    public bool GetControlsDisabled()
+    {
+        return controls_disabled;
+    }
+
+
+    public void SetSpawning(bool is_spawning)
+    {
+        spawning = is_spawning;
+    }
+
+
+    public bool GetSpawning()
+    {
+        return spawning;
     }
 
 }
