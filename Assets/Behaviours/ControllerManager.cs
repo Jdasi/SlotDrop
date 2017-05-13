@@ -43,15 +43,18 @@ public class ControllerManager : MonoBehaviour
     void OnControllerDisconnected(ControllerStatusChangedEventArgs args)
     {
         Debug.Log("A controller was disconnected! Name = " + args.name + " Id = " + args.controllerId + " Type = " + args.controllerType);
-
         RemovePlayer(args.controllerId);
     }
 
-    void RemovePlayer(int player_id)
+
+    public void RemovePlayer(int player_id)
     {       
         Destroy(assigned_joystick[player_id]);
         assigned_joystick.Remove(player_id);
+        ReInput.players.GetSystemPlayer().controllers.AddController<Joystick>(player_id, true);
+        --player_id_counter;
     }
+
 
     void AssignAllJoysticksToSystemPlayer(bool removeFromOtherPlayers)
     {
@@ -65,7 +68,7 @@ public class ControllerManager : MonoBehaviour
     void Update()
     {
         // Watch for JoinGame action in System Player
-        if (ReInput.players.GetSystemPlayer().GetButtonDown("SlotDrop"))
+        if (ReInput.players.GetSystemPlayer().GetButtonDown("Connect"))
         {
             AssignNextPlayer();
         }
@@ -88,7 +91,7 @@ public class ControllerManager : MonoBehaviour
 
         // Determine which Controller was used to generate the JoinGame Action
         Player systemPlayer = ReInput.players.GetSystemPlayer();
-        var inputSources = systemPlayer.GetCurrentInputSources("SlotDrop");
+        var inputSources = systemPlayer.GetCurrentInputSources("Connect");
 
         foreach (var source in inputSources)
         {  
