@@ -21,9 +21,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 body_parts_default_scale;
     private Player player_input;
     private Transform nearby_slot;
+
     public int max_player_health = 100;
     private int player_health = 100;
     public int slot_streak = 0;
+
+    public Ability basic_ability;
+    public Ability special_ability;
 
 
     void Awake()
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour
             if (!slot_dropping)
             {
                 HandleMovement();
+                HandleAttack();
                 HandleSlotDrop();
             }
         } else {
@@ -74,6 +79,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void HandleAttack()
+    {
+        if (player_input.GetButtonDown("Attack"))
+        {
+            if (basic_ability != null)
+                basic_ability.Fire();
+        }
+    }
+
+
     void HandleSlotDrop()
     {
         if (player_input.GetButtonDown("SlotDrop"))
@@ -81,6 +96,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("slot_drop");
             slot_dropping = true;
 
+            Invoke("FireSpecial", 0.6f);
             Invoke("SlotDropped", 0.85f);
 
             if (nearby_slot != null)
@@ -114,15 +130,26 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void FireSpecial()
+    {
+        // JTODO -- probably need an alive check here due to Invoke delay..
+
+        if (special_ability != null)
+            special_ability.Fire();
+    }
+
+
     void SlotDropped()
     {
+        // JTODO -- probably need an alive check here due to Invoke delay..
+
         slot_dropping = false;
 
         if (nearby_slot != null)
         {
-            nearby_slot.GetComponent<Slot>().Close();
+            nearby_slot.GetComponent<Slot>().SlotDrop(this);
             slot_streak = player_HUD.AddSlotToken();
-        }    
+        }
     }
 
 
@@ -138,21 +165,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void KillPlayer()
+    public void KillPlayer()
     {
-        //reset and respawn player here
+        // JTODO: -- reset and respawn player here
     }
 
 
     public void SetPlayerInput(Player player_input)
     {
         this.player_input = player_input;
-    }
-
-
-    public void SetPlayerID(int id)
-    {
-        this.id = id;
+        this.id = player_input.id;
     }
 
 

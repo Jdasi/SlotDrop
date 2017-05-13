@@ -11,10 +11,13 @@ public class Slot : MonoBehaviour
     public bool golden_slot = false;
 
     private bool unprotected = false;
+    private AbilityFactory ability_factory;
 
 
     void Start()
     {
+        ability_factory = GameObject.FindObjectOfType<AbilityFactory>();
+
         unprotected = Random.Range(1, 100) < unprotected_chance;
 
         if (transform.position.y != 0.1f)
@@ -55,6 +58,15 @@ public class Slot : MonoBehaviour
     public bool IsUnprotected()
     {
         return unprotected;
+    }
+
+    
+    public void SlotDrop(PlayerController player)
+    {
+        // Close the slot.
+        Close();
+
+        // JTODO -- Assign new loadout here.
     }
 
 }

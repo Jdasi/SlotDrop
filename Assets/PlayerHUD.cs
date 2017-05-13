@@ -36,14 +36,16 @@ public class PlayerHUD : MonoBehaviour
             slot_drop_tokens[active_slot_token_count].gameObject.SetActive(true);
             ++active_slot_token_count;
         }
-        return active_slot_token_count;//returns the count of active streak tokens for checking if streak is complete
+
+        return active_slot_token_count; //returns the count of active streak tokens for checking if streak is complete
     }
 
 
     public void ResetSlotTokens()
     {
         active_slot_token_count = 0;
-        foreach(Image token in slot_drop_tokens)
+
+        foreach (Image token in slot_drop_tokens)
         {
             token.gameObject.SetActive(false);
         }

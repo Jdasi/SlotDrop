@@ -1,0 +1,21 @@
+{
+    "Shockwave":
+    {
+        "class": "AbilityShockwave",
+        "activate_effect": "ShockwaveParticle",
+        "cooldown": 3.0,
+        "damage": 0.0,
+        "effect_radius": 20.0,
+        "knockback_force": 30.0,
+        "camera_shake_strength": 0.4,
+        "camera_shake_duration": 0.4
+    },
+    
+    "Laser":
+    {
+        "class": "AbilityLaser",
+        "cooldown": 1.0,
+        "damage": 15.0,
+        "projectile_speed": 10.0        
+    }
+}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198278601832116076}
   - component: {fileID: 199826667753972218}
   m_Layer: 0
-  m_Name: Shock Wave
+  m_Name: ShockwaveParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
