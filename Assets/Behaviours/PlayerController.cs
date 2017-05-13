@@ -206,14 +206,9 @@ public class PlayerController : MonoBehaviour
     {
         return id;
     }
-<<<<<<< HEAD
-=======
-
 
     public Vector3 GetLastDirection()
     {
         return last_direction;
     }
-
->>>>>>> origin/master
 }
