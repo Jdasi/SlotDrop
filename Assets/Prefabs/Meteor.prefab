@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 135709772769643390}
   - component: {fileID: 96636284852755642}
   - component: {fileID: 114769329316517370}
+  - component: {fileID: 114922109027849114}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Untagged
@@ -285,12 +286,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drop_speed: 30
   meteor_damage: 25
-  max_random_drop_offset: 0.225
+  max_random_drop_offset: 0.532
   particles:
   - {fileID: 1850461474365106}
   - {fileID: 1159425634402488}
   shake_strength: 0.4
   shake_duration: 0.4
+--- !u!114 &114922109027849114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376914156875332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aacc2568fb4944a6d843aa29c0f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135709772769643390
 SphereCollider:
   m_ObjectHideFlags: 1
