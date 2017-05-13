@@ -154,7 +154,28 @@ public class AbilityFactory : MonoBehaviour
     }
 
 
-    public void AssignLoadout(PlayerController player)
+    Loadout FindLoadout(string loadout_name)
+    {
+        if (starter_loadouts.ContainsKey(loadout_name))
+        {
+            return starter_loadouts[loadout_name];
+        }
+        else if (general_loadouts.ContainsKey(loadout_name))
+        {
+            return general_loadouts[loadout_name];
+        }
+        else if (titan_loadouts.ContainsKey(loadout_name))
+        {
+            return titan_loadouts[loadout_name];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
+    public void AssignLoadout(PlayerController player, string loadout_name)
     {
         // Remove current loadout.
         foreach (Ability ability in player.GetComponents<Ability>())
@@ -162,13 +183,13 @@ public class AbilityFactory : MonoBehaviour
             Destroy(ability);
         }
 
-        // JTODO -- need a way to fetch specific abilities..
+        Loadout loadout = FindLoadout(loadout_name);
                 
         player.basic_ability = player.gameObject.AddComponent<Ability>();
-        player.basic_ability.properties = ability_properties_dictionary["Pellet"];
+        player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];
 
         player.special_ability = player.gameObject.AddComponent<Ability>();
-        player.special_ability.properties = ability_properties_dictionary["Shockwave"];
+        player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
     }
 
 }
