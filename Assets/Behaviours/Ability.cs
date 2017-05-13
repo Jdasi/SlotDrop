@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Ability : MonoBehaviour
+public class Ability : MonoBehaviour
 {
     public AbilityProperties properties; // Properties of the ability.
 
     private float cooldown_timer = 0;
 
 
-	void Start()
+    void Start()
     {
-		DerivedStart();
-	}
-	
+        // Cool stuff here ..
+    }
 
-	void Update()
+
+    void Update()
     {
         if (cooldown_timer > 0)
         {
@@ -25,8 +25,6 @@ public abstract class Ability : MonoBehaviour
         {
             cooldown_timer = 0;
         }
-
-		DerivedUpdate();
 	}
 
 
@@ -39,9 +37,9 @@ public abstract class Ability : MonoBehaviour
         cooldown_timer = properties.cooldown;
 
         // Create particle effect.
-        if (properties.activate_effect != null)
+        if (properties.particle != null)
         {
-            GameObject particle_effect = Instantiate(properties.activate_effect);
+            GameObject particle_effect = Instantiate(properties.particle);
             particle_effect.transform.position = transform.position;
             Destroy(particle_effect, particle_effect.GetComponent<ParticleSystem>().main.duration);
         }
@@ -56,7 +54,21 @@ public abstract class Ability : MonoBehaviour
         if (properties.camera_shake_strength > 0 || properties.camera_shake_duration > 0)
             CameraShake.instance.ShakeCamera(properties.camera_shake_duration, properties.camera_shake_strength);
 
-        DerivedFire();
+        CreateProjectile();
+    }
+
+
+    void CreateProjectile()
+    {
+        PlayerController firing_player = GetComponent<PlayerController>();
+
+        Vector3 facing = firing_player.GetLastDirection();
+        Vector3 origin = transform.FindChild("BodyParts").position + (facing * 2);
+
+        GameObject projectile = Instantiate(properties.projectile, origin, Quaternion.identity);
+        Debug.Log(projectile);
+
+        projectile.GetComponent<Projectile>().Init(firing_player, properties, origin, facing);
     }
 
 
@@ -65,11 +77,5 @@ public abstract class Ability : MonoBehaviour
     {
         return cooldown_timer <= 0;
     }
-
-
-    // Functions to be overriden by derived classes.
-    protected virtual void DerivedStart() {}
-    protected virtual void DerivedUpdate() {}
-    protected virtual void DerivedFire() {}
 
 }

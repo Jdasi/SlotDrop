@@ -2,22 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityShockwave : Ability
+public class ProjectileShockwave : Projectile
 {
 
-    protected override void DerivedStart()
-    {
-
-    }
-
-
-    protected override void DerivedUpdate()
-    {
-
-    }
-
-
-    protected override void DerivedFire()
+    protected override void Start()
     {
         RaycastHit[] sphere = Physics.SphereCastAll(transform.position, properties.effect_radius,
         Vector3.forward, 0);
@@ -33,6 +21,8 @@ public class AbilityShockwave : Ability
             if (rigidBody != null)
                 rigidBody.AddExplosionForce(properties.knockback_force, transform.position, properties.effect_radius);
         }
+
+        Destroy(gameObject);
     }
 
 }

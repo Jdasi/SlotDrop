@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using LitJson;
 
+
 public class AbilityFactory : MonoBehaviour
 {
     public GameObject[] particle_object_prefabs;
@@ -68,21 +69,29 @@ public class AbilityFactory : MonoBehaviour
         JsonData abilities_data = JsonMapper.ToObject(File.ReadAllText(file_name));
         ability_properties_dictionary = new Dictionary<string, AbilityProperties>();
 
+        var keys = JHelper.GetObjectKeys(abilities_data);
+
         for (int index = 0; index < abilities_data.Count; ++index)
         {
             var elem = abilities_data[index];
-            var type = (string)elem["class"];
+            string projectile_name = keys[index];
 
             AbilityProperties properties = new AbilityProperties();
 
-            if (elem.Keys.Contains("activate_effect"))
-                properties.activate_effect = particle_dictionary[(string)elem["activate_effect"]];
+            if (elem.Keys.Contains("projectile"))
+                properties.projectile = projectile_dictionary[(string)elem["projectile"]];
+
+            if (elem.Keys.Contains("particle"))
+                properties.particle = particle_dictionary[(string)elem["particle"]];
 
             if (elem.Keys.Contains("audio_clip"))
                 properties.audio_clip = audio_dictionary[(string)elem["audio_clip"]];
 
             if (elem.Keys.Contains("cooldown"))
                 properties.cooldown = float.Parse(elem["cooldown"].ToString());
+
+            if (elem.Keys.Contains("lifetime"))
+                properties.lifetime = float.Parse(elem["lifetime"].ToString());
 
             if (elem.Keys.Contains("damage"))
                 properties.damage = int.Parse(elem["damage"].ToString());
@@ -93,9 +102,6 @@ public class AbilityFactory : MonoBehaviour
             if (elem.Keys.Contains("knockback_force"))
                 properties.knockback_force = float.Parse(elem["knockback_force"].ToString()) * 1000;
 
-            if (elem.Keys.Contains("projectile"))
-                properties.projectile = projectile_dictionary[(string)elem["projectile"]];
-
             if (elem.Keys.Contains("projectile_speed"))
                 properties.projectile_speed = float.Parse(elem["projectile_speed"].ToString());
 
@@ -105,7 +111,7 @@ public class AbilityFactory : MonoBehaviour
             if (elem.Keys.Contains("camera_shake_duration"))
                 properties.camera_shake_duration = float.Parse(elem["camera_shake_duration"].ToString());
 
-            ability_properties_dictionary.Add(type, properties);
+            ability_properties_dictionary.Add(projectile_name, properties);
         }
     }
 
@@ -158,11 +164,11 @@ public class AbilityFactory : MonoBehaviour
 
         // JTODO -- need a way to fetch specific abilities..
                 
-        player.basic_ability = player.gameObject.AddComponent<AbilityPellet>();
-        player.basic_ability.properties = ability_properties_dictionary["AbilityPellet"];
+        player.basic_ability = player.gameObject.AddComponent<Ability>();
+        player.basic_ability.properties = ability_properties_dictionary["Pellet"];
 
-        player.special_ability = player.gameObject.AddComponent<AbilityShockwave>();
-        player.special_ability.properties = ability_properties_dictionary["AbilityShockwave"];
+        player.special_ability = player.gameObject.AddComponent<Ability>();
+        player.special_ability.properties = ability_properties_dictionary["Shockwave"];
     }
 
 }

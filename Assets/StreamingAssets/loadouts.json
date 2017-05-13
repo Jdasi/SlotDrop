@@ -6,16 +6,13 @@
 	
 	"General":
 	[
-		{ "name": "Thief", 		 "basic": "???", 		"special": "???" },
-		{ "name": "Fishermun", 	 "basic": "???", 		"special": "???" },
-		{ "name": "Nerd", 		 "basic": "???", 		"special": "???" },
-		{ "name": "Pirate", 	 "basic": "???", 		"special": "???" },
-		{ "name": "Soldier", 	 "basic": "???", 		"special": "???" },
-		{ "name": "Businessmun", "basic": "???", 		"special": "???" }
+		{ "name": "Fisher", 	 "basic": "Splash", 	"special": "Tsunami" },
+        { "name": "Pirate", 	 "basic": "Cutlass",    "special": "BarrelBomb" },
+		{ "name": "Soldier", 	 "basic": "Dash", 		"special": "ArrowHail" }
 	],
 	
 	"Titan":
 	[
-		{ "name": "Gold", 		 "basic": "???", 		"special": "???" }
+		{ "name": "Gold", 		 "basic": "TitanWave", 	"special": "MeteorStrike" }
 	]
 }
