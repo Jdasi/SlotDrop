@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
     {
         if (player_input != null)
         {
+            if(player_input.GetButtonDown("Disconnect"))
+            {
+                DisconnectPlayer();
+            }
+
             if (!slot_dropping)
             {
                 HandleMovement();
@@ -166,10 +171,22 @@ public class PlayerController : MonoBehaviour
         player_health -= damage_amount;
         player_HUD.UpdateHealthBar(player_health);
 
-        if(player_health <= 0)
+        if (player_health <= 0)
         {
             KillPlayer();
         }
+    }
+
+
+    public Player GetRewiredPlayer()
+    {
+        return player_input;
+    }
+
+
+    private void DisconnectPlayer()
+    {
+        GameObject.FindGameObjectWithTag("Managers").GetComponent<ControllerManager>().RemovePlayer(player_input.id);
     }
 
 
