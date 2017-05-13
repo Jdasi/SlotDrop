@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private int id = 0;
     private bool flipped = false;
+    private Vector3 last_direction;
     private Vector3 body_parts_default_scale;
     private Player player_input;
     private Transform nearby_slot;
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
         player_HUD.SetHealthBarMaxHealth(max_player_health);
         player_health = max_player_health;
         player_HUD.UpdateHealthBar(player_health);
+
+        last_direction = Vector3.right;
     }
 
 
@@ -61,7 +64,12 @@ public class PlayerController : MonoBehaviour
         float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * horizontal_move_speed;
         float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * vertical_move_speed;
 
-        transform.position += new Vector3(horizontal, 0, vertical);
+        // Apply the move and store the last facing direction.
+        Vector3 move = new Vector3(horizontal, 0, vertical);
+        transform.position += move;
+
+        if (move != Vector3.zero)
+            last_direction = move.normalized;
 
         animator.SetBool("walking", horizontal != 0 || vertical != 0);
 
@@ -181,6 +189,12 @@ public class PlayerController : MonoBehaviour
     public int GetPlayerID()
     {
         return id;
+    }
+
+
+    public Vector3 GetLastDirection()
+    {
+        return last_direction;
     }
 
 }

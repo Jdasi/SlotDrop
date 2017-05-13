@@ -20,8 +20,10 @@ public class Slot : MonoBehaviour
 
         unprotected = Random.Range(1, 100) < unprotected_chance;
 
-        if (transform.position.y != 0.1f)
-            transform.position = new Vector3(transform.position.x, 0.1f, transform.position.z);
+        if (transform.position.y != 0.01f)
+        {
+            transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
+        }
     }
 
 
