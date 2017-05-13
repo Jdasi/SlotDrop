@@ -178,8 +178,7 @@ public class PlayerController : MonoBehaviour
         if (spawning)
         {
             if (collision.collider.CompareTag("Floor"))
-            {
-                
+            {  
                 spawning = false;
                 controls_disabled = false;
             }
