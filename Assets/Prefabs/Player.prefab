@@ -510,7 +510,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290276022431546}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -682,7 +682,7 @@ MonoBehaviour:
   body_parts: {fileID: 1439926304142618}
   BaseWeapons: 1
   slot_dropping: 0
-  horizontal_move_speed: 20
+  horizontal_move_speed: 15
   vertical_move_speed: 10
   animator: {fileID: 95819569499812194}
   player_HUD: {fileID: 114760554860433908}

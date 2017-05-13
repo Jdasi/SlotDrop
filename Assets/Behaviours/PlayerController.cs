@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     private int id = 0;
     private bool flipped = false;
     private Vector3 last_direction;
+    private Vector3 move = Vector2.zero; 
     private Vector3 body_parts_default_scale;
     private Player player_input;
     private Transform nearby_slot;
+    private Rigidbody player_rigidbody;
 
     public int max_player_health = 100;
     private int player_health = 100;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         player_HUD.SetHealthBarMaxHealth(max_player_health);
         player_health = max_player_health;
         player_HUD.UpdateHealthBar(player_health);
+        player_rigidbody = GetComponent<Rigidbody>();
 
         last_direction = Vector3.right;
     }
@@ -72,14 +75,27 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void FixedUpdate()
+    {
+        if (!slot_dropping)
+        {
+            player_rigidbody.MovePosition(transform.position + move);
+        }
+        else
+        {
+            player_rigidbody.velocity = new Vector3(0, player_rigidbody.velocity.y, 0);
+        }
+    }
+
+
     void HandleMovement()
     {
         float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * horizontal_move_speed;
         float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * vertical_move_speed;
 
         // Apply the move and store the last facing direction.
-        Vector3 move = new Vector3(horizontal, 0, vertical);
-        transform.position += move;
+        move = new Vector3(horizontal, 0, vertical);
+        //transform.position += move;
 
         if (move != Vector3.zero)
             last_direction = move.normalized;
