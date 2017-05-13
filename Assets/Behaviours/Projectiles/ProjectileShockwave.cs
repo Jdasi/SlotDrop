@@ -7,19 +7,20 @@ public class ProjectileShockwave : Projectile
 
     protected override void Start()
     {
-        RaycastHit[] sphere = Physics.SphereCastAll(transform.position, properties.effect_radius,
-        Vector3.forward, 0);
+        RaycastHit[] sphere = Physics.SphereCastAll(transform.position, properties.effect_radius, Vector3.forward, 0);
 
         foreach (var elem in sphere)
         {
-            Rigidbody rigidBody = elem.collider.gameObject.GetComponent<Rigidbody>();
+            Rigidbody collided_body = elem.collider.gameObject.GetComponent<Rigidbody>();
 
-            // Don't apply force to self.
-            if (rigidBody == this.GetComponent<Rigidbody>())
+            if (collided_body == null)
                 continue;
 
-            if (rigidBody != null)
-                rigidBody.AddExplosionForce(properties.knockback_force, transform.position, properties.effect_radius);
+            // Don't apply force to self.
+            if (collided_body == owning_player.GetComponent<Rigidbody>())
+                continue;
+
+            collided_body.AddExplosionForce(properties.knockback_force, transform.position, properties.effect_radius);
         }
 
         Destroy(gameObject);
