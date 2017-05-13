@@ -1,0 +1,21 @@
+{
+	"Starter":
+	[
+		{ "name": "Base",	 	"basic": "Pellet", 		"special": "Shockwave" }
+	],
+	
+	"General":
+	[
+		{ "name": "Thief", 		 "basic": "???", 		"special": "???" },
+		{ "name": "Fishermun", 	 "basic": "???", 		"special": "???" },
+		{ "name": "Nerd", 		 "basic": "???", 		"special": "???" },
+		{ "name": "Pirate", 	 "basic": "???", 		"special": "???" },
+		{ "name": "Soldier", 	 "basic": "???", 		"special": "???" },
+		{ "name": "Businessmun", "basic": "???", 		"special": "???" }
+	],
+	
+	"Titan":
+	[
+		{ "name": "Gold", 		 "basic": "???", 		"special": "???" }
+	]
+}

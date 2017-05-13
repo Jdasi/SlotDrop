@@ -27,7 +27,7 @@ public class AbilityPellet : Ability
         GameObject projectile = Instantiate(properties.projectile, origin, Quaternion.identity);
 
         projectile.GetComponent<ProjectilePellet>().Init(
-            firing_player.GetPlayerID(), origin, facing, properties.projectile_speed, properties.damage);
+            firing_player, origin, facing, properties.projectile_speed, properties.damage);
     }
 
 }

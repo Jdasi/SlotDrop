@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectilePellet : MonoBehaviour
 {
-    private int player_id;
+    private PlayerController owning_player;
     private Vector3 direction;
     private float move_speed;
     private int damage;
@@ -26,7 +26,7 @@ public class ProjectilePellet : MonoBehaviour
         PlayerController colliding_player = other.GetComponent<PlayerController>();
 
         // Don't collide with self.
-        if (colliding_player.GetPlayerID() == player_id)
+        if (colliding_player.GetPlayerID() == owning_player.GetPlayerID())
             return;
 
         colliding_player.Damage(damage);
@@ -34,9 +34,9 @@ public class ProjectilePellet : MonoBehaviour
     }
 
 
-    public void Init(int player_id, Vector3 start_pos, Vector3 direction, float move_speed, int damage)
+    public void Init(PlayerController firing_player, Vector3 start_pos, Vector3 direction, float move_speed, int damage)
     {
-        this.player_id = player_id;
+        this.owning_player = firing_player;
         transform.position = start_pos;
         this.direction = direction;
         this.move_speed = move_speed;

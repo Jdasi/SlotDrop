@@ -15,12 +15,16 @@ public class AbilityFactory : MonoBehaviour
     private Dictionary<string, AudioClip> audio_dictionary;
 
     private Dictionary<string, AbilityProperties> ability_properties_dictionary;
+    private Dictionary<string, Loadout> starter_loadouts = new Dictionary<string, Loadout>();
+    private Dictionary<string, Loadout> general_loadouts = new Dictionary<string, Loadout>();
+    private Dictionary<string, Loadout> titan_loadouts = new Dictionary<string, Loadout>();
 
 
 	void Start()
     {
         CreatePrefabDictionaries();
         EnumerateProperties();
+        EnumerateLoadouts();
 	}
 
 
@@ -103,6 +107,44 @@ public class AbilityFactory : MonoBehaviour
 
             ability_properties_dictionary.Add(type, properties);
         }
+    }
+
+
+    void EnumerateLoadouts()
+    {
+        string file_name = Application.streamingAssetsPath + "/loadouts.json";
+
+        JsonData loadouts_data = JsonMapper.ToObject(File.ReadAllText(file_name));
+
+        var current_array = loadouts_data["Starter"];
+        for (int i = 0; i < current_array.Count; ++i)
+        {
+            PushLoadout(current_array[i], starter_loadouts);
+        }
+
+        current_array = loadouts_data["General"];
+        for (int i = 0; i < current_array.Count; ++i)
+        {
+            PushLoadout(current_array[i], general_loadouts);
+        }
+
+        current_array = loadouts_data["Titan"];
+        for (int i = 0; i < current_array.Count; ++i)
+        {
+            PushLoadout(current_array[i], titan_loadouts);
+        }
+    }
+
+
+    void PushLoadout(JsonData elem, Dictionary<string, Loadout> dictionary)
+    {
+            Loadout loadout = new Loadout();
+
+            loadout.name = (string)elem["name"];
+            loadout.basic_ability_name = (string)elem["basic"];
+            loadout.special_ability_name = (string)elem["special"];
+
+            dictionary.Add(loadout.name, loadout);
     }
 
 
