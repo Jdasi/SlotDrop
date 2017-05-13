@@ -8,7 +8,7 @@ public class AbilityProperties
     public AudioClip audio_clip;                // Sound that plays on activation.
 
     public float cooldown = 0;                  // Ability recharge time.
-    public float damage = 0;                    // Ability damage dealt to players.
+    public int damage = 0;                      // Ability damage dealt to players.
 
     public float effect_radius = 0;             // Ability AoE radius.
     public float knockback_force = 0;           // Ability knockback against targets within AoE.

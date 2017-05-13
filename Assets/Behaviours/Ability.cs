@@ -27,7 +27,7 @@ public abstract class Ability : MonoBehaviour
 		DerivedUpdate();
 	}
 
-    
+
     public void Fire()
     {
         // If ability has already been fired, abort.

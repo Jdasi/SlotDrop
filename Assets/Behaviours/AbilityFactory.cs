@@ -81,7 +81,7 @@ public class AbilityFactory : MonoBehaviour
                 properties.cooldown = float.Parse(elem["cooldown"].ToString());
 
             if (elem.Keys.Contains("damage"))
-                properties.damage = float.Parse(elem["damage"].ToString());
+                properties.damage = int.Parse(elem["damage"].ToString());
 
             if (elem.Keys.Contains("effect_radius"))
                 properties.effect_radius = float.Parse(elem["effect_radius"].ToString());
@@ -116,8 +116,8 @@ public class AbilityFactory : MonoBehaviour
 
         // JTODO -- need a way to fetch specific abilities..
                 
-        player.basic_ability = player.gameObject.AddComponent<AbilityLaser>();
-        player.basic_ability.properties = ability_properties_dictionary["AbilityLaser"];
+        player.basic_ability = player.gameObject.AddComponent<AbilityPellet>();
+        player.basic_ability.properties = ability_properties_dictionary["AbilityPellet"];
 
         player.special_ability = player.gameObject.AddComponent<AbilityShockwave>();
         player.special_ability.properties = ability_properties_dictionary["AbilityShockwave"];
