@@ -17,6 +17,7 @@ public class MeteorImpact : MonoBehaviour
     private TrailRenderer meteor_trail;
     private bool impacted = false;
     private Ability shock_wave;
+    private MeshRenderer[] child_renderers;
    
 
     private void Awake()
@@ -24,6 +25,7 @@ public class MeteorImpact : MonoBehaviour
         meteor_mesh = GetComponent<MeshRenderer>();
         meteor_trail = GetComponent<TrailRenderer>();
         shock_wave = GetComponent<Ability>();
+        child_renderers = GetComponentsInChildren<MeshRenderer>();
 
         float random_x = Random.Range(-max_random_drop_offset, max_random_drop_offset);
         float random_z = Random.Range(-max_random_drop_offset, max_random_drop_offset);
@@ -71,7 +73,12 @@ public class MeteorImpact : MonoBehaviour
                 Destroy(particle);
             }
 
-            //shock_wave.Fire();
+
+            foreach(MeshRenderer mesh in child_renderers)
+            {
+                mesh.enabled = false;
+            }
+            
 
             meteor_mesh.enabled = false;//hide mesh
             Destroy(gameObject, meteor_trail.time);//destroy after trail has finished

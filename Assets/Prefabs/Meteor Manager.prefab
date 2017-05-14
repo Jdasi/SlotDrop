@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1264584979157360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.2}
+  m_LocalPosition: {x: 0, y: 51, z: -6.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4675560592550290}
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870b4cdb04ebb1b4491a8e28b4c8ee6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteor_prefab: {fileID: 114769329316517370, guid: 0bc8316604015c64a9336b69f7bdab6a,
+  meteor_prefab: {fileID: 114843319103368294, guid: 13b79701b5f88504ea6e38a314101a4b,
     type: 2}
   meteor_spawn_area: {fileID: 114674783712091668}
 --- !u!114 &114674783712091668
