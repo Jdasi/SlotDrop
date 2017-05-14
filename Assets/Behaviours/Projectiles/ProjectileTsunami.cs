@@ -17,7 +17,9 @@ public class ProjectileTsunami : Projectile
         origin = owning_player != null ? 
             owning_player.transform.FindChild("BodyParts").position + (facing * move_spacing) : transform.position;
 
-        CreateEffect(particle_effect, origin, Vector3.zero);
+        GetComponent<CapsuleCollider>().radius = properties.effect_radius;
+
+        CreateBlast();
         ++move_times;
         
         if (owning_player != null)
@@ -51,8 +53,19 @@ public class ProjectileTsunami : Projectile
     {
         CreateEffect(particle_effect, transform.position, Vector3.zero);
 
-        CreateExplosionForce(owning_player != null ? owning_player.gameObject : null, 
+        var elems = CreateExplosionForce(owning_player != null ? owning_player.gameObject : null, 
             transform.position, properties.effect_radius, properties.knockback_force);
+
+        foreach (var elem in elems)
+        {
+            PlayerController player = elem.collider.gameObject.GetComponent<PlayerController>();
+
+            if (player == null)
+                continue;
+
+            if (player != owning_player)
+                player.Stun(properties.stun_duration);
+        }
 
         CameraShake.instance.ShakeCamera(properties.camera_shake_strength, properties.camera_shake_duration);
     }

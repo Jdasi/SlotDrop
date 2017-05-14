@@ -75,12 +75,23 @@ public class Slot : MonoBehaviour
 
         // Infect the PC.
         if (unprotected)
+        {
             pc_manager.IncrementVirusBar();
+
+            // Unprotected slots revert a character's loadout if they have a different one.
+            if (player.loadout_name == "Base")
+                loadout_factory.AssignRandomLoadout(player);
+            else
+                loadout_factory.AssignLoadout(player, "Base");
+        }
+        else
+        {
+            loadout_factory.AssignRandomLoadout(player);
+        }
 
         // Fully heal player.
         player.Damage(-(player.max_player_health - player.GetHealth()));
 
-        loadout_factory.AssignRandomLoadout(player);
     }
 
 }

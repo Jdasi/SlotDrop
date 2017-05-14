@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
 
 
     // Applies an explosion force to all objects in the radius. Does not affect creator by default.
-    public static void CreateExplosionForce(GameObject creator, Vector3 position, 
+    public static RaycastHit[] CreateExplosionForce(GameObject creator, Vector3 position, 
         float radius, float force, bool affect_creator = false)
     {
         RaycastHit[] sphere = Physics.SphereCastAll(position, radius, Vector3.forward, 0);
@@ -56,6 +56,8 @@ public class Projectile : MonoBehaviour
 
             collided_body.AddExplosionForce(force, position, radius);
         }
+
+        return sphere;
     }
 
 

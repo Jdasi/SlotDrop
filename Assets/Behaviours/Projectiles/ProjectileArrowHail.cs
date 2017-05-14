@@ -46,6 +46,9 @@ public class ProjectileArrowHail : Projectile
         if (other.tag != "Player")
             return;
 
+        if (owning_player == null)
+            return;
+
         if (other.GetComponent<Rigidbody>() == owning_player.GetComponent<Rigidbody>())
             return;
 

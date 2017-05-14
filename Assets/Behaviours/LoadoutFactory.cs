@@ -96,6 +96,9 @@ public class LoadoutFactory : MonoBehaviour
             if (elem.Keys.Contains("knockback_force"))
                 properties.knockback_force = float.Parse(elem["knockback_force"].ToString()) * 1000;
 
+            if (elem.Keys.Contains("stun_duration"))
+                properties.stun_duration = float.Parse(elem["stun_duration"].ToString());
+
             if (elem.Keys.Contains("projectile_speed"))
                 properties.projectile_speed = float.Parse(elem["projectile_speed"].ToString());
 
@@ -199,7 +202,14 @@ public class LoadoutFactory : MonoBehaviour
     public void AssignRandomLoadout(PlayerController player)
     {
         List<string> loadout_names = new List<string>(general_loadouts.Keys);
-        AssignLoadout(player, loadout_names[Random.Range(0, loadout_names.Count)]);
+        string new_loadout_name;;
+
+        do
+        {
+            new_loadout_name = loadout_names[Random.Range(0, loadout_names.Count)];
+        } while (new_loadout_name == player.loadout_name);
+
+        AssignLoadout(player, new_loadout_name);
     }
 
 }
