@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: 466661224b307e8479a0570ed2e78f6d
-timeCreated: 1494758460
+timeCreated: 1494770223
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Phishing_Hat
-    21300002: Pirate Hat
-    21300004: Soldier_Hat
+    21300000: FisherHat
+    21300002: PirateHat
+    21300004: SoldierHat
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -73,7 +73,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Phishing_Hat
+      name: FisherHat
       rect:
         serializedVersion: 2
         x: 62
@@ -86,7 +86,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Pirate Hat
+      name: PirateHat
       rect:
         serializedVersion: 2
         x: 358
@@ -99,7 +99,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Soldier_Hat
+      name: SoldierHat
       rect:
         serializedVersion: 2
         x: 750

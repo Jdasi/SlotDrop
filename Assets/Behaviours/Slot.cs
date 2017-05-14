@@ -13,13 +13,13 @@ public class Slot : MonoBehaviour
     public bool unprotected = false;
     public bool golden_slot = false;
 
-    private AbilityFactory ability_factory;
+    private LoadoutFactory ability_factory;
     private PCManager pc_manager;
 
 
     void Start()
     {
-        ability_factory = GameObject.FindObjectOfType<AbilityFactory>();
+        ability_factory = GameObject.FindObjectOfType<LoadoutFactory>();
         pc_manager = GameObject.FindObjectOfType<PCManager>();
 
         unprotected = Random.Range(1, 100) < unprotected_chance;
@@ -73,12 +73,9 @@ public class Slot : MonoBehaviour
         // Close the slot.
         Close();
 
-        // Chance of infecting the PC.
+        // Infect the PC.
         if (unprotected)
-        {
-            if (Random.Range(1, 100) < (unprotected_chance * 2))
-                pc_manager.IncrementVirusBar();
-        }
+            pc_manager.IncrementVirusBar();
 
         // Fully heal player.
         player.Damage(-(player.max_player_health - player.GetHealth()));

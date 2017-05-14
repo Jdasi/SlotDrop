@@ -7,7 +7,7 @@ public class PlayerFactory : MonoBehaviour
 {
     public Transform player_spawn;
     public GameObject player_prefab;
-    public AbilityFactory ability_factory;
+    public LoadoutFactory ability_factory;
 
 
     public void CreatePlayer(ConnectedPlayer connected_player)
@@ -22,7 +22,7 @@ public class PlayerFactory : MonoBehaviour
         connected_player.player_obj = player_clone;
         connected_player.rewired.isPlaying = true;
 
-        ability_factory.AssignLoadout(player_controller, "Base");
+        ability_factory.AssignLoadout(player_controller, "Fisher");
     }
 
 }

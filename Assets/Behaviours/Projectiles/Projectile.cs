@@ -24,8 +24,12 @@ public class Projectile : MonoBehaviour
     public static void CreateEffect(GameObject particle_effect, Vector3 position, Vector3 direction)
     {
         GameObject particle = Instantiate(particle_effect);
+
         particle.transform.position = position;
-        particle.transform.LookAt(direction);
+
+        if (direction != Vector3.zero)
+            particle.transform.LookAt(direction);
+
         particle.AddComponent<TempParticle>();
     }
 
@@ -44,7 +48,7 @@ public class Projectile : MonoBehaviour
                 continue;
 
             // Don't affect creator.
-            if (creator != null || !affect_creator)
+            if (creator != null && !affect_creator)
             {
                 if (collided_body == creator.GetComponent<Rigidbody>())
                     continue;

@@ -5,15 +5,17 @@ using UnityEngine;
 using LitJson;
 
 
-public class AbilityFactory : MonoBehaviour
+public class LoadoutFactory : MonoBehaviour
 {
     public GameObject[] particle_object_prefabs;
     public GameObject[] projectile_object_prefabs;
     public AudioClip[] ability_sounds;
+    public Sprite[] hats;
 
     private Dictionary<string, GameObject> particle_dictionary;
     private Dictionary<string, GameObject> projectile_dictionary;
     private Dictionary<string, AudioClip> audio_dictionary;
+    private Dictionary<string, Sprite> hat_dictionary;
 
     private Dictionary<string, AbilityProperties> ability_properties_dictionary;
     private Dictionary<string, Loadout> starter_loadouts = new Dictionary<string, Loadout>();
@@ -35,8 +37,7 @@ public class AbilityFactory : MonoBehaviour
         particle_dictionary = new Dictionary<string, GameObject>();
         for (int i = 0; i < particle_object_prefabs.Length; ++i)
         {
-            string obj_name = particle_object_prefabs[i].name;
-            obj_name = obj_name.Split(' ')[0];
+            string obj_name = particle_object_prefabs[i].name.Substring(0);
 
             particle_dictionary.Add(obj_name, particle_object_prefabs[i]);
         }
@@ -44,8 +45,7 @@ public class AbilityFactory : MonoBehaviour
         projectile_dictionary = new Dictionary<string, GameObject>();
         for (int i = 0; i < projectile_object_prefabs.Length; ++i)
         {
-            string obj_name = projectile_object_prefabs[i].name;
-            obj_name = obj_name.Split(' ')[0];
+            string obj_name = projectile_object_prefabs[i].name.Substring(0);
 
             projectile_dictionary.Add(obj_name, projectile_object_prefabs[i]);
         }
@@ -53,10 +53,17 @@ public class AbilityFactory : MonoBehaviour
         audio_dictionary = new Dictionary<string, AudioClip>();
         for (int i = 0; i < ability_sounds.Length; ++i)
         {
-            string obj_name = ability_sounds[i].name;
-            obj_name = obj_name.Split(' ')[0];
+            string obj_name = ability_sounds[i].name.Substring(0);
 
             audio_dictionary.Add(obj_name, ability_sounds[i]);
+        }
+
+        hat_dictionary = new Dictionary<string, Sprite>();
+        for (int i = 0; i < hats.Length; ++i)
+        {
+            Sprite spr = hats[i];
+
+            hat_dictionary.Add(spr.name.Substring(0), spr);
         }
     }
 	
@@ -147,6 +154,13 @@ public class AbilityFactory : MonoBehaviour
             Loadout loadout = new Loadout();
 
             loadout.name = (string)elem["name"];
+            string hat_name = loadout.name + "Hat";
+
+            if (hat_dictionary.ContainsKey(hat_name))
+                loadout.hat = hat_dictionary[hat_name];
+
+            
+
             loadout.basic_ability_name = (string)elem["basic"];
             loadout.special_ability_name = (string)elem["special"];
 
@@ -184,14 +198,13 @@ public class AbilityFactory : MonoBehaviour
         }
 
         Loadout loadout = FindLoadout(loadout_name);
+        player.hat.sprite = loadout.hat;
                 
         player.basic_ability = player.gameObject.AddComponent<Ability>();
-        //player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];
-        player.basic_ability.properties = ability_properties_dictionary["Splash"];
+        player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];
 
         player.special_ability = player.gameObject.AddComponent<Ability>();
-        //player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
-        player.special_ability.properties = ability_properties_dictionary["Tsunami"];
+        player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
     }
 
 }

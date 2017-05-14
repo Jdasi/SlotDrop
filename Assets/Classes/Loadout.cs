@@ -5,6 +5,8 @@ using UnityEngine;
 public class Loadout
 {
     public string name;
+    public Sprite hat;
+
     public string basic_ability_name;
     public string special_ability_name;
 }

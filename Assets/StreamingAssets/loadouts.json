@@ -1,18 +1,40 @@
 {
 	"Starter":
 	[
-		{ "name": "Base",	 	"basic": "Pellet", 		"special": "Shockwave" }
+		{
+			"name": "Base",
+			"basic": "Pellet",
+			"special": "Shockwave"
+		}
 	],
 	
 	"General":
 	[
-		{ "name": "Fisher", 	 "basic": "Splash", 	"special": "Tsunami" },
-        { "name": "Pirate", 	 "basic": "Cutlass",    "special": "BarrelBomb" },
-		{ "name": "Soldier", 	 "basic": "Dash", 		"special": "ArrowHail" }
+		{
+			"name": "Fisher",
+			"basic": "Splash",
+			"special": "Tsunami"
+		},
+
+        {
+			"name": "Pirate",
+			"basic": "Cutlass",
+			"special": "BarrelBomb"
+		},
+
+		{
+			"name": "Soldier",
+			"basic": "Dash",
+			"special": "ArrowHail"
+		}
 	],
 	
 	"Titan":
 	[
-		{ "name": "Gold", 	 	 "basic": "TitanWave", 	"special": "MeteorStrike" }
+		{
+			"name": "Gold",
+			"basic": "TitanWave",
+			"special": "MeteorStrike"
+		}
 	]
 }
