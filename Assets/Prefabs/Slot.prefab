@@ -256,7 +256,7 @@ MonoBehaviour:
   box_collider: {fileID: 65371738650807784}
   hazard_symbol: {fileID: 212705988610326262}
   time_to_close: 5
-  unprotected_chance: 30
+  unprotected_chance: 60
   unprotected: 0
   golden_slot: 0
 --- !u!212 &212705988610326262

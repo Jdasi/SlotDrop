@@ -756,7 +756,7 @@ MonoBehaviour:
   BaseWeapons: 1
   slot_dropping: 0
   horizontal_move_speed: 15
-  vertical_move_speed: 10
+  vertical_move_speed: 15
   animator: {fileID: 95819569499812194}
   player_HUD: {fileID: 114760554860433908}
   mount_points:
@@ -828,6 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation_speed: -50
+  rotation_axis: {x: 0, y: 0, z: 0}
 --- !u!114 &114594330316821592
 MonoBehaviour:
   m_ObjectHideFlags: 1
