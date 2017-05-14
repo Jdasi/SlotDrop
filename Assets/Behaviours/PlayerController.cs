@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public int max_player_health = 100;
     private int player_health = 100;
     public int slot_streak = 0;
+    private const float TITAN_STREAK_REQUIREMENT = 4;
 
     private PlayerManager player_manager;
     public Ability basic_ability;
@@ -250,6 +251,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public bool TitanReady()
+    {
+        return slot_streak >= TITAN_STREAK_REQUIREMENT;
+    }
+
+
     public int GetPlayerID()
     {
         return id;
@@ -284,6 +291,7 @@ public class PlayerController : MonoBehaviour
     {
         return spawning;
     }
+
 
     public int GetHealth()
     {
