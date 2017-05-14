@@ -186,10 +186,12 @@ public class AbilityFactory : MonoBehaviour
         Loadout loadout = FindLoadout(loadout_name);
                 
         player.basic_ability = player.gameObject.AddComponent<Ability>();
-        player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];
+        //player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];
+        player.basic_ability.properties = ability_properties_dictionary["Splash"];
 
         player.special_ability = player.gameObject.AddComponent<Ability>();
-        player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
+        //player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
+        player.special_ability.properties = ability_properties_dictionary["Tsunami"];
     }
 
 }

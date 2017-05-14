@@ -26,20 +26,21 @@ public class PCManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))//debug
+        if (Input.GetKeyDown(KeyCode.Space)) // debug
         {
             IncrementVirusBar();
         }
+
         if (cataclysm_active)
         {
-            RunCataclysm();//simulate cataclysm event
+            RunCataclysm(); // simulate cataclysm event
         }
     }
 
 
     private void Start()
     {
-        virus_indicator.SetActive(false);//setup indictors
+        virus_indicator.SetActive(false); // setup indictors
         scan_indicator.SetActive(true);
     }
 
@@ -47,9 +48,11 @@ public class PCManager : MonoBehaviour
     public void StartVirusIndicator()
     {
         CancelInvoke();
-        virus_indicator.SetActive(true);//show skull
+
+        virus_indicator.SetActive(true); // show skull
         scan_indicator.SetActive(false);
-        Invoke("EndVirusIndicator", anim_duration);//stop animation after time
+
+        Invoke("EndVirusIndicator", anim_duration); // stop animation after time
     }
 
 
@@ -57,11 +60,12 @@ public class PCManager : MonoBehaviour
     {
         if (!cataclysm_active)
         {
-            virus_bar.value += virus_bar_increment_percent;//increment bar
+            virus_bar.value += virus_bar_increment_percent; // increment bar
             StartVirusIndicator();
-            if (virus_bar.value >= virus_bar.maxValue)//if maxed
+
+            if (virus_bar.value >= virus_bar.maxValue) // if maxed
             {
-                TriggerCataclysm();//start the cataclysm
+                TriggerCataclysm(); // start the cataclysm
             }
         }
     }
@@ -71,10 +75,10 @@ public class PCManager : MonoBehaviour
     {
         if (!cataclysm_active)
         {
-            CancelInvoke();//cancel indicator disable if cataclysm started
+            CancelInvoke(); // cancel indicator disable if cataclysm started
         }
 
-        Invoke("EndCataclysm", cataclysm_duration);//end cataclysm after some time
+        Invoke("EndCataclysm", cataclysm_duration); // end cataclysm after some time
         cataclysm_active = true;
     }
 
@@ -86,7 +90,7 @@ public class PCManager : MonoBehaviour
         
         if (meteor_count < max_meteor)
         {
-            Invoke("SpawnMeteor", Random.Range(meteor_min_spawn_delay, meteor_max_spawn_delay));//spawn meteor if we haven't reached the limit
+            Invoke("SpawnMeteor", Random.Range(meteor_min_spawn_delay, meteor_max_spawn_delay)); // spawn meteor if we haven't reached the limit
             ++meteor_count;
         }
     }
@@ -98,9 +102,9 @@ public class PCManager : MonoBehaviour
         Vector2 random_circle_location = Random.insideUnitCircle * meteor_spawn_point.spawn_radius;
 
         meteor_clone.transform.position = new Vector3(random_circle_location.x,
-            meteor_spawn_point.transform.position.y, random_circle_location.y);//spawn meteor at random position
+            meteor_spawn_point.transform.position.y, random_circle_location.y); // spawn meteor at random position
 
-        --meteor_count;//decrement max meteor when finished
+        --meteor_count; //decrement max meteor when finished
     }
 
 

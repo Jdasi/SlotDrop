@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectilePellet : Projectile
+public class ProjectileSplash : Projectile
 {
+    public GameObject particle_effect;
 
-    protected override void Start()
+	protected override void Start()
     {
         if (owning_player != null)
-            origin = owning_player.transform.FindChild("BodyParts").position + (facing * 2);
+            origin = owning_player.transform.FindChild("BodyParts").position;
 
-        transform.position = origin;
+        Vector3 offset_pos = origin + (facing * 3);
+
+        CreateEffect(particle_effect, offset_pos, offset_pos + facing);
+
+        transform.position = offset_pos + (facing * 2);
     }
-
-
-	protected override void Update()
-    {
-		transform.position += facing * Time.deltaTime * properties.projectile_speed;
-	}
 
 
     protected override void OnTriggerEnter(Collider other)
@@ -36,7 +35,6 @@ public class ProjectilePellet : Projectile
         }
 
         colliding_player.Damage(properties.damage);
-        Destroy(gameObject);
     }
 
 }

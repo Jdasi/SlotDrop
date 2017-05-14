@@ -21,14 +21,20 @@
 
     "Splash":
     {
-        "cooldown": 0.4,
-        "damage": 10
+		"projectile": "ProjectileSplash",
+        "cooldown": 1.0,
+        "damage": 15,
+		"lifetime": 1
     },
 
     "Tsunami":
     {
-        "cooldown": 0.4,
-        "damage": 10
+		"projectile": "ProjectileTsunami",
+        "cooldown": 1.5,
+		"effect_radius": 10.0,
+        "knockback_force": 10.0,
+		"camera_shake_strength": 0.4,
+        "camera_shake_duration": 0.4
     },
 
     "SwordDance":

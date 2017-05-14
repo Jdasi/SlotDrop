@@ -80,6 +80,9 @@ public class Slot : MonoBehaviour
                 pc_manager.IncrementVirusBar();
         }
 
+        // Fully heal player.
+        player.Damage(-(player.max_player_health - player.GetHealth()));
+
         // JTODO -- Assign new loadout here.
     }
 

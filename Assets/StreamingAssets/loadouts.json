@@ -13,6 +13,6 @@
 	
 	"Titan":
 	[
-		{ "name": "Gold", 		 "basic": "TitanWave", 	"special": "MeteorStrike" }
+		{ "name": "Gold", 	 	 "basic": "TitanWave", 	"special": "MeteorStrike" }
 	]
 }

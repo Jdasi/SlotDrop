@@ -39,9 +39,7 @@ public class Ability : MonoBehaviour
         // Create particle effect.
         if (properties.particle != null)
         {
-            GameObject particle_effect = Instantiate(properties.particle);
-            particle_effect.transform.position = transform.position;
-            Destroy(particle_effect, particle_effect.GetComponent<ParticleSystem>().main.duration);
+            Projectile.CreateEffect(properties.particle, transform.position, Vector3.zero);
         }
 
         // Play audio clip.
@@ -62,11 +60,10 @@ public class Ability : MonoBehaviour
     {
         PlayerController firing_player = GetComponent<PlayerController>();
 
-        Vector3 facing = firing_player.GetLastDirection();
-        Vector3 origin = transform.FindChild("BodyParts").position + (facing * 2);
+        Vector3 facing = firing_player == null ? Vector3.zero : firing_player.GetLastDirection();
+        Vector3 origin = transform.position;
 
         GameObject projectile = Instantiate(properties.projectile, origin, Quaternion.identity);
-        Debug.Log(projectile);
 
         projectile.GetComponent<Projectile>().Init(firing_player, properties, origin, facing);
     }

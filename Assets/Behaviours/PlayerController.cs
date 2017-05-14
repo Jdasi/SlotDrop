@@ -39,9 +39,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         body_parts_default_scale = body_parts.transform.localScale;
+
         player_HUD.SetHealthBarMaxHealth(max_player_health);
         player_health = max_player_health;
         player_HUD.UpdateHealthBar(player_health);
+
         player_rigidbody = GetComponent<Rigidbody>();
         stun_effect.SetActive(false);
         last_direction = Vector3.right;
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        LookAtCamera();
+
         if (player_input != null)
         {
             if (player_input.GetButtonDown("Disconnect"))
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (!slot_dropping && !controls_disabled)
         {
@@ -87,6 +91,17 @@ public class PlayerController : MonoBehaviour
         {
             player_rigidbody.velocity = new Vector3(0, player_rigidbody.velocity.y, 0);
         }
+    }
+
+
+    void LookAtCamera()
+    {
+        // JTODO -- get player looking towards the camera (without slanting over X axis)
+
+        Vector3 cam_pos = Camera.main.transform.position;
+        cam_pos.x = transform.position.x;
+
+        //transform.LookAt(cam_pos);
     }
 
 
@@ -277,6 +292,11 @@ public class PlayerController : MonoBehaviour
     public bool GetSpawning()
     {
         return spawning;
+    }
+
+    public int GetHealth()
+    {
+        return player_health;
     }
 
 }
