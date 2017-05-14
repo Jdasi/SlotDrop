@@ -18,9 +18,11 @@ public class PCManager : MonoBehaviour
     public float meteor_min_spawn_delay = 1f;
     public float cataclysm_duration = 10;
     public MeteorManager meteor_manager;
-    public Light light;
+    public Light scene_light;
     public Color light_alarm_colour;
+    public float alarm_light_intensity = 1;
 
+    private float light_default_intensity = 0;
     private Color light_default_colour;     
     private bool cataclysm_active = false;
     private int meteor_count = 0;
@@ -44,7 +46,8 @@ public class PCManager : MonoBehaviour
     {
         virus_indicator.SetActive(false); // setup indictors
         scan_indicator.SetActive(true);
-        light_default_colour = light.color;
+        light_default_colour = scene_light.color;
+        light_default_intensity = scene_light.intensity;
     }
 
 
@@ -80,7 +83,8 @@ public class PCManager : MonoBehaviour
         {
             CancelInvoke(); // cancel indicator disable if cataclysm started
         }
-        light.color = light_alarm_colour;
+        scene_light.color = light_alarm_colour;
+        scene_light.intensity = alarm_light_intensity;
         Invoke("EndCataclysm", cataclysm_duration); // end cataclysm after some time
         cataclysm_active = true;
     }
@@ -115,7 +119,8 @@ public class PCManager : MonoBehaviour
         virus_bar.value = virus_bar.minValue;
         virus_indicator.SetActive(false);
         scan_indicator.SetActive(true);
-        light.color = light_default_colour;     
+        scene_light.color = light_default_colour;
+        scene_light.intensity = light_default_intensity;    
     }
 
 

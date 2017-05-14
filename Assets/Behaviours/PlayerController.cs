@@ -112,7 +112,10 @@ public class PlayerController : MonoBehaviour
                            vertical * Time.deltaTime * vertical_move_speed);
 
         if (move != Vector3.zero)
-            last_facing = move.normalized;
+        {
+            if (!player_input.GetButton("FaceLock"))
+                last_facing = move.normalized;
+        }
 
         animator.SetBool("walking", horizontal != 0 || vertical != 0);
 

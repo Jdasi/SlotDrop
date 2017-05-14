@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: ca13e253825ac0742be3461e6339baae
-timeCreated: 1494778439
+timeCreated: 1494797086
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - shadow_prefab: {fileID: 1352938493341164, guid: 38625abb1f0e2224e913fc13776c7ef1,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
