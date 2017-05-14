@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789815111063468}
   m_Layer: 0
-  m_Name: ArrowHail_Particle
+  m_Name: ArrowHailParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1876971625736494}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.128153, y: 0, z: -8.267971}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4817014800124876}
@@ -108,9 +108,9 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153463859219264}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 3
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   autoRandomSeed: 1
@@ -156,7 +156,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 18400372
+  randomSeed: -1514009211
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3160,7 +3160,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 748367723
+  randomSeed: -2122490156
   InitialModule:
     serializedVersion: 3
     enabled: 1

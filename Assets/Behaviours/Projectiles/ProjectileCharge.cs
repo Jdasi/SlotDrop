@@ -32,6 +32,9 @@ public class ProjectileCharge : Projectile
 
     protected override void FixedUpdate()
     {
+        if (owning_player == null)
+            return;
+
         rigid_body.MovePosition(owning_player.transform.position + 
             (absolute_direction * Time.deltaTime * properties.effect_radius));
     }

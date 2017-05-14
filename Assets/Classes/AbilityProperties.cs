@@ -11,6 +11,7 @@ public class AbilityProperties
 
     public float effect_radius = 0;             // Ability AoE radius.
     public float knockback_force = 0;           // Ability knockback against targets within AoE.
+    public float stun_duration = 0;             // Ability stun duration.
     
     public GameObject projectile;               // Object that is launched.
     public float projectile_speed = 0;          // Speed of the projectile.
