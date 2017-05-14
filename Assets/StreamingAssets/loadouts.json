@@ -26,6 +26,12 @@
 			"name": "Soldier",
 			"basic": "Charge",
 			"special": "ArrowHail"
+		},
+
+		{
+			"name": "Broken",
+			"basic": "Null",
+			"special": "Null"
 		}
 	],
 	
