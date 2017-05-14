@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 54950404274135772}
   - component: {fileID: 65265000147732914}
   - component: {fileID: 114279668783961002}
+  - component: {fileID: 114777375440402930}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -795,10 +796,13 @@ MonoBehaviour:
   - {fileID: 1524119058108528}
   - {fileID: 1120719787966592}
   hat: {fileID: 212041776687026934}
+  loadout_name: 
   max_player_health: 100
   slot_streak: 0
   basic_ability: {fileID: 0}
   special_ability: {fileID: 0}
+  horizontal: 0
+  vertical: 0
 --- !u!114 &114359713490588210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -974,6 +978,17 @@ MonoBehaviour:
   - {fileID: 114791506522087446}
   - {fileID: 114940672968548404}
   active_slot_token_count: 0
+--- !u!114 &114777375440402930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290276022431546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca13e253825ac0742be3461e6339baae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114791506522087446
 MonoBehaviour:
   m_ObjectHideFlags: 1

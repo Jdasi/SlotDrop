@@ -24,9 +24,6 @@ public class SpriteShadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-        Vector3 down = transform.TransformDirection(Vector3.down);
-       // shadowGameObject.SetActive(!Physics.Raycast(transform.position, down, out hit));
         Vector3 freezePosition = shadowGameObject.transform.position;
         freezePosition.y = 0.01f;
         shadowGameObject.transform.position = freezePosition;
