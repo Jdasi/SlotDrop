@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ColourRandomiser : MonoBehaviour
 {
-    static int colour_rand_boost = 0;
+    static int _colourRandBoost = 0;
 
     private void Awake()
     {
-        Random.InitState((int)Time.time + (colour_rand_boost++));
-        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 150f, 200f);
+        Random.InitState((int)Time.time + (_colourRandBoost++));
+        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 
 }
