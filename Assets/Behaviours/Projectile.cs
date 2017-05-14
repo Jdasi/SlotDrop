@@ -70,6 +70,9 @@ public class Projectile : MonoBehaviour
     protected virtual void FixedUpdate() {}
 
     protected virtual void OnCollisionEnter(Collision other) {}
+    protected virtual void OnCollisionLeave(Collision other) {}
+
     protected virtual void OnTriggerEnter(Collider other) {}
+    protected virtual void OnTriggerLeave(Collider other) {}
 
 }

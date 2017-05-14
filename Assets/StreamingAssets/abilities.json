@@ -60,8 +60,10 @@
 
     "ArrowHail":
     {
+		"projectile": "ProjectileArrowHail",
         "cooldown": 3.0,
-        "damage": 10
+        "damage": 10,
+		"lifetime": 5
     },
 
     "TitanWave":
