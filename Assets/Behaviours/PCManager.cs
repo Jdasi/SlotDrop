@@ -13,13 +13,15 @@ public class PCManager : MonoBehaviour
     public float virus_bar_increment_percent = 10f;
 
     [Header("Cataclysm")]
-    public GameObject meteor_prefab;
-    public SpawnAreaCircle meteor_spawn_point;
     public float max_meteor = 4;
     public float meteor_max_spawn_delay = 5f;
     public float meteor_min_spawn_delay = 1f;
     public float cataclysm_duration = 10;
-   
+    public MeteorManager meteor_manager;
+    public Light light;
+    public Color light_alarm_colour;
+
+    private Color light_default_colour;     
     private bool cataclysm_active = false;
     private int meteor_count = 0;
 
@@ -42,6 +44,7 @@ public class PCManager : MonoBehaviour
     {
         virus_indicator.SetActive(false); // setup indictors
         scan_indicator.SetActive(true);
+        light_default_colour = light.color;
     }
 
 
@@ -77,7 +80,7 @@ public class PCManager : MonoBehaviour
         {
             CancelInvoke(); // cancel indicator disable if cataclysm started
         }
-
+        light.color = light_alarm_colour;
         Invoke("EndCataclysm", cataclysm_duration); // end cataclysm after some time
         cataclysm_active = true;
     }
@@ -98,12 +101,7 @@ public class PCManager : MonoBehaviour
 
     private void SpawnMeteor()
     {
-        GameObject meteor_clone = Instantiate(meteor_prefab);
-        Vector2 random_circle_location = Random.insideUnitCircle * meteor_spawn_point.spawn_radius;
-
-        meteor_clone.transform.position = new Vector3(random_circle_location.x,
-            meteor_spawn_point.transform.position.y, random_circle_location.y); // spawn meteor at random position
-
+        meteor_manager.SpawnMeteor();
         --meteor_count; //decrement max meteor when finished
     }
 
@@ -116,7 +114,8 @@ public class PCManager : MonoBehaviour
 
         virus_bar.value = virus_bar.minValue;
         virus_indicator.SetActive(false);
-        scan_indicator.SetActive(true);     
+        scan_indicator.SetActive(true);
+        light.color = light_default_colour;     
     }
 
 
