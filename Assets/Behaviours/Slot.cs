@@ -13,13 +13,13 @@ public class Slot : MonoBehaviour
     public bool unprotected = false;
     public bool golden_slot = false;
 
-    private LoadoutFactory ability_factory;
+    private LoadoutFactory loadout_factory;
     private PCManager pc_manager;
 
 
     void Start()
     {
-        ability_factory = GameObject.FindObjectOfType<LoadoutFactory>();
+        loadout_factory = GameObject.FindObjectOfType<LoadoutFactory>();
         pc_manager = GameObject.FindObjectOfType<PCManager>();
 
         unprotected = Random.Range(1, 100) < unprotected_chance;
@@ -80,7 +80,7 @@ public class Slot : MonoBehaviour
         // Fully heal player.
         player.Damage(-(player.max_player_health - player.GetHealth()));
 
-        // JTODO -- Assign new loadout here.
+        loadout_factory.AssignRandomLoadout(player);
     }
 
 }

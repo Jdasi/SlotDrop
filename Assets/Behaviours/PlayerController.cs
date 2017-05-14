@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public PlayerHUD player_HUD;
     public List<GameObject> mount_points = new List<GameObject>();
     public SpriteRenderer hat;
+    public string loadout_name;
 
     private int id = 0;
     private bool flipped = false;

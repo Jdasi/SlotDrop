@@ -38,41 +38,41 @@
 
     "SwordDance":
     {
-        "cooldown": 0.4,
+        "cooldown": 1.0,
         "damage": 10
     },
 
     "BarrelBomb":
     {
-        "cooldown": 0.4,
+        "cooldown": 2.0,
         "damage": 10
     },
 
     "Charge":
     {
 		"projectile": "ProjectileCharge",
-        "cooldown": 2.0,
+        "cooldown": 1.5,
         "damage": 10,
 		"effect_radius": 75.0,
 		"knockback_force": 20,
-		"lifetime": 1.0
+		"lifetime": 0.5
     },
 
     "ArrowHail":
     {
-        "cooldown": 0.4,
+        "cooldown": 3.0,
         "damage": 10
     },
 
     "TitanWave":
     {
-        "cooldown": 0.4,
+        "cooldown": 2.0,
         "damage": 10
     },
 
     "MeteorStrike":
     {
-        "cooldown": 0.4,
+        "cooldown": 3.0,
         "damage": 10
     }
 }

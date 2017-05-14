@@ -184,6 +184,7 @@ public class LoadoutFactory : MonoBehaviour
 
         Loadout loadout = FindLoadout(loadout_name);
         player.hat.sprite = loadout.hat;
+        player.loadout_name = loadout_name;
 
         // Add basic ability.
         player.basic_ability = player.gameObject.AddComponent<Ability>();
@@ -192,6 +193,13 @@ public class LoadoutFactory : MonoBehaviour
         // Add special ability.
         player.special_ability = player.gameObject.AddComponent<Ability>();
         player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
+    }
+
+
+    public void AssignRandomLoadout(PlayerController player)
+    {
+        List<string> loadout_names = new List<string>(general_loadouts.Keys);
+        AssignLoadout(player, loadout_names[Random.Range(0, loadout_names.Count)]);
     }
 
 }
