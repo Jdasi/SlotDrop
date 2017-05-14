@@ -9,12 +9,12 @@ public class Projectile : MonoBehaviour
     protected Vector3 origin;
     protected Vector3 facing;
 
-    public void Init(PlayerController owning_player, AbilityProperties properties, Vector3 start_pos, Vector3 direction)
+    public void Init(PlayerController owning_player, AbilityProperties properties, Vector3 origin, Vector3 facing)
     {
         this.owning_player = owning_player;
         this.properties = properties;
-        this.origin = start_pos;
-        this.facing = direction;
+        this.origin = origin;
+        this.facing = facing;
 
         Destroy(gameObject, properties.lifetime);
     }
@@ -67,6 +67,7 @@ public class Projectile : MonoBehaviour
 
 	protected virtual void Start() {}
 	protected virtual void Update() {}
+    protected virtual void FixedUpdate() {}
 
     protected virtual void OnCollisionEnter(Collision other) {}
     protected virtual void OnTriggerEnter(Collider other) {}

@@ -24,7 +24,7 @@
 
 		{
 			"name": "Soldier",
-			"basic": "Dash",
+			"basic": "Charge",
 			"special": "ArrowHail"
 		}
 	],

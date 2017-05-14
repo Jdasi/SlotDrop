@@ -36,12 +36,6 @@ public class Ability : MonoBehaviour
 
         cooldown_timer = properties.cooldown;
 
-        // Create particle effect.
-        if (properties.particle != null)
-        {
-            Projectile.CreateEffect(properties.particle, transform.position, Vector3.zero);
-        }
-
         // Play audio clip.
         if (properties.audio_clip != null)
         {
@@ -52,7 +46,8 @@ public class Ability : MonoBehaviour
         if (properties.camera_shake_strength > 0 || properties.camera_shake_duration > 0)
             CameraShake.instance.ShakeCamera(properties.camera_shake_duration, properties.camera_shake_strength);
 
-        CreateProjectile();
+        if (properties.projectile != null)
+            CreateProjectile();
     }
 
 
@@ -60,7 +55,7 @@ public class Ability : MonoBehaviour
     {
         PlayerController firing_player = GetComponent<PlayerController>();
 
-        Vector3 facing = firing_player == null ? Vector3.zero : firing_player.GetLastDirection();
+        Vector3 facing = firing_player == null ? Vector3.zero : firing_player.GetLastFacing();
         Vector3 origin = transform.position;
 
         GameObject projectile = Instantiate(properties.projectile, origin, Quaternion.identity);

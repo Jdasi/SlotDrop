@@ -7,12 +7,10 @@ using LitJson;
 
 public class LoadoutFactory : MonoBehaviour
 {
-    public GameObject[] particle_object_prefabs;
     public GameObject[] projectile_object_prefabs;
     public AudioClip[] ability_sounds;
     public Sprite[] hats;
 
-    private Dictionary<string, GameObject> particle_dictionary;
     private Dictionary<string, GameObject> projectile_dictionary;
     private Dictionary<string, AudioClip> audio_dictionary;
     private Dictionary<string, Sprite> hat_dictionary;
@@ -34,14 +32,6 @@ public class LoadoutFactory : MonoBehaviour
     // Transfers data from the arrays to dictionaries because the Inspector doesn't show dictionaries.
     void CreatePrefabDictionaries()
     {
-        particle_dictionary = new Dictionary<string, GameObject>();
-        for (int i = 0; i < particle_object_prefabs.Length; ++i)
-        {
-            string obj_name = particle_object_prefabs[i].name.Substring(0);
-
-            particle_dictionary.Add(obj_name, particle_object_prefabs[i]);
-        }
-
         projectile_dictionary = new Dictionary<string, GameObject>();
         for (int i = 0; i < projectile_object_prefabs.Length; ++i)
         {
@@ -87,9 +77,6 @@ public class LoadoutFactory : MonoBehaviour
 
             if (elem.Keys.Contains("projectile"))
                 properties.projectile = projectile_dictionary[(string)elem["projectile"]];
-
-            if (elem.Keys.Contains("particle"))
-                properties.particle = particle_dictionary[(string)elem["particle"]];
 
             if (elem.Keys.Contains("audio_clip"))
                 properties.audio_clip = audio_dictionary[(string)elem["audio_clip"]];
@@ -197,10 +184,12 @@ public class LoadoutFactory : MonoBehaviour
 
         Loadout loadout = FindLoadout(loadout_name);
         player.hat.sprite = loadout.hat;
-                
+
+        // Add basic ability.
         player.basic_ability = player.gameObject.AddComponent<Ability>();
         player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];
 
+        // Add special ability.
         player.special_ability = player.gameObject.AddComponent<Ability>();
         player.special_ability.properties = ability_properties_dictionary[loadout.special_ability_name];
     }
