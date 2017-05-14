@@ -5137,6 +5137,7 @@ MonoBehaviour:
   - {fileID: 1505264738706248, guid: dab7f5b8479eaa64d8dd575bf9be139f, type: 2}
   - {fileID: 1350698614511382, guid: 50c8aa297fc4cc8438db8c302f30fadc, type: 2}
   - {fileID: 1588044966343266, guid: bd07d40df6407234e928fc2c05d4cc97, type: 2}
+  - {fileID: 1705827943364696, guid: ff5442ba7aba67f4982494fb3afd7f58, type: 2}
   ability_sounds: []
   hats:
   - {fileID: 21300000, guid: 466661224b307e8479a0570ed2e78f6d, type: 3}
