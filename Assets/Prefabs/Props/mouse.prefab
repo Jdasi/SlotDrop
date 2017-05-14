@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54578178052950804}
   m_Layer: 0
   m_Name: mouse
-  m_TagString: Floor
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,9 +89,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072421444274934}
   serializedVersion: 2
-  m_Mass: 60
+  m_Mass: 11.88
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

@@ -22,6 +22,11 @@ public class ProjectilePellet : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "Prop")
+        {
+            Destroy(gameObject);
+        }
+        
         // Only collide with players.
         if (other.tag != "Player")
             return;

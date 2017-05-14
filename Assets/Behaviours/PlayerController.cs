@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public PlayerHUD player_HUD;
     public List<GameObject> mount_points = new List<GameObject>();
     public SpriteRenderer hat;
+    public GameObject damage_flash;
+    public float damage_flash_duration = 0.5f;
     public string loadout_name;
 
     private int id = 0;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         body_parts_default_scale = body_parts.transform.localScale;
+        damage_flash.SetActive(false);
 
         player_HUD.SetHealthBarMaxHealth(max_player_health);
         player_health = max_player_health;
@@ -188,7 +191,7 @@ public class PlayerController : MonoBehaviour
     { 
         if (spawning)
         {
-            if (collision.collider.CompareTag("Floor"))
+            if (collision.collider.CompareTag("Floor") || collision.collider.CompareTag("Prop"))
             {  
                 spawning = false;
                 controls_disabled = false;
@@ -220,11 +223,25 @@ public class PlayerController : MonoBehaviour
     {
         player_health -= damage_amount;
         player_HUD.UpdateHealthBar(player_health);
+        DamageFlash();
 
         if (player_health <= 0)
         {
             player_manager.KillPlayer(player_input.id);
         }
+    }
+
+
+    private void DamageFlash()
+    {
+        damage_flash.SetActive(true);
+        Invoke("EndDamageFlash", damage_flash_duration);
+    }
+
+
+    private void EndDamageFlash()
+    {
+        damage_flash.SetActive(false);
     }
 
 
