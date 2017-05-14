@@ -79,4 +79,8 @@
         "cooldown": 3.0,
         "damage": 10
     }
+
+	"Null":
+	{
+	}
 }

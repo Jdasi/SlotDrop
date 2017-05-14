@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,9 +16,11 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> mount_points = new List<GameObject>();
     public SpriteRenderer hat;
     public GameObject damage_flash;
+    public Renderer body_renderer;
     public float damage_flash_duration = 0.5f;
     public string loadout_name;
     public float snap_distance = 2.0f;
+    public GameObject face_indicator;
 
     private int id = 0;
     private bool flipped = false;
@@ -57,6 +58,9 @@ public class PlayerController : MonoBehaviour
         player_rigidbody = GetComponent<Rigidbody>();
         stun_effect.SetActive(false);
         last_facing = Vector3.right;
+
+        body_renderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        face_indicator.GetComponent<SpriteRenderer>().material.color = body_renderer.material.color;
     }
 
 
@@ -82,10 +86,10 @@ public class PlayerController : MonoBehaviour
                 HandleSlotDrop();
             }
         }
-        else
-        {
-            Debug.LogWarning("Player is starting in the scene! Please remove");
-        }
+
+        Vector3 look_at = face_indicator.transform.position + (last_facing * 3);
+        face_indicator.transform.LookAt(look_at);
+        face_indicator.transform.Rotate(new Vector3(90, 0, 0));
     }
 
 
