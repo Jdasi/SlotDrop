@@ -20,7 +20,6 @@ public class ProjectileTsunami : Projectile
         GetComponent<CapsuleCollider>().radius = properties.effect_radius;
 
         CreateBlast();
-        ++move_times;
         
         if (owning_player != null)
             transform.position = origin;
@@ -36,9 +35,7 @@ public class ProjectileTsunami : Projectile
             if (timer >= move_delay)
             {
                 timer = 0;
-                ++move_times;
 
-                transform.position += facing * move_spacing;
                 CreateBlast();
             }
         }
@@ -51,6 +48,9 @@ public class ProjectileTsunami : Projectile
 
     void CreateBlast()
     {
+        ++move_times;
+        transform.position += facing * move_spacing;
+
         CreateEffect(particle_effect, transform.position, Vector3.zero);
 
         var elems = CreateExplosionForce(owning_player != null ? owning_player.gameObject : null, 
