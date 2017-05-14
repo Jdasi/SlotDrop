@@ -30,46 +30,34 @@ public class ProjectileArrowHail : Projectile
             if (!can_damage)
                 return;
 
-            foreach (Collider obj in colliding_objects)
-            {
-                if (obj == null)
-                    return;
-
-                obj.GetComponent<PlayerController>().Damage(properties.damage);
-            }
+            DamageAllInRadius();
         }
-    }
-
-
-    protected override void OnTriggerEnter(Collider other)
-    {
-        if (other.tag != "Player")
-            return;
-
-        if (owning_player == null)
-            return;
-
-        if (other.GetComponent<Rigidbody>() == owning_player.GetComponent<Rigidbody>())
-            return;
-
-        if (!colliding_objects.Contains(other))
-            colliding_objects.Add(other);
-    }
-
-
-    protected override void OnTriggerLeave(Collider other)
-    {
-        if (other.tag != "Player")
-            return;
-
-        if (colliding_objects.Contains(other))
-            colliding_objects.Remove(other);
     }
 
 
     void EnableDamage()
     {
         can_damage = true;
+    }
+
+
+    void DamageAllInRadius()
+    {
+        RaycastHit[] sphere = Physics.SphereCastAll(transform.position, properties.effect_radius, Vector3.forward, 0);
+
+        foreach (var elem in sphere)
+        {
+            if (elem.collider.tag != "Player")
+                continue;
+
+            PlayerController player = elem.collider.gameObject.GetComponent<PlayerController>();
+
+            if (player == null ||
+                player == owning_player)
+                continue;
+
+            player.Damage(properties.damage);
+        }
     }
 
 

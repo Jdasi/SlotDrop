@@ -30,7 +30,7 @@
     {
 		"projectile": "ProjectileTsunami",
         "cooldown": 1.5,
-		"effect_radius": 3.0,
+		"effect_radius": 5.0,
         "knockback_force": 30.0,
 		"camera_shake_strength": 0.4,
         "camera_shake_duration": 0.4,
@@ -62,6 +62,7 @@
     "ArrowHail":
     {
 		"projectile": "ProjectileArrowHail",
+		"effect_radius": 3.0,
         "cooldown": 3.0,
         "damage": 10,
 		"lifetime": 5
