@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject damage_flash;
     public float damage_flash_duration = 0.5f;
     public string loadout_name;
+    public float snap_distance = 2.0f;
 
     private int id = 0;
     private bool flipped = false;
@@ -26,7 +27,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 move = Vector2.zero; 
     private Vector3 body_parts_default_scale;
     private Player player_input;
-    private Transform nearby_slot;
+    private Slot nearby_slot;
+    private Vector3 slot_attempt_pos;
     private Rigidbody player_rigidbody;
     private bool spawning = true;
     private bool controls_disabled = true;
@@ -154,40 +156,31 @@ public class PlayerController : MonoBehaviour
             Invoke("FireSpecial", 0.6f);
             Invoke("SlotDropped", 0.85f);
 
-            if (nearby_slot != null)
-            {
-                if (!nearby_slot.GetComponent<BoxCollider>().enabled)
-                {
-                    nearby_slot = null;
-                }
-                else
-                {
-                    transform.position = new Vector3(nearby_slot.position.x, transform.position.y, nearby_slot.position.z);
-                }
-            }
+            SnapToNearestSlot();
         }
     }
 
 
-    void OnTriggerEnter(Collider other)
+    void SnapToNearestSlot()
     {
-        if (other.gameObject.tag == "Slot")
+        RaycastHit[] sphere = Physics.SphereCastAll(transform.position, snap_distance, Vector3.forward, 0);
+
+        foreach (var elem in sphere)
         {
-            nearby_slot = other.transform;
+            if (elem.collider.tag != "Slot")
+                continue;
+
+            nearby_slot = elem.collider.GetComponent<Slot>();
+            slot_attempt_pos = new Vector3(nearby_slot.transform.position.x, transform.position.y, nearby_slot.transform.position.z);
+
+            transform.position = slot_attempt_pos;
+
+            break;
         }
     }
 
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Slot")
-        {
-            nearby_slot = null;
-        }
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     { 
         if (spawning)
         {
@@ -213,6 +206,9 @@ public class PlayerController : MonoBehaviour
 
         if (nearby_slot != null)
         {
+            if (transform.position != slot_attempt_pos)
+                return;
+
             nearby_slot.GetComponent<Slot>().SlotDrop(this);
             slot_streak = player_HUD.AddSlotToken();
         }
