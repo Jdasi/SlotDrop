@@ -496,7 +496,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290276022431546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.763398, y: 0, z: 10.857716}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4850631687504824}
@@ -764,6 +764,7 @@ MonoBehaviour:
   - {fileID: 1385687455829376}
   - {fileID: 1524119058108528}
   - {fileID: 1120719787966592}
+  hat: {fileID: 212041776687026934}
   max_player_health: 100
   slot_streak: 0
   basic_ability: {fileID: 0}

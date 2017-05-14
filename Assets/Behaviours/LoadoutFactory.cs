@@ -159,8 +159,6 @@ public class LoadoutFactory : MonoBehaviour
             if (hat_dictionary.ContainsKey(hat_name))
                 loadout.hat = hat_dictionary[hat_name];
 
-            
-
             loadout.basic_ability_name = (string)elem["basic"];
             loadout.special_ability_name = (string)elem["special"];
 
