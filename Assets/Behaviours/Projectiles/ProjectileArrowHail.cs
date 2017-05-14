@@ -21,8 +21,6 @@ public class ProjectileArrowHail : Projectile
 
     protected override void Update()
     {
-        colliding_objects.RemoveAll(null);
-
         timer += Time.deltaTime;
 
         if (timer >= damage_delay)
@@ -34,6 +32,9 @@ public class ProjectileArrowHail : Projectile
 
             foreach (Collider obj in colliding_objects)
             {
+                if (obj == null)
+                    return;
+
                 obj.GetComponent<PlayerController>().Damage(properties.damage);
             }
         }
