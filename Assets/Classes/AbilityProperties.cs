@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AbilityProperties
 {
-    public GameObject particle;                 // Particle effect that plays on activation.
     public AudioClip audio_clip;                // Sound that plays on activation.
 
     public float cooldown = 0;                  // Ability recharge time.

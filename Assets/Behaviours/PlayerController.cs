@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public GameObject stun_effect;
     public bool BaseWeapons = true;
     public bool slot_dropping = false;
-    public float horizontal_move_speed = 20;
-    public float vertical_move_speed = 10;
+    public float horizontal_move_speed = 15;
+    public float vertical_move_speed = 15;
     public Animator animator;
     public PlayerHUD player_HUD;
     public List<GameObject> mount_points = new List<GameObject>();
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private int id = 0;
     private bool flipped = false;
-    private Vector3 last_direction;
+    private Vector3 last_facing;
     private Vector3 move = Vector2.zero; 
     private Vector3 body_parts_default_scale;
     private Player player_input;
@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     public Ability basic_ability;
     public Ability special_ability;
 
+    public float horizontal;
+    public float vertical;
 
     void Awake()
     {
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         player_rigidbody = GetComponent<Rigidbody>();
         stun_effect.SetActive(false);
-        last_direction = Vector3.right;
+        last_facing = Vector3.right;
     }
 
 
@@ -59,8 +61,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        LookAtCamera();
-
         if (player_input != null)
         {
             if (player_input.GetButtonDown("Disconnect"))
@@ -95,27 +95,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void LookAtCamera()
-    {
-        // JTODO -- get player looking towards the camera (without slanting over X axis)
-
-        Vector3 cam_pos = Camera.main.transform.position;
-        cam_pos.x = transform.position.x;
-
-        //transform.LookAt(cam_pos);
-    }
-
-
     void HandleMovement()
     {
-        float horizontal = player_input.GetAxis("Horizontal") * Time.deltaTime * horizontal_move_speed;
-        float vertical = player_input.GetAxis("Vertical") * Time.deltaTime * vertical_move_speed;
+        horizontal = player_input.GetAxis("Horizontal");
+        vertical = player_input.GetAxis("Vertical");
 
         // Apply the move and store the last facing direction.
-        move = new Vector3(horizontal, 0, vertical);
+        move = new Vector3(horizontal  * Time.deltaTime * horizontal_move_speed, 0,
+                           vertical * Time.deltaTime * vertical_move_speed);
 
         if (move != Vector3.zero)
-            last_direction = move.normalized;
+            last_facing = move.normalized;
 
         animator.SetBool("walking", horizontal != 0 || vertical != 0);
 
@@ -145,8 +135,11 @@ public class PlayerController : MonoBehaviour
 
     void HandleSlotDrop()
     {
-        if (!special_ability.IsReady())
-            return;
+        if (special_ability != null)
+        {
+            if (!special_ability.IsReady())
+                return;
+        }
 
         if (player_input.GetButtonDown("SlotDrop"))
         {
@@ -204,8 +197,6 @@ public class PlayerController : MonoBehaviour
 
     void FireSpecial()
     {
-        // JTODO -- probably need an alive check here due to Invoke delay..
-
         if (special_ability != null)
             special_ability.Fire();
     }
@@ -213,8 +204,6 @@ public class PlayerController : MonoBehaviour
 
     void SlotDropped()
     {
-        // JTODO -- probably need an alive check here due to Invoke delay..
-
         slot_dropping = false;
 
         if (nearby_slot != null)
@@ -266,9 +255,9 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public Vector3 GetLastDirection()
+    public Vector3 GetLastFacing()
     {
-        return last_direction;
+        return last_facing;
     }
 
 

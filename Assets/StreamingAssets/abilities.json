@@ -10,7 +10,6 @@
     "Shockwave":
     {
         "projectile": "ProjectileShockwave",
-        "particle": "ShockwaveParticle",
         "cooldown": 1.5,
         "damage": 0,
         "effect_radius": 20.0,
@@ -51,8 +50,12 @@
 
     "Charge":
     {
-        "cooldown": 0.4,
-        "damage": 10
+		"projectile": "ProjectileCharge",
+        "cooldown": 2.0,
+        "damage": 10,
+		"effect_radius": 75.0,
+		"knockback_force": 20,
+		"lifetime": 1.0
     },
 
     "ArrowHail":
