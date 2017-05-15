@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Slot : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Slot : MonoBehaviour
     public float unprotected_chance = 30.0f;
     public bool unprotected = false;
     public bool golden_slot = false;
+
+    public GameObject end_game_canvas;
 
     private LoadoutFactory loadout_factory;
     private PCManager pc_manager;
@@ -99,6 +102,17 @@ public class Slot : MonoBehaviour
         // Close the slot.
         Close();
 
+        // Game ending slot drop.
+        if (golden_slot && player.IsTitan())
+        {
+            Time.timeScale = 0.3f;
+
+            Invoke("EnableCanvas", 1.0f);
+            Invoke("ResetLevel", 4.0f);
+
+            return;
+        }
+
         // Infect the PC.
         if (unprotected)
         {
@@ -130,6 +144,25 @@ public class Slot : MonoBehaviour
         // Fully heal player.
         player.Damage(-(player.max_player_health - player.GetHealth()));
 
+    }
+
+
+    public bool IsGolden()
+    {
+        return golden_slot;
+    }
+
+
+    void EnableCanvas()
+    {
+        Time.timeScale = 1;
+        end_game_canvas.SetActive(true);
+    }
+
+
+    void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

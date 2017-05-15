@@ -386,4 +386,10 @@ public class PlayerController : MonoBehaviour
         return player_health;
     }
 
+
+    public bool IsTitan()
+    {
+        return is_titan;
+    }
+
 }

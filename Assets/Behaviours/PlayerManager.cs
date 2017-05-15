@@ -107,4 +107,23 @@ public class PlayerManager : MonoBehaviour
         Destroy(connected_players[player_id].player_obj);
     }
 
+
+    public bool AnyPlayerTitan()
+    {
+        foreach (ConnectedPlayer connected_player in connected_players.Values)
+        {
+            if (connected_player.player_obj == null)
+                continue;
+
+            PlayerController player = connected_player.player_obj.GetComponent<PlayerController>();
+
+            if (player.IsTitan())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -25,12 +25,10 @@ public class PlayerFactory : MonoBehaviour
         player_controller.name = "Player" +  connected_player.rewired.id.ToString();
         player_controller.SetPlayerInput(connected_player.rewired);
 
-
         Vector2 random_circle_location = Random.insideUnitCircle * spawn_area.spawn_radius;
 
         player_controller.transform.position = new Vector3(spawn_area.transform.position.x + random_circle_location.x,
             spawn_area.transform.position.y, spawn_area.transform.position.z + random_circle_location.y); // spawn meteor at random position
-
 
         connected_player.player_obj = player_clone;
         connected_player.rewired.isPlaying = true;

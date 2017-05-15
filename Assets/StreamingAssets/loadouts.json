@@ -39,8 +39,8 @@
 	[
 		{
 			"name": "Gold",
-			"basic": "TitanWave",
-			"special": "MeteorStrike"
+			"basic": "MeteorStrike",
+			"special": "TitanWave"
 		}
 	]
 }

@@ -4302,3 +4302,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min_open_delay: 2
   max_open_delay: 10
+  golden_slot: {fileID: 0}
