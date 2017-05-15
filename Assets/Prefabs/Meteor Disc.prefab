@@ -372,7 +372,7 @@ MonoBehaviour:
   drop_speed: 30
   damage_radius: 10
   knockback_force: 20
-  meteor_damage: 25
+  meteor_damage: 40
   max_random_drop_offset: 0.532
   particles:
   - {fileID: 1988885197307348}
