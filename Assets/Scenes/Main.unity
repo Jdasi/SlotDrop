@@ -7691,6 +7691,16 @@ Prefab:
       propertyPath: player_spawn
       value: 
       objectReference: {fileID: 675142053}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 148eb791e57dc3a41b0c0b992df947b9, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 331f0d1f41acd3d40b89aba6fa7868c7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
   m_IsPrefabParent: 0
