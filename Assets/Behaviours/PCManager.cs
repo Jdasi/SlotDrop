@@ -83,6 +83,8 @@ public class PCManager : MonoBehaviour
         {
             CancelInvoke(); // cancel indicator disable if cataclysm started
         }
+
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("alarm");
         scene_light.color = light_alarm_colour;
         scene_light.intensity = alarm_light_intensity;
         Invoke("EndCataclysm", cataclysm_duration); // end cataclysm after some time

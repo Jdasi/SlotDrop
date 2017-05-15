@@ -338,6 +338,7 @@ public class PlayerController : MonoBehaviour
 
     public void EnableTitan()
     {
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("titan_trigger");
         transform.localScale = titan_size;
         is_titan = true;
 
