@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private int id = 0;
     private bool flipped = false;
     private Vector3 last_facing;
-    private Vector3 move = Vector2.zero; 
+    private Vector3 move = Vector2.zero;
     private Vector3 body_parts_default_scale;
     private Player player_input;
     private Slot nearby_slot;
@@ -114,12 +114,12 @@ public class PlayerController : MonoBehaviour
             EnableTitan();
         }
 
-        if(Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Damage(player_health);
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -150,8 +150,8 @@ public class PlayerController : MonoBehaviour
         vertical = player_input.GetAxis("Vertical");
 
         // Apply the move.
-        move = new Vector3(horizontal  * Time.deltaTime * horizontal_move_speed * move_speed_modifier, 0,
-                           vertical * Time.deltaTime * vertical_move_speed * move_speed_modifier);
+        move = new Vector3(horizontal * Time.deltaTime * horizontal_move_speed * move_speed_modifier, 0,
+            vertical * Time.deltaTime * vertical_move_speed * move_speed_modifier);
 
 
         face_locked = player_input.GetButton("FaceLock");
@@ -168,13 +168,15 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0 && !flipped && !face_locked)
         {
             flipped = true;
-            body_parts.transform.localScale = new Vector3(-body_parts_default_scale.x, body_parts_default_scale.y, body_parts_default_scale.z);
+            body_parts.transform.localScale = new Vector3(-body_parts_default_scale.x, body_parts_default_scale.y,
+                body_parts_default_scale.z);
         }
 
         if (horizontal > 0 && flipped && !face_locked)
         {
             flipped = false;
-            body_parts.transform.localScale = new Vector3(body_parts_default_scale.x, body_parts_default_scale.y, body_parts_default_scale.z);
+            body_parts.transform.localScale = new Vector3(body_parts_default_scale.x, body_parts_default_scale.y,
+                body_parts_default_scale.z);
         }
     }
 
@@ -228,7 +230,8 @@ public class PlayerController : MonoBehaviour
                 !nearby_slot.golden_slot && is_titan)
                 break;
 
-            slot_attempt_pos = new Vector3(nearby_slot.transform.position.x, transform.position.y, nearby_slot.transform.position.z);
+            slot_attempt_pos = new Vector3(nearby_slot.transform.position.x, transform.position.y,
+                nearby_slot.transform.position.z);
 
             transform.position = slot_attempt_pos;
 
@@ -238,11 +241,11 @@ public class PlayerController : MonoBehaviour
 
 
     void OnCollisionEnter(Collision collision)
-    { 
+    {
         if (spawning)
         {
             if (collision.collider.CompareTag("Floor") || collision.collider.CompareTag("Prop"))
-            {  
+            {
                 spawning = false;
                 controls_disabled = false;
             }
@@ -280,6 +283,7 @@ public class PlayerController : MonoBehaviour
 
         if (player_health <= 0)
         {
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot("death");
             ParticleSystem particle = Instantiate(death_particle_prefab);
             particle.transform.position = body_parts.transform.position;
             Destroy(particle.gameObject, particle.main.duration);
@@ -303,6 +307,8 @@ public class PlayerController : MonoBehaviour
 
     public void Stun(float stun_duration)
     {
+
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("stun");
         controls_disabled = true;
         stun_effect.SetActive(true);
         animator.SetBool("walking", false);
@@ -332,6 +338,7 @@ public class PlayerController : MonoBehaviour
 
     public void EnableTitan()
     {
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("titan_trigger");
         transform.localScale = titan_size;
         is_titan = true;
 
@@ -391,5 +398,4 @@ public class PlayerController : MonoBehaviour
     {
         return is_titan;
     }
-
 }
