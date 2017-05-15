@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject body_parts;
     public GameObject stun_effect;
+    public GameObject broken_particle;
     public bool BaseWeapons = true;
     public bool slot_dropping = false;
     public float horizontal_move_speed = 15;
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
         body_renderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         face_indicator.GetComponent<SpriteRenderer>().material.color = body_renderer.material.color;
+
+        broken_particle.SetActive(false);
     }
 
 
