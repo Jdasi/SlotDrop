@@ -7691,8 +7691,7 @@ Prefab:
       propertyPath: player_spawn
       value: 
       objectReference: {fileID: 675142053}
-    m_RemovedComponents:
-    - {fileID: 114361037881576466, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1699402902 stripped

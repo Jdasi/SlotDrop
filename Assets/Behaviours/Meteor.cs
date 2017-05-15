@@ -60,7 +60,7 @@ public class Meteor : MonoBehaviour
     {
         if (!impacted)
         {
-            GameObject.FindObjectOfType<AudioManager>().PlayOneShot("meteor_impacted");
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot("meteor_impact");
             impacted = true;
 
             CameraShake.instance.ShakeCamera(shake_duration, shake_strength);

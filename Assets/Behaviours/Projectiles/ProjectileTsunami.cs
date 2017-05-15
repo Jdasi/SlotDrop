@@ -48,6 +48,8 @@ public class ProjectileTsunami : Projectile
 
     void CreateBlast()
     {
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("water_explosion");
+
         ++move_times;
         transform.position += facing * move_spacing;
 

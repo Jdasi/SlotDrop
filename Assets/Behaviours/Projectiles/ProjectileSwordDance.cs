@@ -30,7 +30,10 @@ public class ProjectileSwordDance : Projectile
     protected override void Update()
     {
         if (owning_player == null || orbit_axis == null)
+        {
             Destroy(gameObject);
+            return;
+        }
 
         transform.position = orbit_axis.transform.position;
         transform.Rotate(Vector3.up * Time.deltaTime * rotate_speed);
@@ -43,7 +46,6 @@ public class ProjectileSwordDance : Projectile
         if (other.tag != "Player")
             return;
 
-        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("sword_dance_hit");
         PlayerController colliding_player = other.GetComponent<PlayerController>();
 
         // Don't collide with self.
@@ -53,6 +55,7 @@ public class ProjectileSwordDance : Projectile
                 return;
         }
 
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("sword_dance_hit");
         colliding_player.Damage(properties.damage);
     }
 
