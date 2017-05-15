@@ -10,6 +10,7 @@ TagManager:
   - Shadow
   - Prop
   - Meteor
+  - Barrel
   layers:
   - Default
   - TransparentFX

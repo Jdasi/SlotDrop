@@ -51,3 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494170601ff5c2b4ebe02432caeaf785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barrel_prefab: {fileID: 1886483142493550, guid: 1a7e75eefb64f1643912ab0b9b355baf,
+    type: 2}
