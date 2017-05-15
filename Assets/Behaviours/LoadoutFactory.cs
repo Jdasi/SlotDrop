@@ -189,6 +189,9 @@ public class LoadoutFactory : MonoBehaviour
         player.hat.sprite = loadout.hat;
         player.loadout_name = loadout_name;
 
+        // Hacky way to enable broken particle for Broken loadout.
+        player.broken_particle.SetActive(loadout_name == "Broken");
+
         // Add basic ability.
         player.basic_ability = player.gameObject.AddComponent<Ability>();
         player.basic_ability.properties = ability_properties_dictionary[loadout.basic_ability_name];

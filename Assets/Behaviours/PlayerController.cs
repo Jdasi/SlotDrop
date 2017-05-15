@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float snap_distance = 2.0f;
     public GameObject face_indicator;
     public Vector3 titan_size;
+    public float move_speed_modifier = 1;
 
     private int id = 0;
     private bool flipped = false;
@@ -132,8 +133,8 @@ public class PlayerController : MonoBehaviour
         vertical = player_input.GetAxis("Vertical");
 
         // Apply the move.
-        move = new Vector3(horizontal  * Time.deltaTime * horizontal_move_speed, 0,
-                           vertical * Time.deltaTime * vertical_move_speed);
+        move = new Vector3(horizontal  * Time.deltaTime * horizontal_move_speed * move_speed_modifier, 0,
+                           vertical * Time.deltaTime * vertical_move_speed * move_speed_modifier);
 
 
         face_locked = player_input.GetButton("FaceLock");
