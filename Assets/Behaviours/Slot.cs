@@ -89,6 +89,12 @@ public class Slot : MonoBehaviour
             loadout_factory.AssignRandomLoadout(player);
         }
 
+        if (player.TitanReady())
+        {
+            loadout_factory.AssignLoadout(player, "Gold");
+            player.EnableTitan();
+        }
+
         // Fully heal player.
         player.Damage(-(player.max_player_health - player.GetHealth()));
 
