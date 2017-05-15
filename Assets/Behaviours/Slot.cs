@@ -45,7 +45,8 @@ public class Slot : MonoBehaviour
 
     public void Open()
     {
-        animator.SetBool("open", true);
+        if(animator != null)
+            animator.SetBool("open", true);
 
         if (!golden_slot)
             Invoke("Close", time_to_close);
@@ -69,7 +70,10 @@ public class Slot : MonoBehaviour
 
     public bool IsOpen()
     {
-        return animator.GetBool("open");
+        if(animator != null)
+            return animator.GetBool("open");
+
+        return false;
     }
 
 
