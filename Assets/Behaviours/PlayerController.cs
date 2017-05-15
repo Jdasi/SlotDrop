@@ -102,8 +102,9 @@ public class PlayerController : MonoBehaviour
 
     void DebugControls()
     {
-        if(Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
+            GameObject.FindObjectOfType<LoadoutFactory>().AssignLoadout(this, "Gold");
             EnableTitan();
         }
     }
@@ -315,6 +316,8 @@ public class PlayerController : MonoBehaviour
 
         face_indicator.gameObject.SetActive(false);
         player_HUD.SetHealthBarMaxHealth(max_player_health);
+
+        player_rigidbody.mass = 100;
     }
 
 
