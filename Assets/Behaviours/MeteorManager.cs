@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteorManager : MonoBehaviour
 {
-    public MeteorImpact meteor_prefab;
+    public Meteor meteor_prefab;
     public SpawnAreaCircle meteor_spawn_area;
 
     public void  SpawnMeteor()

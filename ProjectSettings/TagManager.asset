@@ -9,6 +9,7 @@ TagManager:
   - Floor
   - Shadow
   - Prop
+  - Meteor
   layers:
   - Default
   - TransparentFX
