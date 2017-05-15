@@ -7701,6 +7701,11 @@ Prefab:
       propertyPath: ability_sounds.Array.data[8]
       value: 
       objectReference: {fileID: 8300000, guid: 331f0d1f41acd3d40b89aba6fa7868c7, type: 3}
+    - target: {fileID: 82241160545747218, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 38edda0b9f26e2847860f525744fab25, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
   m_IsPrefabParent: 0
