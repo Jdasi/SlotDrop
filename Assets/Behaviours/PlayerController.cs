@@ -386,13 +386,4 @@ public class PlayerController : MonoBehaviour
         return player_health;
     }
 
-
-    private void OnLevelWasLoaded(int level)
-    {
-        if(level == SceneManager.GetActiveScene().buildIndex)
-        {
-            player_manager.KillPlayer(player_input.id);
-        }
-    }
-
 }
