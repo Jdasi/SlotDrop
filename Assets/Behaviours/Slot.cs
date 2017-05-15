@@ -15,6 +15,7 @@ public class Slot : MonoBehaviour
 
     private LoadoutFactory loadout_factory;
     private PCManager pc_manager;
+    private const int percentile = 100;
 
 
     void Start()
@@ -22,7 +23,7 @@ public class Slot : MonoBehaviour
         loadout_factory = GameObject.FindObjectOfType<LoadoutFactory>();
         pc_manager = GameObject.FindObjectOfType<PCManager>();
 
-        unprotected = Random.Range(1, 100) < unprotected_chance;
+        unprotected = Random.Range(1, percentile) < unprotected_chance;
         hazard_symbol.enabled = unprotected;
 
         if (transform.position.y != 0.2f)
@@ -94,11 +95,17 @@ public class Slot : MonoBehaviour
         {
             pc_manager.IncrementVirusBar();
 
-            // Unprotected slots revert a character's loadout if they have a different one.
+            // Assign initial loadout.
             if (player.loadout_name == "Base")
-                loadout_factory.AssignRandomLoadout(player);
+            {
+                    loadout_factory.AssignRandomLoadout(player);
+            }
+            // Chance to reset the player's loadout.
             else
-                loadout_factory.AssignLoadout(player, "Base");
+            {
+                if (Random.Range(0, percentile) < unprotected_chance)
+                    loadout_factory.AssignLoadout(player, "Base");
+            }
         }
         else
         {
