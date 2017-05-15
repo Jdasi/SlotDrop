@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -111,6 +112,21 @@ public class PlayerController : MonoBehaviour
         {
             GameObject.FindObjectOfType<LoadoutFactory>().AssignLoadout(this, "Gold");
             EnableTitan();
+        }
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Damage(player_health);
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Stun(2);
         }
     }
 
@@ -368,6 +384,15 @@ public class PlayerController : MonoBehaviour
     public int GetHealth()
     {
         return player_health;
+    }
+
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level == SceneManager.GetActiveScene().buildIndex)
+        {
+            player_manager.KillPlayer(player_input.id);
+        }
     }
 
 }
