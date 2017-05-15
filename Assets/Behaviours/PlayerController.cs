@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public string loadout_name;
     public float snap_distance = 2.0f;
     public GameObject face_indicator;
+    public Vector3 titan_size;
 
     private int id = 0;
     private bool flipped = false;
@@ -37,7 +38,8 @@ public class PlayerController : MonoBehaviour
     public int max_player_health = 100;
     private int player_health = 100;
     public int slot_streak = 0;
-    private const float TITAN_STREAK_REQUIREMENT = 4;
+    private const float TITAN_STREAK_REQUIREMENT = 0;
+    private bool is_titan = false;
 
     private PlayerManager player_manager;
     public Ability basic_ability;
@@ -178,6 +180,12 @@ public class PlayerController : MonoBehaviour
                 continue;
 
             nearby_slot = elem.collider.GetComponent<Slot>();
+
+            // Check slot matching depending on titan status.
+            if ((nearby_slot.golden_slot && !is_titan) ||
+                !nearby_slot.golden_slot && is_titan)
+                break;
+
             slot_attempt_pos = new Vector3(nearby_slot.transform.position.x, transform.position.y, nearby_slot.transform.position.z);
 
             transform.position = slot_attempt_pos;
@@ -274,6 +282,19 @@ public class PlayerController : MonoBehaviour
     public bool TitanReady()
     {
         return slot_streak >= TITAN_STREAK_REQUIREMENT;
+    }
+
+
+    public void EnableTitan()
+    {
+        transform.localScale = titan_size;
+        is_titan = true;
+
+        max_player_health = 300;
+        player_health = max_player_health;
+
+        face_indicator.gameObject.SetActive(false);
+        player_HUD.SetHealthBarMaxHealth(max_player_health);
     }
 
 
