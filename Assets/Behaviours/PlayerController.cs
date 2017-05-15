@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         if (player_input != null)
         {
             DebugControls();
+
+            // Handle leave from select press.
             if (player_input.GetButtonDown("Disconnect"))
             {
                 player_manager.PlayerLeave(player_input.id);
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Rotate face indicator.
         Vector3 look_at = face_indicator.transform.position + (last_facing * 3);
         face_indicator.transform.LookAt(look_at);
         face_indicator.transform.Rotate(new Vector3(90, 0, 0));
@@ -124,13 +127,14 @@ public class PlayerController : MonoBehaviour
         horizontal = player_input.GetAxis("Horizontal");
         vertical = player_input.GetAxis("Vertical");
 
-        // Apply the move and store the last facing direction.
+        // Apply the move.
         move = new Vector3(horizontal  * Time.deltaTime * horizontal_move_speed, 0,
                            vertical * Time.deltaTime * vertical_move_speed);
 
 
         face_locked = player_input.GetButton("FaceLock");
 
+        // Store last facing direction.
         if (move != Vector3.zero)
         {
             if (!face_locked)
@@ -165,6 +169,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleSlotDrop()
     {
+        // Perform an ability if you have one and its ready.
         if (special_ability != null)
         {
             if (!special_ability.IsReady())
@@ -194,6 +199,7 @@ public class PlayerController : MonoBehaviour
                 continue;
 
             nearby_slot = elem.collider.GetComponent<Slot>();
+            nearby_slot.PostponeClose(); // Delay slot from closing as player is attempting to slot.
 
             // Check slot matching depending on titan status.
             if ((nearby_slot.golden_slot && !is_titan) ||

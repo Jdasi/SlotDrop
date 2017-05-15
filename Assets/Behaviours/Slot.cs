@@ -46,13 +46,23 @@ public class Slot : MonoBehaviour
     {
         animator.SetBool("open", true);
 
-        Invoke("Close", time_to_close);
+        if (!golden_slot)
+            Invoke("Close", time_to_close);
     }
 
 
     public void Close()
     {
         animator.SetBool("open", false);
+    }
+
+
+    public void PostponeClose()
+    {
+        CancelInvoke();
+
+        if (!golden_slot)
+            Invoke("Close", time_to_close / 2);
     }
 
 
@@ -65,6 +75,12 @@ public class Slot : MonoBehaviour
     public bool IsUnprotected()
     {
         return unprotected;
+    }
+
+    
+    public bool CanBeSlotted()
+    {
+        return box_collider.enabled;
     }
 
     
