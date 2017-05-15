@@ -25,9 +25,9 @@ public class Slot : MonoBehaviour
         unprotected = Random.Range(1, 100) < unprotected_chance;
         hazard_symbol.enabled = unprotected;
 
-        if (transform.position.y != 0.01f)
+        if (transform.position.y != 0.2f)
         {
-            transform.position = new Vector3(transform.position.x, 0.01f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
         }
     }
 

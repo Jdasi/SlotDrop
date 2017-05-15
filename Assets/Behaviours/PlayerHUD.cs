@@ -20,6 +20,7 @@ public class PlayerHUD : MonoBehaviour
     public void SetHealthBarMaxHealth(int max_health)
     {
         health_bar.maxValue = max_health;
+        health_bar.value = max_health;
     }
 
 

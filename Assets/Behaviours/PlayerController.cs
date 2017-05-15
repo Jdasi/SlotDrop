@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public int max_player_health = 100;
     private int player_health = 100;
     public int slot_streak = 0;
-    private const float TITAN_STREAK_REQUIREMENT = 0;
+    private const float TITAN_STREAK_REQUIREMENT = 4;
     private bool is_titan = false;
 
     private PlayerManager player_manager;
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         if (player_input != null)
         {
+            DebugControls();
             if (player_input.GetButtonDown("Disconnect"))
             {
                 player_manager.PlayerLeave(player_input.id);
@@ -92,6 +93,15 @@ public class PlayerController : MonoBehaviour
         Vector3 look_at = face_indicator.transform.position + (last_facing * 3);
         face_indicator.transform.LookAt(look_at);
         face_indicator.transform.Rotate(new Vector3(90, 0, 0));
+    }
+
+
+    void DebugControls()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            EnableTitan();
+        }
     }
 
 
