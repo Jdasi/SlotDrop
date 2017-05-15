@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody player_rigidbody;
     private bool spawning = true;
     private bool controls_disabled = true;
+    private bool face_locked = false;
 
     public int max_player_health = 100;
     private int player_health = 100;
@@ -127,21 +128,24 @@ public class PlayerController : MonoBehaviour
         move = new Vector3(horizontal  * Time.deltaTime * horizontal_move_speed, 0,
                            vertical * Time.deltaTime * vertical_move_speed);
 
+
+        face_locked = player_input.GetButton("FaceLock");
+
         if (move != Vector3.zero)
         {
-            if (!player_input.GetButton("FaceLock"))
+            if (!face_locked)
                 last_facing = move.normalized;
         }
 
         animator.SetBool("walking", horizontal != 0 || vertical != 0);
 
-        if (horizontal < 0 && !flipped)
+        if (horizontal < 0 && !flipped && !face_locked)
         {
             flipped = true;
             body_parts.transform.localScale = new Vector3(-body_parts_default_scale.x, body_parts_default_scale.y, body_parts_default_scale.z);
         }
 
-        if (horizontal > 0 && flipped)
+        if (horizontal > 0 && flipped && !face_locked)
         {
             flipped = false;
             body_parts.transform.localScale = new Vector3(body_parts_default_scale.x, body_parts_default_scale.y, body_parts_default_scale.z);
