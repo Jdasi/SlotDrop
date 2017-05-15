@@ -61,9 +61,6 @@ public class ProjectileCharge : Projectile
 
     void CalculateRawDirection()
     {
-        if (owning_player.horizontal == 0 || owning_player.vertical == 0)
-            return;
-        
         if (owning_player.horizontal > threshold)
         {
             absolute_direction = Vector3.right;
