@@ -7,7 +7,7 @@ public class MeteorManager : MonoBehaviour
     public Meteor meteor_prefab;
     public SpawnAreaCircle meteor_spawn_area;
 
-    public void  SpawnMeteor()
+    public void SpawnMeteor()
     {
         GameObject meteor_clone = Instantiate(meteor_prefab).gameObject;
         Vector2 random_circle_location = Random.insideUnitCircle * meteor_spawn_area.spawn_radius;

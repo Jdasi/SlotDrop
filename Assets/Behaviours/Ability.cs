@@ -39,7 +39,7 @@ public class Ability : MonoBehaviour
         // Play audio clip.
         if (properties.audio_clip != null)
         {
-            // JTODO -- need to get an audio source from somewhere..
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(properties.audio_clip);
         }
 
         // Shake camera.

@@ -61,12 +61,6 @@ public class Projectile : MonoBehaviour
     }
 
 
-    public static void SpawnMeteor()
-    {
-
-    }
-
-
 	protected virtual void Start() {}
 	protected virtual void Update() {}
     protected virtual void FixedUpdate() {}

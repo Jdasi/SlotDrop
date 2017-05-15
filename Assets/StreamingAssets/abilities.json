@@ -4,7 +4,8 @@
         "projectile": "ProjectilePellet",
         "cooldown": 0.4,
         "damage": 10,
-        "projectile_speed": 30.0
+        "projectile_speed": 30.0,
+		"audio_clip": "projectile_launch"
     },
 
     "Shockwave":
@@ -15,7 +16,8 @@
         "effect_radius": 20.0,
         "knockback_force": 13.0,
         "camera_shake_strength": 0.4,
-        "camera_shake_duration": 0.4
+        "camera_shake_duration": 0.4,
+		"audio_clip": "ground_slam"
     },
 
     "Splash":
@@ -23,7 +25,8 @@
 		"projectile": "ProjectileSplash",
         "cooldown": 1.0,
         "damage": 15,
-		"lifetime": 1
+		"lifetime": 1,
+		"audio_clip": "splash"
     },
 
     "Tsunami":
@@ -47,8 +50,10 @@
 
     "BarrelBomb":
     {
+		"projectile": "ProjectileBarrelBomb",
         "cooldown": 2.0,
-        "damage": 10
+        "damage": 10,
+		"audio_clip": "bomb_throw"
     },
 
     "Charge":
@@ -58,7 +63,8 @@
         "damage": 10,
 		"effect_radius": 75.0,
 		"knockback_force": 20,
-		"lifetime": 0.5
+		"lifetime": 0.5,
+		"audio_clip": "charge"
     },
 
     "ArrowHail":
@@ -67,19 +73,27 @@
 		"effect_radius": 3.0,
         "cooldown": 3.0,
         "damage": 10,
-		"lifetime": 5
+		"lifetime": 5,
+		"audio_clip": "arrow_rain"
     },
 
     "TitanWave":
     {
-        "cooldown": 2.0,
-        "damage": 10
+		"projectile": "ProjectileTitanWave",
+		"cooldown": 2.0,
+        "damage": 0,
+        "effect_radius": 40.0,
+        "knockback_force": 20.0,
+        "camera_shake_strength": 0.6,
+        "camera_shake_duration": 0.6,
+		"audio_clip": "ground_slam"
     },
 
     "MeteorStrike":
     {
+		"projectile": "ProjectileMeteorStrike",
         "cooldown": 3.0,
-        "damage": 10
+        "damage": 10,
     },
 
 	"Null":

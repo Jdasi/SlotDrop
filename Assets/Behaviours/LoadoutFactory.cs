@@ -215,4 +215,13 @@ public class LoadoutFactory : MonoBehaviour
         AssignLoadout(player, new_loadout_name);
     }
 
+
+    public AudioClip GetAudioClip(string clip_name)
+    {
+        if (audio_dictionary.ContainsKey(clip_name))
+            return audio_dictionary[clip_name];
+
+        return null;
+    }
+
 }

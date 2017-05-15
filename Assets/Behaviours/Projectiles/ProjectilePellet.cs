@@ -22,7 +22,9 @@ public class ProjectilePellet : Projectile
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Prop")
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("projectile_impact");
+
+        if (other.tag == "Prop")
         {
             Destroy(gameObject);
         }

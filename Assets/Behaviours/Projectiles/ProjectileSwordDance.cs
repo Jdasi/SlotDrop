@@ -29,7 +29,7 @@ public class ProjectileSwordDance : Projectile
 
 	protected override void Update()
     {
-		if (owning_player == null)
+		if (owning_player == null || orbit_axis == null)
             Destroy(gameObject);
 
         transform.position = orbit_axis.transform.position;
