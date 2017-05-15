@@ -45,7 +45,8 @@
 		"projectile": "ProjectileSwordDance",
         "cooldown": 2.0,
         "damage": 10,
-		"lifetime": 2
+		"lifetime": 2,
+		"audio_clip": "sword_dance"
     },
 
     "BarrelBomb":
@@ -93,7 +94,7 @@
     {
 		"projectile": "ProjectileMeteorStrike",
         "cooldown": 3.0,
-        "damage": 10,
+        "damage": 10
     },
 
 	"Null":
