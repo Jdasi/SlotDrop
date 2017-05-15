@@ -10,9 +10,9 @@ public class ProjectileSwordDance : Projectile
     private GameObject orbit_axis;
 
 
-	protected override void Start()
+    protected override void Start()
     {
-		if (owning_player != null)
+        if (owning_player != null)
         {
             orbit_axis = owning_player.transform.FindChild("BodyParts").gameObject;
             transform.position = orbit_axis.transform.position;
@@ -22,19 +22,19 @@ public class ProjectileSwordDance : Projectile
 
         GetComponent<SphereCollider>().center = new Vector3(orbit_distance, 0, 0);
         transform.FindChild("SwordDanceParticle").transform.localPosition = new Vector3(orbit_distance, 0, 0);
-        
-        Destroy(gameObject, properties.lifetime);
-	}
-	
 
-	protected override void Update()
+        Destroy(gameObject, properties.lifetime);
+    }
+
+
+    protected override void Update()
     {
-		if (owning_player == null || orbit_axis == null)
+        if (owning_player == null || orbit_axis == null)
             Destroy(gameObject);
 
         transform.position = orbit_axis.transform.position;
         transform.Rotate(Vector3.up * Time.deltaTime * rotate_speed);
-	}
+    }
 
 
     protected override void OnTriggerEnter(Collider other)
@@ -43,6 +43,7 @@ public class ProjectileSwordDance : Projectile
         if (other.tag != "Player")
             return;
 
+        GameObject.FindObjectOfType<AudioManager>().PlayOneShot("sword_dance_hit");
         PlayerController colliding_player = other.GetComponent<PlayerController>();
 
         // Don't collide with self.
@@ -62,6 +63,4 @@ public class ProjectileSwordDance : Projectile
         if (owning_player != null)
             owning_player.move_speed_modifier = 1;
     }
-
-
 }
