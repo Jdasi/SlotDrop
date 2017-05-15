@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject body_parts;
     public GameObject stun_effect;
     public GameObject broken_particle;
+    public ParticleSystem death_particle_prefab;
     public bool BaseWeapons = true;
     public bool slot_dropping = false;
     public float horizontal_move_speed = 15;
@@ -263,6 +264,9 @@ public class PlayerController : MonoBehaviour
 
         if (player_health <= 0)
         {
+            ParticleSystem particle = Instantiate(death_particle_prefab);
+            particle.transform.position = body_parts.transform.position;
+            Destroy(particle.gameObject, particle.main.duration);
             player_manager.KillPlayer(player_input.id);
         }
     }
