@@ -7,6 +7,7 @@ public class Slot : MonoBehaviour
     public Animator animator;
     public BoxCollider box_collider;
     public SpriteRenderer hazard_symbol;
+    public GameObject light_shaft;
 
     public float time_to_close = 5.0f;
     public float unprotected_chance = 30.0f;
@@ -22,6 +23,7 @@ public class Slot : MonoBehaviour
     {
         loadout_factory = GameObject.FindObjectOfType<LoadoutFactory>();
         pc_manager = GameObject.FindObjectOfType<PCManager>();
+        light_shaft.SetActive(false);
 
         unprotected = Random.Range(1, percentile) < unprotected_chance;
         hazard_symbol.enabled = unprotected;
@@ -50,12 +52,15 @@ public class Slot : MonoBehaviour
 
         if (!golden_slot)
             Invoke("Close", time_to_close);
+
+        light_shaft.SetActive(true);
     }
 
 
     public void Close()
     {
         animator.SetBool("open", false);
+        light_shaft.SetActive(false);
     }
 
 
