@@ -39,8 +39,10 @@
 
     "SwordDance":
     {
-        "cooldown": 1.0,
-        "damage": 10
+		"projectile": "ProjectileSwordDance",
+        "cooldown": 2.0,
+        "damage": 10,
+		"lifetime": 2
     },
 
     "BarrelBomb":

@@ -22,7 +22,7 @@ public class PlayerFactory : MonoBehaviour
         connected_player.player_obj = player_clone;
         connected_player.rewired.isPlaying = true;
 
-        ability_factory.AssignLoadout(player_controller, "Base");
+        ability_factory.AssignLoadout(player_controller, "Soldier");
     }
 
 }

@@ -13,14 +13,7 @@ public class TempParticle : MonoBehaviour
 
         float duration = system.main.duration;
 
-        Invoke("StopParticles", duration);
 	    Destroy(gameObject, system.main.duration + 5);
 	}
-
-
-    void StopParticles()
-    {
-
-    }
 
 }

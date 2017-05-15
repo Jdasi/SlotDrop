@@ -13,7 +13,7 @@ public class SpriteShadow : MonoBehaviour
     private GameObject current_shadow;
     private MeshRenderer parent_mesh;
     private Collider parent_collider;
-    Vector3 ray_offset = new Vector3(0, 0.5f, 0);
+    Vector3 ray_offset = new Vector3(0, 1.0f, 0);
 
     void Start()
     {
@@ -62,7 +62,11 @@ public class SpriteShadow : MonoBehaviour
             if (current_shadow && hit.collider != parent_collider)
             {
                 current_shadow.SetActive(true);
-                current_shadow.transform.position = new Vector3(transform.position.x, hit.point.y + surface_offset, transform.position.z);
+
+                Vector3 shadow_pos = new Vector3(transform.position.x, hit.point.y + surface_offset, transform.position.z);
+                shadow_pos.y = Mathf.Clamp(shadow_pos.y, 0.1f, Mathf.Infinity);
+
+                current_shadow.transform.position = shadow_pos;
                 return;
             }
         }
