@@ -7649,6 +7649,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.size
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 4559146426236884, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7691,6 +7696,121 @@ Prefab:
       propertyPath: golden_slot
       value: 
       objectReference: {fileID: 684925049}
+    - target: {fileID: 82241160545747218, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 778bcf72c4b48a848ba937e135dab1aa, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e40165a11b4e4c41847b1a49f3b1180, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 99eb3ed0a7a67274f85723aa07b45897, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 148eb791e57dc3a41b0c0b992df947b9, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 331f0d1f41acd3d40b89aba6fa7868c7, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: e2022935c3e416c439a953ee05d7760c, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 584d32759988d6141bb1604f5dec553c, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 220841e978c10d344adc1aa661e47113, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 15380699bb4c98a49a859fe33bd91b12, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 29761e511743ede4f9673948fb6124c4, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: f142cde303b23aa48a8eb152ddef9db3, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: 10de937109880cc4e917eac7dc65ea37, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[12]
+      value: 
+      objectReference: {fileID: 8300000, guid: 553ed3dfefda00446a372058561ae894, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[13]
+      value: 
+      objectReference: {fileID: 8300000, guid: 211964f73ff6e3741ba3ac50e408d0fd, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[14]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4363155010b9b3a4e8257f74a72971bf, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[15]
+      value: 
+      objectReference: {fileID: 8300000, guid: b6dc91eb292fb9c489674750e08225b9, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[16]
+      value: 
+      objectReference: {fileID: 8300000, guid: a0379fe462594854687d3f14f193bddb, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[17]
+      value: 
+      objectReference: {fileID: 8300000, guid: c3c36685547262944bcb23a0bebd5a6b, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[18]
+      value: 
+      objectReference: {fileID: 8300000, guid: 389404dbad80c98479b9ca658cf5e52f, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[19]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1185607a52c7f564481b7ccb02233848, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[20]
+      value: 
+      objectReference: {fileID: 8300000, guid: 43c92cc4e6b50a44ba19281e4f8af145, type: 3}
+    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: ability_sounds.Array.data[21]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9077b3b437a9d6b4ca34f8d56028562e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
   m_IsPrefabParent: 0

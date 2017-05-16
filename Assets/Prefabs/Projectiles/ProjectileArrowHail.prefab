@@ -55,7 +55,7 @@ MonoBehaviour:
   particle_effect: {fileID: 1876971625736494, guid: 3b1bed8590368e441909014d89ff6c66,
     type: 2}
   damage_delay: 0.5
-  stun_chance: 15
+  stun_chance: 50
 --- !u!136 &136789728366244870
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -66,6 +66,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 5
-  m_Height: 25
+  m_Height: 50
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
