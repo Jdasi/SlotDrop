@@ -1229,7 +1229,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4953797198141318, guid: 2a1fa84daa655df41b91fec214ff6138, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 4953797198141318, guid: 2a1fa84daa655df41b91fec214ff6138, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7691,26 +7691,6 @@ Prefab:
       propertyPath: player_spawn
       value: 
       objectReference: {fileID: 675142053}
-    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
-        type: 2}
-      propertyPath: ability_sounds.Array.data[7]
-      value: 
-      objectReference: {fileID: 8300000, guid: 148eb791e57dc3a41b0c0b992df947b9, type: 3}
-    - target: {fileID: 114089164401933004, guid: f654d0f892bf46340b143f424b0f7205,
-        type: 2}
-      propertyPath: ability_sounds.Array.data[8]
-      value: 
-      objectReference: {fileID: 8300000, guid: 331f0d1f41acd3d40b89aba6fa7868c7, type: 3}
-    - target: {fileID: 82241160545747218, guid: f654d0f892bf46340b143f424b0f7205,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 38edda0b9f26e2847860f525744fab25, type: 3}
-    - target: {fileID: 82241160545747218, guid: f654d0f892bf46340b143f424b0f7205,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
   m_IsPrefabParent: 0
@@ -8715,6 +8695,18 @@ Prefab:
       propertyPath: end_game_canvas
       value: 
       objectReference: {fileID: 1387181343}
+    - target: {fileID: 4247269372199630, guid: bba4ba5c06f143b46b88605abffbfdec, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247269372199630, guid: bba4ba5c06f143b46b88605abffbfdec, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4247269372199630, guid: bba4ba5c06f143b46b88605abffbfdec, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.26
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bba4ba5c06f143b46b88605abffbfdec, type: 2}
   m_IsPrefabParent: 0

@@ -54,9 +54,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 43c92cc4e6b50a44ba19281e4f8af145, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 38edda0b9f26e2847860f525744fab25, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -166,12 +166,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3e40165a11b4e4c41847b1a49f3b1180, type: 3}
   - {fileID: 8300000, guid: 778bcf72c4b48a848ba937e135dab1aa, type: 3}
   - {fileID: 8300000, guid: e2022935c3e416c439a953ee05d7760c, type: 3}
-  - {fileID: 8300000, guid: 1e272df08a563054691e21091bf5ea30, type: 3}
+  - {fileID: 8300000, guid: 220841e978c10d344adc1aa661e47113, type: 3}
   - {fileID: 8300000, guid: 29761e511743ede4f9673948fb6124c4, type: 3}
   - {fileID: 8300000, guid: 10de937109880cc4e917eac7dc65ea37, type: 3}
   - {fileID: 8300000, guid: 211964f73ff6e3741ba3ac50e408d0fd, type: 3}
-  - {fileID: 8300000, guid: 27513bafdcec9ae4b8d6e24d540dfc35, type: 3}
-  - {fileID: 8300000, guid: 639df6fa524e3bd45b3b580d32ee2a4a, type: 3}
+  - {fileID: 8300000, guid: 148eb791e57dc3a41b0c0b992df947b9, type: 3}
+  - {fileID: 8300000, guid: 331f0d1f41acd3d40b89aba6fa7868c7, type: 3}
   - {fileID: 8300000, guid: 584d32759988d6141bb1604f5dec553c, type: 3}
   - {fileID: 8300000, guid: 15380699bb4c98a49a859fe33bd91b12, type: 3}
   - {fileID: 8300000, guid: 553ed3dfefda00446a372058561ae894, type: 3}
@@ -220,5 +220,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min_open_delay: 2
-  max_open_delay: 10
+  max_open_delay: 6
   golden_slot: {fileID: 0}

@@ -26,15 +26,18 @@
 			"name": "Soldier",
 			"basic": "Charge",
 			"special": "ArrowHail"
-		},
+		}
+	],
 
+    "Misc":
+	[
 		{
 			"name": "Broken",
 			"basic": "Null",
 			"special": "Null"
 		}
 	],
-	
+
 	"Titan":
 	[
 		{

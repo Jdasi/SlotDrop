@@ -342,13 +342,14 @@ public class PlayerController : MonoBehaviour
         transform.localScale = titan_size;
         is_titan = true;
 
-        max_player_health = 300;
+        max_player_health = 500;
         player_health = max_player_health;
 
         face_indicator.gameObject.SetActive(false);
         player_HUD.SetHealthBarMaxHealth(max_player_health);
 
         player_rigidbody.mass = 100;
+        snap_distance *= 1.25f;
     }
 
 

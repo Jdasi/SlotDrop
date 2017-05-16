@@ -118,17 +118,11 @@ public class Slot : MonoBehaviour
         {
             pc_manager.IncrementVirusBar();
 
-            // Assign initial loadout.
-            if (player.loadout_name == "Base")
-            {
-                    loadout_factory.AssignRandomLoadout(player);
-            }
-            // Chance to reset the player's loadout.
+            // Chance to break the USB.
+            if ((Random.Range(0, percentile) < unprotected_chance) && player.loadout_name != "Broken")
+                loadout_factory.AssignLoadout(player, "Broken");
             else
-            {
-                if (Random.Range(0, percentile) < unprotected_chance)
-                    loadout_factory.AssignLoadout(player, "Base");
-            }
+                loadout_factory.AssignRandomLoadout(player);
         }
         else
         {

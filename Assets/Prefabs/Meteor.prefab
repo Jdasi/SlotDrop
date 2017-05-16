@@ -300,13 +300,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drop_speed: 30
-  meteor_damage: 25
+  damage_radius: 10
+  knockback_force: 10
+  meteor_damage: 15
   max_random_drop_offset: 0.532
   particles:
   - {fileID: 1850461474365106}
   - {fileID: 1159425634402488}
   shake_strength: 0.4
   shake_duration: 0.4
+  shockwave_particle: {fileID: 0}
 --- !u!135 &135709772769643390
 SphereCollider:
   m_ObjectHideFlags: 1
