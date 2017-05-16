@@ -11,8 +11,7 @@ public class Slot : MonoBehaviour
     public GameObject light_shaft;
 
     public float time_to_close = 5.0f;
-    public float unprotected_chance = 30.0f;
-    public bool unprotected = false;
+    public float infection_chance = 30.0f;
     public bool golden_slot = false;
 
     public GameObject end_game_canvas;
@@ -27,9 +26,6 @@ public class Slot : MonoBehaviour
         loadout_factory = GameObject.FindObjectOfType<LoadoutFactory>();
         pc_manager = GameObject.FindObjectOfType<PCManager>();
         light_shaft.SetActive(false);
-
-        unprotected = Random.Range(1, percentile) < unprotected_chance;
-        hazard_symbol.enabled = unprotected;
 
         if (transform.position.y != 0.2f)
         {
@@ -50,11 +46,16 @@ public class Slot : MonoBehaviour
 
     public void Open()
     {
-        if(animator != null)
+        if (IsOpen())
+            return;
+
+        if (animator != null)
             animator.SetBool("open", true);
 
         if (!golden_slot)
+        {
             Invoke("Close", time_to_close);
+        }
 
         light_shaft.SetActive(true);
     }
@@ -62,6 +63,8 @@ public class Slot : MonoBehaviour
 
     public void Close()
     {
+        CancelInvoke();
+
         animator.SetBool("open", false);
         light_shaft.SetActive(false);
     }
@@ -78,16 +81,10 @@ public class Slot : MonoBehaviour
 
     public bool IsOpen()
     {
-        if(animator != null)
+        if (animator != null)
             return animator.GetBool("open");
 
         return false;
-    }
-
-
-    public bool IsUnprotected()
-    {
-        return unprotected;
     }
 
     
@@ -113,16 +110,13 @@ public class Slot : MonoBehaviour
             return;
         }
 
-        // Infect the PC.
-        if (unprotected)
+        // Chance to infect the PC.
+        if (Random.Range(0, percentile) < infection_chance)
         {
             pc_manager.IncrementVirusBar();
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot("laughing_skull");
 
-            // Chance to break the USB.
-            if ((Random.Range(0, percentile) < unprotected_chance) && player.loadout_name != "Broken")
-                loadout_factory.AssignLoadout(player, "Broken");
-            else
-                loadout_factory.AssignRandomLoadout(player);
+            loadout_factory.AssignLoadout(player, "Broken");
         }
         else
         {

@@ -201,7 +201,8 @@ public class LoadoutFactory : MonoBehaviour
         player.hat.sprite = loadout.hat;
         player.loadout_name = loadout_name;
 
-        // Hacky way to enable broken particle for Broken loadout.
+        // Hacky way to detect special Broken class features.
+        player.move_speed_modifier = loadout_name == "Broken" ? 1.2f : 1;
         player.broken_particle.SetActive(loadout_name == "Broken");
 
         // Add basic ability.

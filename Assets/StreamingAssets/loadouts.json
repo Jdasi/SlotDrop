@@ -33,7 +33,7 @@
 	[
 		{
 			"name": "Broken",
-			"basic": "Null",
+			"basic": "ShortCircuit",
 			"special": "Null"
 		}
 	],

@@ -97,7 +97,18 @@
         "damage": 10
     },
 
+    "ShortCircuit":
+    {
+        "projectile": "ProjectileShortCircuit",
+        "cooldown": 0.5,
+        "damage": 8,
+        "lifetime": 0.5,
+        "stun_duration": 0.3,
+        "audio_clip": "spark"
+    },
+
 	"Null":
 	{
+        "audio_clip": "meep_merp"
 	}
 }

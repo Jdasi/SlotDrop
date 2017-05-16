@@ -162,6 +162,7 @@ MonoBehaviour:
   - {fileID: 1662552585913546, guid: ec17fb0757d7eff469532a038ee9094b, type: 2}
   - {fileID: 1775031136126692, guid: 815c47e269678d44d9cf33a127ff904d, type: 2}
   - {fileID: 1192249618680576, guid: 74e5b047e230aa945bade85dd375a06c, type: 2}
+  - {fileID: 1138380999328570, guid: b680f275ef3ab7742a7b2f62b8119d7a, type: 2}
   ability_sounds:
   - {fileID: 8300000, guid: 3e40165a11b4e4c41847b1a49f3b1180, type: 3}
   - {fileID: 8300000, guid: 778bcf72c4b48a848ba937e135dab1aa, type: 3}
@@ -181,6 +182,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43c92cc4e6b50a44ba19281e4f8af145, type: 3}
   - {fileID: 8300000, guid: 1185607a52c7f564481b7ccb02233848, type: 3}
   - {fileID: 8300000, guid: c3c36685547262944bcb23a0bebd5a6b, type: 3}
+  - {fileID: 8300000, guid: b6dc91eb292fb9c489674750e08225b9, type: 3}
+  - {fileID: 8300000, guid: 389404dbad80c98479b9ca658cf5e52f, type: 3}
+  - {fileID: 8300000, guid: f142cde303b23aa48a8eb152ddef9db3, type: 3}
+  - {fileID: 8300000, guid: 99eb3ed0a7a67274f85723aa07b45897, type: 3}
   hats:
   - {fileID: 21300000, guid: 466661224b307e8479a0570ed2e78f6d, type: 3}
   - {fileID: 21300002, guid: 466661224b307e8479a0570ed2e78f6d, type: 3}
@@ -220,5 +225,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min_open_delay: 2
-  max_open_delay: 6
+  max_open_delay: 5
   golden_slot: {fileID: 0}

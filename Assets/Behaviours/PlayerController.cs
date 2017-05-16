@@ -257,6 +257,12 @@ public class PlayerController : MonoBehaviour
     {
         if (special_ability != null)
             special_ability.Fire();
+
+        if (nearby_slot != null)
+        {
+            if (transform.position == slot_attempt_pos)
+                GameObject.FindObjectOfType<AudioManager>().PlayOneShot("usb_slot");
+        }
     }
 
 
