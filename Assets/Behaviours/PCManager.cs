@@ -30,14 +30,29 @@ public class PCManager : MonoBehaviour
 
     private void Update()
     {
+        UpdateDebugControls();
+        
+        if (cataclysm_active)
+        {
+            RunCataclysm(); // simulate cataclysm event
+        }
+    }
+
+
+    private void UpdateDebugControls()
+    {
         if (Input.GetKeyDown(KeyCode.Space)) // debug
         {
             IncrementVirusBar();
         }
 
-        if (cataclysm_active)
+        if (Input.GetKeyDown(KeyCode.Escape)) // debug
         {
-            RunCataclysm(); // simulate cataclysm event
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;//if in editor exit play mode
+#else
+        Application.Quit();//if a build quit the application
+#endif       
         }
     }
 
