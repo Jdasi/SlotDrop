@@ -465,18 +465,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4489841923708102, guid: ca790dabdfb133e45a545e7f71383a60, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2.6715548
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489841923708102, guid: ca790dabdfb133e45a545e7f71383a60, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2.67155
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489841923708102, guid: ca790dabdfb133e45a545e7f71383a60, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2.671553
-      objectReference: {fileID: 0}
+    - target: {fileID: 114678740107054000, guid: ca790dabdfb133e45a545e7f71383a60,
+        type: 2}
+      propertyPath: hud_mouse
+      value: 
+      objectReference: {fileID: 1330397489}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca790dabdfb133e45a545e7f71383a60, type: 2}
   m_IsPrefabParent: 0
@@ -6675,7 +6668,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330397489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2055841398}
@@ -6683,7 +6676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038146973, y: 0.0000038146973}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.13, y: 0.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330397491
@@ -7894,6 +7887,11 @@ Prefab:
       propertyPath: ability_sounds.Array.data[21]
       value: 
       objectReference: {fileID: 8300000, guid: 9077b3b437a9d6b4ca34f8d56028562e, type: 3}
+    - target: {fileID: 82241160545747218, guid: f654d0f892bf46340b143f424b0f7205,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f654d0f892bf46340b143f424b0f7205, type: 2}
   m_IsPrefabParent: 0

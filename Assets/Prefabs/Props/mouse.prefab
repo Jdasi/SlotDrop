@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23154164360860678}
   - component: {fileID: 65063495742014994}
   - component: {fileID: 54578178052950804}
+  - component: {fileID: 114678740107054000}
   m_Layer: 0
   m_Name: mouse
   m_TagString: Prop
@@ -38,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1072421444274934}
   m_LocalRotation: {x: -0.09241368, y: 0.988339, z: -0.05902095, w: 0.10565239}
   m_LocalPosition: {x: 18.861906, y: 3.03, z: 3.0745025}
-  m_LocalScale: {x: 2.6715515, y: 2.6715496, z: 2.6715496}
+  m_LocalScale: {x: 2.6715548, y: 2.67155, z: 2.671553}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,3 +110,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2143507, y: 0.49096346, z: 1.9705391}
   m_Center: {x: 0, y: -0.0026547909, z: 0}
+--- !u!114 &114678740107054000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1072421444274934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb92795403286749a9f8da0e304a556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hud_mouse: {fileID: 0}
+  sensitivity: 0.5
