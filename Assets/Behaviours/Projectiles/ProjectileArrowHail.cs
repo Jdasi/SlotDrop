@@ -6,6 +6,7 @@ public class ProjectileArrowHail : Projectile
 {
     public GameObject particle_effect;
     public float damage_delay = 0.5f;
+    public float stun_chance = 0;
 
     private List<Collider> colliding_objects = new List<Collider>();
     private float timer;
@@ -55,6 +56,9 @@ public class ProjectileArrowHail : Projectile
             if (player == null ||
                 player == owning_player)
                 continue;
+
+            if (Random.Range(1, 100) < stun_chance)
+                player.Stun(properties.stun_duration);
 
             player.Damage(properties.damage);
         }

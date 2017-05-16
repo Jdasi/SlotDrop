@@ -75,6 +75,7 @@
         "cooldown": 3.0,
         "damage": 10,
 		"lifetime": 5,
+        "stun_duration": 0.3,
 		"audio_clip": "arrow_rain"
     },
 
