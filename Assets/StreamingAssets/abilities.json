@@ -85,7 +85,7 @@
 		"cooldown": 2.0,
         "damage": 0,
         "effect_radius": 40.0,
-        "knockback_force": 100.0,
+        "knockback_force": 30.0,
         "camera_shake_strength": 0.6,
         "camera_shake_duration": 0.6,
 		"audio_clip": "ground_slam"
