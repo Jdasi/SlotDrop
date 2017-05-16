@@ -38,7 +38,7 @@ public class ProjectilePellet : Projectile
         // Don't collide with self.
         if (owning_player != null)
         {
-            if (colliding_player.GetPlayerID() == owning_player.GetPlayerID())
+            if (colliding_player == owning_player)
                 return;
         }
 

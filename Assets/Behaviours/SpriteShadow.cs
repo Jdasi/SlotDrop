@@ -15,6 +15,8 @@ public class SpriteShadow : MonoBehaviour
     private Collider parent_collider;
     Vector3 ray_offset = new Vector3(0, 1.0f, 0);
 
+    private Quaternion initial_shadow_rotation;
+
     void Start()
     {
         parent_collider = GetComponent<Collider>();
@@ -30,6 +32,12 @@ public class SpriteShadow : MonoBehaviour
         CreateShadow();
         UpdateShadowScale();
         CastShadow();
+    }
+
+
+    void LateUpdate()
+    {
+        current_shadow.transform.rotation = initial_shadow_rotation;
     }
 
 
@@ -89,6 +97,8 @@ public class SpriteShadow : MonoBehaviour
         {
             current_shadow = Instantiate(shadow_prefab);
             current_shadow.transform.parent = transform;
+
+            initial_shadow_rotation = current_shadow.transform.rotation;
         }
     }
 

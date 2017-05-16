@@ -5,21 +5,19 @@ using UnityEngine;
 public class Barrel : MonoBehaviour
 {
     public GameObject shockwave_particle;
-    public GameObject owner;
-	
+    public PlayerController owning_player;
+    public Rigidbody rigid_body;
+
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().AddTorque(new Vector3(3, 0, 6));
+        rigid_body.AddTorque(new Vector3(15, 0, 12));
     }
 
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Barrel")
-            return;
-
-        if (other.gameObject == owner)
             return;
 
         GameObject.FindObjectOfType<AudioManager>().PlayOneShot("explosion");
@@ -36,8 +34,22 @@ public class Barrel : MonoBehaviour
             if (player == null)
                 continue;
 
+            if (owning_player != null)
+            {
+                if (player == owning_player)
+                    continue;
+            }
+
             player.Stun(2.0f);
         }
+
+        Destroy(gameObject);
+    }
+
+
+    public void AddForce(Vector3 force)
+    {
+        rigid_body.AddForce(force);
     }
 
 
