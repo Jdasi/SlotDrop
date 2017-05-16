@@ -21,7 +21,6 @@ public class Mouse : MonoBehaviour
             difference.y = difference.z;
             difference.z = 0;
 
-            Debug.Log(difference);
 
             Vector3 new_mouse_pos = hud_mouse.transform.localPosition + (difference * sensitivity);
             new_mouse_pos.x = Mathf.Clamp(new_mouse_pos.x, -1.9f, 1.9f);
