@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PCManager : MonoBehaviour
 {
@@ -22,16 +23,43 @@ public class PCManager : MonoBehaviour
     public Color light_alarm_colour;
     public float alarm_light_intensity = 1;
 
+    public GameObject end_game_canvas;
+
     private float light_default_intensity = 0;
     private Color light_default_colour;     
     private bool cataclysm_active = false;
     private int meteor_count = 0;
+
+    private bool game_ending = false;
+    private float initial_end_time = 0;
+    private float prev_diff = 0;
+
+    private float canvas_enable_time = 3.0f;
+    private float game_reload_time = 6.0f;
 
 
     private void Update()
     {
         UpdateDebugControls();
         
+        if (game_ending)
+        {
+            float diff = Time.realtimeSinceStartup - initial_end_time;
+
+            if (diff >= canvas_enable_time && prev_diff < canvas_enable_time)
+            {
+                Time.timeScale = 1;
+                end_game_canvas.SetActive(true);
+            }
+
+            if (diff >= game_reload_time && prev_diff < game_reload_time)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            prev_diff = diff;
+        }
+
         if (cataclysm_active)
         {
             RunCataclysm(); // simulate cataclysm event
@@ -52,7 +80,7 @@ public class PCManager : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;//if in editor exit play mode
 #else
         Application.Quit();//if a build quit the application
-#endif       
+#endif
         }
     }
 
@@ -63,6 +91,24 @@ public class PCManager : MonoBehaviour
         scan_indicator.SetActive(true);
         light_default_colour = scene_light.color;
         light_default_intensity = scene_light.intensity;
+    }
+
+    
+    public void EndGame()
+    {
+        if (game_ending)
+            return;
+
+        Time.timeScale = 0.3f;
+
+        game_ending = true;
+        initial_end_time = Time.realtimeSinceStartup;
+    }
+
+
+    public bool IsGameEnding()
+    {
+        return game_ending;
     }
 
 

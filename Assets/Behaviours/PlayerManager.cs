@@ -35,6 +35,9 @@ public class PlayerManager : MonoBehaviour
             // Player initial join.
             if (connected_player.rewired.GetButtonDown("Connect") && !connected_player.rewired.isPlaying)
             {
+                // Set the connecting player's colour.
+                connected_player.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+
                 player_factory.CreatePlayer(connected_player);
             }
 

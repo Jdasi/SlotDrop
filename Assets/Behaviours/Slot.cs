@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Slot : MonoBehaviour
 {
@@ -13,8 +12,6 @@ public class Slot : MonoBehaviour
     public float time_to_close = 5.0f;
     public float infection_chance = 30.0f;
     public bool golden_slot = false;
-
-    public GameObject end_game_canvas;
 
     private LoadoutFactory loadout_factory;
     private PCManager pc_manager;
@@ -90,24 +87,23 @@ public class Slot : MonoBehaviour
     
     public bool CanBeSlotted()
     {
-        return box_collider.enabled;
+        return box_collider.enabled && !pc_manager.IsGameEnding();
     }
 
     
     public void SlotDrop(PlayerController player)
     {
-        // Close the slot.
-        Close();
-
         // Game ending slot drop.
         if (golden_slot && player.IsTitan())
         {
-            Time.timeScale = 0.3f;
-
-            Invoke("EnableCanvas", 1.0f);
-            Invoke("ResetLevel", 4.0f);
+            pc_manager.EndGame();
 
             return;
+        }
+        else
+        {
+            // Close the slot.
+            Close();
         }
 
         // Chance to infect the PC.
@@ -138,19 +134,6 @@ public class Slot : MonoBehaviour
     public bool IsGolden()
     {
         return golden_slot;
-    }
-
-
-    void EnableCanvas()
-    {
-        Time.timeScale = 1;
-        end_game_canvas.SetActive(true);
-    }
-
-
-    void ResetLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

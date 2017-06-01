@@ -66,9 +66,6 @@ public class PlayerController : MonoBehaviour
         stun_effect.SetActive(false);
         last_facing = Vector3.right;
 
-        body_renderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        face_indicator.GetComponent<SpriteRenderer>().material.color = body_renderer.material.color;
-
         broken_particle.SetActive(false);
     }
 
@@ -121,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            Time.timeScale = 1.0f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
@@ -276,7 +274,9 @@ public class PlayerController : MonoBehaviour
                 return;
 
             nearby_slot.GetComponent<Slot>().SlotDrop(this);
-            slot_streak = player_HUD.AddSlotToken();
+
+            if (!is_titan)
+                slot_streak = player_HUD.AddSlotToken();
         }
     }
 
@@ -329,6 +329,13 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void SetPlayerColor(Color color)
+    {
+        body_renderer.material.color = color;
+        face_indicator.GetComponent<SpriteRenderer>().material.color = color;
+    }
+
+
     public void SetPlayerInput(Player player_input)
     {
         this.player_input = player_input;
@@ -356,6 +363,8 @@ public class PlayerController : MonoBehaviour
 
         player_rigidbody.mass = 100;
         snap_distance *= 1.25f;
+
+        player_HUD.ResetSlotTokens();
     }
 
 

@@ -22,7 +22,8 @@ public class PlayerFactory : MonoBehaviour
         GameObject player_clone = Instantiate(player_prefab, player_spawn);
         PlayerController player_controller = player_clone.GetComponent<PlayerController>();
 
-        player_controller.name = "Player" +  connected_player.rewired.id.ToString();
+        player_controller.name = "Player" + connected_player.rewired.id.ToString();
+        player_controller.SetPlayerColor(connected_player.color);
         player_controller.SetPlayerInput(connected_player.rewired);
 
         Vector2 random_circle_location = Random.insideUnitCircle * spawn_area.spawn_radius;
