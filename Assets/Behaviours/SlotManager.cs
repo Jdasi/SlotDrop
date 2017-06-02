@@ -13,6 +13,8 @@ public class SlotManager : MonoBehaviour
     private bool random_slot_queued = false;
     private PlayerManager player_manager;
 
+    bool invoke_called = false;
+
 
 	void Start()
     {
@@ -27,13 +29,19 @@ public class SlotManager : MonoBehaviour
 
         if (titan_exists)
         {
-            if (!golden_slot.IsOpen())
-                golden_slot.Open();
+            if (!golden_slot.IsOpen() && !invoke_called)
+            {
+                invoke_called = true;
+                Invoke("OpenGoldenSlot", 1.0f);
+            }
         }
         else
         {
             if (golden_slot.IsOpen())
+            {
                 golden_slot.Close();
+                CancelInvoke();
+            }
         }
 
 		if (!random_slot_queued)
@@ -67,6 +75,13 @@ public class SlotManager : MonoBehaviour
             slot.Open();
 
         random_slot_queued = false;
+    }
+
+
+    void OpenGoldenSlot()
+    {
+        invoke_called = false;
+        golden_slot.Open();
     }
 
 }
