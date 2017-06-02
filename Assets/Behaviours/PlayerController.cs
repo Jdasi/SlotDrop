@@ -277,6 +277,8 @@ public class PlayerController : MonoBehaviour
 
             if (!is_titan)
                 slot_streak = player_HUD.AddSlotToken();
+
+            nearby_slot = null;
         }
     }
 

@@ -8,6 +8,7 @@ public class SlotManager : MonoBehaviour
     public float max_open_delay = 10;
 
     public Slot golden_slot;
+    public float golden_slot_open_delay = 10.0f;
 
     private Slot[] slots;
     private bool random_slot_queued = false;
@@ -32,7 +33,7 @@ public class SlotManager : MonoBehaviour
             if (!golden_slot.IsOpen() && !invoke_called)
             {
                 invoke_called = true;
-                Invoke("OpenGoldenSlot", 1.0f);
+                Invoke("OpenGoldenSlot", golden_slot_open_delay);
             }
         }
         else
@@ -81,7 +82,10 @@ public class SlotManager : MonoBehaviour
     void OpenGoldenSlot()
     {
         invoke_called = false;
-        golden_slot.Open();
+
+        // Check there's still a titan alive.
+        if (player_manager.AnyPlayerTitan())
+            golden_slot.Open();
     }
 
 }
