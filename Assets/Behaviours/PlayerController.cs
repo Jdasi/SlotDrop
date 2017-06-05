@@ -148,8 +148,8 @@ public class PlayerController : MonoBehaviour
         vertical = player_input.GetAxis("Vertical");
 
         // Apply the move.
-        move = new Vector3(horizontal * Time.deltaTime * horizontal_move_speed * move_speed_modifier, 0,
-            vertical * Time.deltaTime * vertical_move_speed * move_speed_modifier);
+        move = new Vector3(horizontal * Time.fixedDeltaTime * horizontal_move_speed * move_speed_modifier, 0,
+            vertical * Time.fixedDeltaTime * vertical_move_speed * move_speed_modifier);
 
 
         face_locked = player_input.GetButton("FaceLock");
